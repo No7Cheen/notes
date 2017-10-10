@@ -12,6 +12,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 
@@ -74,19 +84,21 @@
 
 
 
+  <link rel="alternate" href="/rss.xml" title="iSSExplorer's Blog" type="application/atom+xml" />
+
 
 
 
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mr.搞不定">
+<meta property="og:title" content="iSSExplorer&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/categories/index.html">
-<meta property="og:site_name" content="Mr.搞不定">
+<meta property="og:site_name" content="iSSExplorer&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-10-09T07:02:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr.搞不定">
+<meta name="twitter:title" content="iSSExplorer&#39;s Blog">
 
 
 
@@ -122,7 +134,7 @@
 
 
 
-  <title>分类 | Mr.搞不定</title>
+  <title>分类 | iSSExplorer's Blog</title>
   
 
 
@@ -152,12 +164,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Mr.搞不定</span>
+        <span class="site-title">iSSExplorer's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">追求是要有的，万一实现了呢</p>
+        <p class="site-subtitle">梦想是要有的，万一实现了呢</p>
       
   </div>
 
@@ -370,9 +382,9 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/avatar.png"
-                alt="陈建" />
+                alt="Mr.搞不定" />
             
-              <p class="site-author-name" itemprop="name">陈建</p>
+              <p class="site-author-name" itemprop="name">Mr.搞不定</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -414,6 +426,13 @@
           </nav>
 
           
+            <div class="feed-link motion-element">
+              <a href="/rss.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
 
           <div class="links-of-author motion-element">
             
@@ -438,69 +457,85 @@
 
           
           
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                友情链接
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://notes.iissnan.com/" title="IIssNan" target="_blank">IIssNan</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.wuxubj.cn" title="务虚笔记" target="_blank">务虚笔记</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://wuxiaolong.me/" title="吴小龙" target="_blank">吴小龙</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://jayfeng.com/" title="杰风居" target="_blank">杰风居</a>
-                  </li>
-                
-              </ul>
-              <!-- back 自定义
-              
-                <span class="links-of-author-item" style="text-align:left">
-                  <a href="http://notes.iissnan.com/" title="IIssNan" target="_blank">
-                    IIssNan
-                  </a>
-                </span>
-              
-                <span class="links-of-author-item" style="text-align:left">
-                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">
-                    MacTalk
-                  </a>
-                </span>
-              
-                <span class="links-of-author-item" style="text-align:left">
-                  <a href="http://www.wuxubj.cn" title="务虚笔记" target="_blank">
-                    务虚笔记
-                  </a>
-                </span>
-              
-                <span class="links-of-author-item" style="text-align:left">
-                  <a href="http://wuxiaolong.me/" title="吴小龙" target="_blank">
-                    吴小龙
-                  </a>
-                </span>
-              
-                <span class="links-of-author-item" style="text-align:left">
-                  <a href="http://jayfeng.com/" title="杰风居" target="_blank">
-                    杰风居
-                  </a>
-                </span>
-              
-              -->
-            </div>
+            <p class="links-of-blogroll-title" style="margin-top: 10px; margin-bottom: 0px;">友情链接</p>
           
+          <div class="links-of-author motion-element" style="margin-top: 0px">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://slarker.me/" target="_blank">Slark</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://notes.iissnan.com/" target="_blank">IIssNan</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://wuxiaolong.me/" target="_blank">吴小龙</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.wuxubj.cn" target="_blank">务虚笔记</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://jayfeng.com/" target="_blank">杰风居</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://woshilijie.com/" target="_blank">李洁博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://mouxuejie.com/" target="_blank">某学姐</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.desmondyao.com/" target="_blank">姚家艺</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="" target="_blank"> `</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="" target="_blank">` </a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://coolshell.cn/" target="_blank">酷壳</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://gank.io/" target="_blank">干货集中营</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.daimajia.com/" target="_blank">代码家</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.androidweekly.cn/" target="_blank">Android周报</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://droidyue.com/" target="_blank">技术小黑屋</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.infoq.com/cn/" target="_blank">InfoQ中文站</a>
+                </span>
+              
+            
+          </div>
 
           
 
@@ -525,7 +560,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">陈建</span>
+  <span class="author" itemprop="copyrightHolder">Mr.搞不定</span>
 
   
 </div>
