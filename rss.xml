@@ -8,8 +8,28 @@
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 10 Oct 2017 13:44:43 GMT</pubDate>
+    <pubDate>Tue, 10 Oct 2017 15:09:24 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Git 命令清单</title>
+      <link>http://yoursite.com/2017/10/10/Git-%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</link>
+      <guid>http://yoursite.com/2017/10/10/Git-%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</guid>
+      <pubDate>Tue, 10 Oct 2017 14:40:43 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;http://iissnan.com/progit/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pro Git&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;www.ruanyifeng.com/blog/20
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<blockquote><p>参考<br><a href="http://iissnan.com/progit/" target="_blank" rel="external">Pro Git</a><br><a href="www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">阮一峰的网络日志</a></p></blockquote><p>我们每天都在使用 Git ，但是除了 <code>git push</code> 和 <code>git pull</code> 还有多少命令是记得住的。<br>现就日常工作使用的 Git 命令整理如下，以供参考。</p>]]></content:encoded>
+      
+      <comments>http://yoursite.com/2017/10/10/Git-%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>常用正则表达式汇总</title>
