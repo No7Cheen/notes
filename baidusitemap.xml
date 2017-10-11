@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>http://notes.issexplorer.com/2017/10/10/Regular-Expression/</loc>
+    <lastmod>2017-10-11T08:47:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>常用正则表达式汇总</title>
+        <pubTime>2017-10-10T13:07:27.000Z</pubTime>
+        
+        <tag>正则表达式</tag>
+         
+         
+           
+             
+              <breadCrumb title="正则表达式" url="http://notes.issexplorer.com/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://notes.issexplorer.com/2017/10/10/Git-%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</loc>
+    <lastmod>2017-10-11T08:47:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>Git 命令清单</title>
+        <pubTime>2017-10-10T14:40:43.000Z</pubTime>
+        
+        <tag>Git</tag>
+         
+        <tag>命令</tag>
+         
+         
+           
+             
+              <breadCrumb title="Git" url="http://notes.issexplorer.com/categories/Git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://notes.issexplorer.com/2017/10/11/Android-Studio-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-FindBugs/</loc>
     <lastmod>2017-10-11T08:44:09.000Z</lastmod>
     <data>
@@ -39,48 +81,6 @@
            
              
               <breadCrumb title="Testing" url="http://notes.issexplorer.com/categories/Testing/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://notes.issexplorer.com/2017/10/10/Regular-Expression/</loc>
-    <lastmod>2017-10-11T07:46:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>常用正则表达式汇总</title>
-        <pubTime>2017-10-10T13:07:27.000Z</pubTime>
-        
-        <tag>正则表达式</tag>
-         
-         
-           
-             
-              <breadCrumb title="正则表达式" url="http://notes.issexplorer.com/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://notes.issexplorer.com/2017/10/10/Git-%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</loc>
-    <lastmod>2017-10-11T07:45:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>Git 命令清单</title>
-        <pubTime>2017-10-10T14:40:43.000Z</pubTime>
-        
-        <tag>Git</tag>
-         
-        <tag>命令</tag>
-         
-         
-           
-             
-              <breadCrumb title="Git" url="http://notes.issexplorer.com/categories/Git/"/>
           
         </display>
     </data>
