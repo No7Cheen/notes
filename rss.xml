@@ -8,8 +8,24 @@
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 12 Oct 2017 00:34:37 GMT</pubDate>
+    <pubDate>Thu, 12 Oct 2017 11:26:11 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>APK 签名文件</title>
+      <link>http://notes.issexplorer.com/2017/10/12/apk-signature/</link>
+      <guid>http://notes.issexplorer.com/2017/10/12/apk-signature/</guid>
+      <pubDate>Thu, 12 Oct 2017 09:10:49 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;标记&lt;br&gt;记录下签名生成的过程，方便下次使用。&lt;/p&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>标记<br>记录下签名生成的过程，方便下次使用。</p><a id="more"></a><p>简单来说，签名就是个标识，它可以保证 APP 正常升级，并且不被别人覆盖。</p><h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><ul><li>java jdk</li><li>keytool 密钥和证书管理工具,可以用来生成证书</li></ul><p>使用 <code>keytool</code> 生成证书：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 文件名和别名相同，为: test.keystore</span></div><div class="line">$ keytool -genkey -<span class="built_in">alias</span> test.keystore -keyalg RSA -validity 20000 -keystore test.keystore</div></pre></td></tr></table></figure><p>参数解释:</p><ul><li>-genkey 产生证书文件</li><li>-keystore 指定密钥库的.keystore文件中</li><li>-keyalg 指定密钥的算法,这里指定为RSA(非对称密钥算法)</li><li>-validity 为证书有效天数，这里我们写的是10000天</li><li>-alias 产生别名</li></ul><img src="/2017/10/12/apk-signature/QQ20171012-170824@2x.png" alt="QQ20171012-170824@2x.png" title=""><h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -list -keystore test.keystore</div></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://notes.issexplorer.com/2017/10/12/apk-signature/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Activity 生命周期</title>

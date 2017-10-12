@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[APK 签名文件]]></title>
+    <url>%2F2017%2F10%2F12%2Fapk-signature%2F</url>
+    <content type="text"><![CDATA[标记记录下签名生成的过程，方便下次使用。 简单来说，签名就是个标识，它可以保证 APP 正常升级，并且不被别人覆盖。 Tools java jdk keytool 密钥和证书管理工具,可以用来生成证书 使用 keytool 生成证书： 12# 文件名和别名相同，为: test.keystore$ keytool -genkey -alias test.keystore -keyalg RSA -validity 20000 -keystore test.keystore 参数解释: -genkey 产生证书文件 -keystore 指定密钥库的.keystore文件中 -keyalg 指定密钥的算法,这里指定为RSA(非对称密钥算法) -validity 为证书有效天数，这里我们写的是10000天 -alias 产生别名 查看信息1$ keytool -list -keystore test.keystore]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Activity 生命周期]]></title>
     <url>%2F2017%2F10%2F11%2FActivity-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%2F</url>
     <content type="text"><![CDATA[这是个被谈烂了的问题，网上介绍的文章也铺天盖地。但是，作为一名有轻微强迫症的攻城狮，想写写 Android 相关的东西，如果不从这里入手，总觉得心里缺了点啥似的，也就不免俗了，从这里开始吧。 生命周期流程相信学习安卓的人对 Android Activity 的生命周期活动并不陌生，下图详细而直观得表现了 Activity 各生命周期间的关系。 正常完整的流程走向1onCreate –&gt; onStart –&gt; onPostCreate –&gt; onResume –&gt; onPostResume –&gt; onPause –&gt; onStop –&gt; onDestroy onCreatecreate 表示创建，这是 Activity 生命周期的第一个方法，也是我们在 android 开发中接触的最多的生命周期方法。它本身的作用是进行 Activity 的一些初始化工作，比如使用 setContentView 加载布局，对一些控件和变量进行初始化等。此时 Activity 还在后台，为非可见非可视状态。 onStartstart 即启动，这是 Activity 生命周期的第二个方法。此时 Activity 已经可见了，但是还没出现在前台，我们还看不到，无法与 Activity 交互。其实将 Activity 的初始化工作放在这也没有什么问题，放在 onCreate 中是由于官方推荐的以及我们开发的习惯。此时 Activity 为非可视状态。 onContentChanged当 Activity 的布局改动时，即 set 或 add ContentView 执行完毕时会调用该方法。Activity 中各种 View 的初始化，如：findViewById()，都可以放到该方法中。 onResumeresume 表示继续、重新开始。经过前两个阶段的初始化，此时 Activity 已处于栈顶，用户可交互。此时 Activity 为可视状态。 onPostCreate、onPostResumeonPostCreate、onPostResume方法分别在 onCreate、onResume方法彻底执行完毕后回调。 onPause暂停状态。该状态下，Activity 的部分被另外一个 Activity 所遮盖，另外的 Activity 来到前台，但是半透明的，不会覆盖整个屏幕。被暂停的 Activity 不再接受用户的输入且不再执行任何代码。 onStoponStop 在整个窗口被完全遮盖才会触发，此时 Activity 不可见，处于后台运行。触发 onStop 之前必定会触发onPause。 onSaveInstanceState、 onRestoreInstanceStateonSaveInstanceState 是恢复实例的状态，但需要注意 onSaveInstanceState 和 onRestoreInstanceState “不一定”是成对的被调用的，onRestoreInstanceState 被调用的前提是，Activity A “确实”被系统销毁了，而如果仅仅是停留在有这种可能性的情况下，则该方法不会被调用。 长时间处于 Stop 形态，系统可能回收 Activity 比如旋转屏幕: 1onResume –&gt; onSaveInstanceState() –&gt; onDestory 重新创建: 1onCreate –&gt; onRestoreIntanceState() –&gt; onResume 返回当前（按机器返回键）12onPause –&gt; onStop –&gt; onDestoryonRestart –&gt; onStart –&gt; onResume –&gt; onPostResume 屏幕待机（黑掉）1onPause Home键退出1onPause –&gt; onSaveInstanceState –&gt; onStop 旋转屏幕默认屏幕旋转会重新创建，配置 configChanges 可改变这一现象 12android:configChanges=&quot;keyboardHidden|orientation|screenSize&quot;（sdk&gt;13时需加上screenSize）onPause –&gt; onStop –&gt; onDestory –&gt; onCreate –&gt; onStart –&gt; onPostCreate –&gt; onResume –&gt; onPostResume]]></content>
