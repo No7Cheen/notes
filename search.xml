@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[无聊的汉字多胞胎：汆氽]]></title>
+    <url>%2F2017%2F10%2F16%2Fhanzi-cuan-tun%2F</url>
+    <content type="text"><![CDATA[闲无聊无聊的汉字多胞胎入 cuan 汆，人 tun 氽 就喜欢这么简单粗暴、直截了当，上图。]]></content>
+      <categories>
+        <category>无聊</category>
+      </categories>
+      <tags>
+        <tag>无聊</tag>
+        <tag>蛋疼</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[无聊的汉字多胞胎：火炎焱燚]]></title>
+    <url>%2F2017%2F10%2F16%2Fhanzi-huo-yan-yan-yi%2F</url>
+    <content type="text"><![CDATA[闲无聊无聊的汉字多胞胎横 xu 戌，点 shu 戍，空心 wu 戊 我可能是太无聊了。。。领导看到会是什么心情：「最近玩舒服了，工作不饱和，赶明儿给你多派点活」。]]></content>
+      <categories>
+        <category>无聊</category>
+      </categories>
+      <tags>
+        <tag>无聊</tag>
+        <tag>蛋疼</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hexo 搭建 GitHub 博客（III）- NexT 主题配置]]></title>
     <url>%2F2017%2F10%2F13%2FHexo-GitHub-NexT-Config-3%2F</url>
     <content type="text"><![CDATA[PS：本博是在 MAC 环境下进行操作的本博主要介绍 NexT 主题的配置 NexT 是一款简洁优雅且功能比较齐全的主题，配置比较简单，只需要稍微修改配置文件即可。Hexo 有两份主要的配置文件，其名称都是 _config.yml。其中一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。 为了描述方便，在以下说明中，将前者称为站点配置文件， 后者称为主题配置文件 安装 NexTHexo 安装非常简单，只需要将主题文件拷贝至站点目录的 themes 目录下， 然后修改下配置文件即可。具安装步骤如下。 下载主题12$ cd your-hexo-site # 这里是有前面的目录 ~/Blog$ git clone https://github.com/iissnan/hexo-theme-next themes/next 启用主题当克隆/下载完成后，打开 站点配置文件， 找到 theme 字段，并将其值更改为 next，即theme: next，至此，NexT 主题就安装好了。 验证主题首先启动 Hexo 本地站点，并开启调试模式（即加上 –debug），整个命令是 hexo s --debug。 当命令行输出中提示出： hexo s –debug INFO Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop. 使用浏览器访问 http://localhost:4000 即可看到效果。 主题配置参考：NexT 配置，这里有详细的说明。]]></content>
