@@ -4,6 +4,74 @@
 
     
   <url>
+    <loc>http://notes.issexplorer.com/2017/10/17/android-proguard-project/</loc>
+    <lastmod>2017-10-17T10:11:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>APK 混淆打包</title>
+        <pubTime>2017-10-17T09:06:09.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Gradle</tag>
+         
+        <tag>ProGuard</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://notes.issexplorer.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://notes.issexplorer.com/2017/10/12/apk-signature/</loc>
+    <lastmod>2017-10-17T09:09:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>APK 签名文件</title>
+        <pubTime>2017-10-12T09:10:49.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://notes.issexplorer.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://notes.issexplorer.com/2017/10/11/Adb-%E5%BD%95%E5%B1%8F/</loc>
+    <lastmod>2017-10-17T01:41:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>adb 录屏</title>
+        <pubTime>2017-10-11T09:10:53.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>命令</tag>
+         
+        <tag>Adb</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://notes.issexplorer.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://notes.issexplorer.com/2017/10/16/hanzi-huo-yan-yan-yi/</loc>
     <lastmod>2017-10-16T09:29:29.000Z</lastmod>
     <data>
@@ -41,30 +109,6 @@
            
              
               <breadCrumb title="无聊" url="http://notes.issexplorer.com/categories/%E6%97%A0%E8%81%8A/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://notes.issexplorer.com/2017/10/11/Adb-%E5%BD%95%E5%B1%8F/</loc>
-    <lastmod>2017-10-13T12:08:05.000Z</lastmod>
-    <data>
-        <display>
-        <title>adb 录屏</title>
-        <pubTime>2017-10-11T09:10:53.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>命令</tag>
-         
-        <tag>Adb</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://notes.issexplorer.com/categories/Android/"/>
           
         </display>
     </data>
@@ -172,26 +216,6 @@
 
     
   <url>
-    <loc>http://notes.issexplorer.com/2017/10/12/apk-signature/</loc>
-    <lastmod>2017-10-12T11:26:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>APK 签名文件</title>
-        <pubTime>2017-10-12T09:10:49.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://notes.issexplorer.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://notes.issexplorer.com/2017/10/11/Activity-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
     <lastmod>2017-10-12T00:34:37.000Z</lastmod>
     <data>
@@ -239,9 +263,9 @@
         <title>Git 命令清单</title>
         <pubTime>2017-10-10T14:40:43.000Z</pubTime>
         
-        <tag>命令</tag>
-         
         <tag>Git</tag>
+         
+        <tag>命令</tag>
          
          
            
