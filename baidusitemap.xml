@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://notes.issexplorer.com/2017/10/19/mark-memoa-iterm2-zsh/</loc>
+    <lastmod>2017-10-19T04:09:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac 终端环境 iTerm2 + Zsh + Oh My Zsh</title>
+        <pubTime>2017-10-19T02:43:28.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+        <tag>Mark</tag>
+         
+        <tag>备忘录</tag>
+         
+         
+           
+             
+              <breadCrumb title="备忘录" url="http://notes.issexplorer.com/categories/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://notes.issexplorer.com/2017/10/17/android-proguard-project/</loc>
     <lastmod>2017-10-17T10:11:29.000Z</lastmod>
     <data>
@@ -57,9 +81,9 @@
         
         <tag>Android</tag>
          
-        <tag>命令</tag>
-         
         <tag>Adb</tag>
+         
+        <tag>命令</tag>
          
          
            
@@ -263,9 +287,9 @@
         <title>Git 命令清单</title>
         <pubTime>2017-10-10T14:40:43.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>命令</tag>
+         
+        <tag>Git</tag>
          
          
            
