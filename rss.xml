@@ -3,11 +3,11 @@
   xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Mr.搞不定的笔记</title>
+    <title>iSSExplorer&#39;s Notes</title>
     <link>https://rogerscj.github.io/notes/</link>
     <atom:link href="/notes/rss.xml" rel="self" type="application/rss+xml"/>
     
-    <description>iSSExplorer&#39;s Notes</description>
+    <description>关注技术，记录生活，分享感悟</description>
     <pubDate>Thu, 19 Oct 2017 04:09:04 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
