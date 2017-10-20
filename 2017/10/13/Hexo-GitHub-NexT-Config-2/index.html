@@ -123,16 +123,16 @@
 <meta name="keywords" content="Hexo,Blog,GitHub,GitHub Pages">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署">
-<meta property="og:url" content="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-2/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/10/13/Hexo-GitHub-NexT-Config-2/index.html">
 <meta property="og:site_name" content="Mr.搞不定的笔记">
 <meta property="og:description" content="PS：本博是在 MAC 环境下进行操作的本博主要介绍 Hexo 的配置安装，以及如何部署博客到 GitHub参考：Hexo 安装与初体验">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-2/hexo-config.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/13/Hexo-GitHub-NexT-Config-2/hexo-config.png">
 <meta property="og:updated_time" content="2017-10-13T12:06:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署">
 <meta name="twitter:description" content="PS：本博是在 MAC 环境下进行操作的本博主要介绍 Hexo 的配置安装，以及如何部署博客到 GitHub参考：Hexo 安装与初体验">
-<meta name="twitter:image" content="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-2/hexo-config.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/13/Hexo-GitHub-NexT-Config-2/hexo-config.png">
 
 
 
@@ -162,7 +162,7 @@
 
 
 
-  <link rel="canonical" href="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-2/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/13/Hexo-GitHub-NexT-Config-2/"/>
 
 
 
@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/13/Hexo-GitHub-NexT-Config-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.搞不定">
@@ -456,7 +456,7 @@
 <p>生成静态网页，<font color="red"><strong>强烈推荐</strong></font>使用下面的方式：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
 <h3 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h3><p>经过上面的一系列步骤（其实也没几步），我们终于可以在本地访问自己的 Blog 了。纳尼，只能在本地访问？那我费这么大劲干嘛呢，还不如写个静态 Markdown 文件。我们需要的是随时随地访问，同行之间的相互分享，要达到这个效果还需一步，即，部署到 <strong>GitHub</strong> 上。一般的做法是，在本地调试编辑好文章后再推送到 <strong>GitHub</strong> 上。下面是部署到 <strong>GitHub</strong> 的过程。</p>
-<p>前提是，你已经拥有了自己专属的<strong>「GitHub Pages」</strong>。如果还没有<strong>「GitHub Pages」</strong>，请参考：<a href="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-1/#more">Hexo 搭建 GitHub 博客（I）- 环境搭建</a></p>
+<p>前提是，你已经拥有了自己专属的<strong>「GitHub Pages」</strong>。如果还没有<strong>「GitHub Pages」</strong>，请参考：<a href="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-1/#more" target="_blank" rel="external">Hexo 搭建 GitHub 博客（I）- 环境搭建</a></p>
 <h4 id="安装自动部署插件"><a href="#安装自动部署插件" class="headerlink" title="安装自动部署插件"></a>安装自动部署插件</h4><p>初始化博客时运行的 <code>npm install</code> 命令默认并没有安装这个插件，所以要手动安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git</div></pre></td></tr></table></figure>
 <h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>这里的配置文件指<font color="red"><strong>站点配置文件</strong></font>，即，<code>~/Blog/_config.yml</code>，找到 <code>deploy</code> 标签，添加你的<strong>「GitHub Pages」</strong>路径，如下（替换「<strong>repo</strong>」为<strong>你的 GitHub 路径</strong>即可）：<br><img src="/2017/10/13/Hexo-GitHub-NexT-Config-2/hexo-config.png" alt="hexo-config"></p>
@@ -521,7 +521,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-2/" title="Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署">http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-2/</a>
+    <a href="http://yoursite.com/2017/10/13/Hexo-GitHub-NexT-Config-2/" title="Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署">http://yoursite.com/2017/10/13/Hexo-GitHub-NexT-Config-2/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -1041,7 +1041,7 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-2/';
+          this.page.url = 'http://yoursite.com/2017/10/13/Hexo-GitHub-NexT-Config-2/';
           this.page.identifier = '2017/10/13/Hexo-GitHub-NexT-Config-2/';
           this.page.title = 'Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署';
         };
