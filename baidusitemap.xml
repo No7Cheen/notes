@@ -3,6 +3,58 @@
 
 
     
+  <url>
+    <loc>https://rogerscj.github.io/notes/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/</loc>
+    <lastmod>2017-10-20T13:35:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo 搭建 GitHub 博客（I）- 环境搭建</title>
+        <pubTime>2017-10-13T08:33:21.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+        <tag>Blog</tag>
+         
+        <tag>GitHub</tag>
+         
+        <tag>GitHub Pages</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="https://rogerscj.github.io/notes/notes/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://rogerscj.github.io/notes/notes/2017/10/13/Hexo-GitHub-NexT-Config-2/</loc>
+    <lastmod>2017-10-20T13:31:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署</title>
+        <pubTime>2017-10-13T08:35:33.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+        <tag>Blog</tag>
+         
+        <tag>GitHub</tag>
+         
+        <tag>GitHub Pages</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="https://rogerscj.github.io/notes/notes/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://rogerscj.github.io/notes/notes/2017/10/19/mark-memoa-iterm2-zsh/</loc>
@@ -158,58 +210,6 @@
            
              
               <breadCrumb title="Android Studio" url="https://rogerscj.github.io/notes/notes/categories/Android-Studio/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://rogerscj.github.io/notes/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/</loc>
-    <lastmod>2017-10-13T12:07:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo 搭建 GitHub 博客（I）- 环境搭建</title>
-        <pubTime>2017-10-13T08:33:21.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-        <tag>Blog</tag>
-         
-        <tag>GitHub</tag>
-         
-        <tag>GitHub Pages</tag>
-         
-         
-           
-             
-              <breadCrumb title="Hexo" url="https://rogerscj.github.io/notes/notes/categories/Hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://rogerscj.github.io/notes/notes/2017/10/13/Hexo-GitHub-NexT-Config-2/</loc>
-    <lastmod>2017-10-13T12:06:42.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署</title>
-        <pubTime>2017-10-13T08:35:33.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-        <tag>Blog</tag>
-         
-        <tag>GitHub</tag>
-         
-        <tag>GitHub Pages</tag>
-         
-         
-           
-             
-              <breadCrumb title="Hexo" url="https://rogerscj.github.io/notes/notes/categories/Hexo/"/>
           
         </display>
     </data>

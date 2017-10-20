@@ -133,7 +133,7 @@
 <meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj.png">
 <meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj-successful.png">
 <meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj-yoursname.png">
-<meta property="og:updated_time" content="2017-10-13T12:07:04.000Z">
+<meta property="og:updated_time" content="2017-10-20T13:35:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 搭建 GitHub 博客（I）- 环境搭建">
 <meta name="twitter:description" content="PS：本博是在 MAC 环境下进行搭建的本博主要介绍「GitHub Pages」的相关环境搭建  在平常的工作和生活中，记录一些笔记是必不可少的。设备更新换代又日趋频繁，免不了丢三落四，搭建一个便捷、稳定的个人站点还是挺有必要的，如果能将一些有用的笔记分享给有相同需求的同伴，那再好不过了。「GitHub Pages」就是一个不错的选择。">
@@ -464,15 +464,15 @@
 <p>安装成功后，会出现诸如 <code>-- hexo-cli@1.0.3</code> 的信息。</p>
 <h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><h4 id="从注册一个-GitHub-账号开始"><a href="#从注册一个-GitHub-账号开始" class="headerlink" title="从注册一个 GitHub 账号开始"></a>从注册一个 GitHub 账号开始</h4><p>要使用<strong>「GitHub Pages」</strong>，首先你要注册一个 <a href="https://github.com/" target="_blank" rel="external"><strong>GitHub</strong></a> 账号，<strong>GitHub</strong> 是全球最大的同性交友网站，你值得拥有^_^。</p>
 <img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-register-1.jpg" alt="github-register-1.jpg" title="">
-<h4 id="创建-GitHub-Pages"><a href="#创建-GitHub-Pages" class="headerlink" title="创建 GitHub Pages"></a>创建 GitHub Pages</h4><p>仓库的名字要和你的账号对应，如：<a href="RogersCj.github.io">RogersCj.github.io</a><br>这里介绍<font color="red"><strong>2</strong></font>种创建<strong>「GitHub Pages」</strong>的方式，第一种比较官方；第二种最简单，连带 <strong>Hexo</strong> 一起被创建好。</p>
+<h4 id="创建-GitHub-Pages"><a href="#创建-GitHub-Pages" class="headerlink" title="创建 GitHub Pages"></a>创建 GitHub Pages</h4><p>仓库的名字要和你的账号对应，如：<a href="rogerscj.github.io">rogerscj.github.io</a><br>这里介绍<font color="red"><strong>2</strong></font>种创建<strong>「GitHub Pages」</strong>的方式，第一种比较官方；第二种最简单，连带 <strong>Hexo</strong> 一起被创建好。</p>
 <blockquote>
 <p><strong>官方的方式创建</strong><br>Create repository 仓库的名字要和你的账号对应<br>设置默认的页面（如果决定使用 Hexo，这一步可省略，后面会将 Hexo 导入）<br>参考：<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a></p>
 </blockquote>
 <img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-io-create.png" alt="github-io-create.png" title="">
 <blockquote>
-<p><strong>克隆我的博客模板</strong><br><strong>PS：如果希望一步一步走完 Hexo 部署到 GitHub，可略过下面的篇幅</strong><br>修改成你自己的仓库名 <strong>yoursname.github.io</strong>，如：<a href="RogersCj.github.io">RogersCj.github.io</a></p>
+<p><strong>克隆我的博客模板</strong><br><strong>PS：如果希望一步一步走完 Hexo 部署到 GitHub，可略过下面的篇幅</strong><br>修改成你自己的仓库名 <strong>yoursname.github.io</strong>，如：<a href="rogerscj.github.io">Rogerscj.github.io</a></p>
 </blockquote>
-<p>注册完成后搜索 <code>rogerscj.github.io</code> <a href="https://github.com/RogersCj/RogersCj.github.io" target="_blank" rel="external">进入我的仓库</a><br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-search-rogerscj.png" alt="github-search-rogerscj.png" title=""></p>
+<p>注册完成后搜索 <code>rogerscj.github.io</code> <a href="https://github.com/rogerscj/notes" target="_blank" rel="external">进入我的仓库</a><br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-search-rogerscj.png" alt="github-search-rogerscj.png" title=""></p>
 <p>点击右上角的 <strong>Fork</strong> 将我的仓库拉倒你的账号下：<br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj.png" alt="github-fork-rogerscj.png" title=""></p>
 <p>稍等片刻，点击刷新，你会看到 Fork 成功的页面：<br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj-successful.png" alt="github-fork-rogerscj-successful.png" title=""></p>
 <p>修改仓库名，并删除文件 <strong>CNAME</strong> 文件的内容：<br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj-yoursname.png" alt="github-fork-rogerscj-yoursname.png" title=""></p>

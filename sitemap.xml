@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rogerscj.github.io/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/</loc>
+    
+    <lastmod>2017-10-20T13:35:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rogerscj.github.io/notes/2017/10/13/Hexo-GitHub-NexT-Config-2/</loc>
+    
+    <lastmod>2017-10-20T13:31:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rogerscj.github.io/notes/googlea5536bac738a6b45.html</loc>
     
     <lastmod>2017-10-20T08:13:50.000Z</lastmod>
@@ -54,20 +68,6 @@
     <loc>https://rogerscj.github.io/notes/2017/10/11/Android-Studio-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-FindBugs/</loc>
     
     <lastmod>2017-10-13T12:07:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rogerscj.github.io/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/</loc>
-    
-    <lastmod>2017-10-13T12:07:04.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rogerscj.github.io/notes/2017/10/13/Hexo-GitHub-NexT-Config-2/</loc>
-    
-    <lastmod>2017-10-13T12:06:42.000Z</lastmod>
     
   </url>
   
