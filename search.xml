@@ -1,176 +1,676 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[Mac 终端环境 iTerm2 + Zsh + Oh My Zsh]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F19%2Fmark-memoa-iterm2-zsh%2F</url>
-    <content type="text"><![CDATA[iTerm2 is a terminal emulator. It works on Macs with macOS 10.8 or newer. iTerm2iTerm2 官方网站：http://www.iterm2.com/ Solarized 配色Solarized 主页：http://ethanschoonover.com/solarized Get Solarized 配色包，这里使用 Git 方式克隆： 1$ git clone git://github.com/altercation/solarized.git 找到solarized/iterm2-colors-solarized/，双击添加配色 Zsh 配置安装Zsh 是 Mac 系统自带的，一般来说不是最新版本，可通过 Homebrew 安装最新版本： 1$ brew install zsh 修改默认 Shell在 /etc/shells 文件中加入 /usr/local/bin/zsh，并运行如下命令： 1$ chsh -s /usr/local/bin/zsh Oh My ZshOh My Zsh 是用来管理 Zsh 配置的，自带了很多很好用的基本配置。安装也非常简单，可参考主页：https://github.com/robbyrussell/oh-my-zsh。 Oh My Zsh 目录文件在 ~/.oh-my-zsh，包含了各种 Theme 和 Plugs，配置文件在 ~/.zshrc。 如需「修改/添加」配置，可编辑 ~/.zshrc。例如启用插件 Git、Autojumps，只需修改 ~/.zshrc 中对应的 pluins (大概在55行左右)，配置如下形式： 1$ plugins=(git autojumps osx) 快捷键 - 备忘录 选中即复制，鼠标中键粘贴 ⌃ + u：清空当前行 ⌃ + a：移动到行首 ⌃ + e：移动到行尾 ⌃ + f：向前移动 ⌃ + b：向后移动 ⌃ + p：上一条命令 ⌃ + n：下一条命令 ⌃ + r：搜索历史命令 ⌃ + y：召回最近用命令删除的文字 ⌃ + h：删除光标之前的字符 ⌃ + d：删除光标所指的字符 ⌃ + w：删除光标之前的单词 ⌃ + k：删除从光标到行尾的内容 ⌃ + t：交换光标和之前的字符 ⌘ + Click：打开文件、文件夹和链接 ⌘ + n：新建窗口 ⌘ + t：新建标签页 ⌘ + w：关闭当前页 ⌘ + 数字 &amp; ⌘ + 方向键：切换标签页 ⌥⌘ + 数字：切换窗口 ⌘ + enter：切换全屏 ⌘ + d：左右分屏 ⇧⌘ + d：上下分屏 ⌘ + ;：自动补全历史记录 ⇧⌘ + h：自动补全剪贴板历史 ⌥⌘ + e：查找所有来定位某个标签页 ⌘ + r &amp; ⌃ + l：清屏 ⌘ + /：显示光标位置 ⌥⌘ + b：历史回放 ⌘ + f：查找，配合使用 Tab、「⇧ + Tab」进行向右、向左补全，「⌥ + Enter」将查找结果输入终端]]></content>
-      <categories>
-        <category>备忘录</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>Mark</tag>
-        <tag>备忘录</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[APK 混淆打包]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F17%2Fandroid-proguard-project%2F</url>
-    <content type="text"><![CDATA[Java 编译后生成的 .class 可以很轻易地被反编译。混淆能让反编译的代码可读性变得很差，而且还能显著的减少 APK 包的大小。 相信搞 Android 开发的朋友都知道这个道理「混淆能让反编译的代码可读性变得很差，而且还能显著的减少 APK 包的大小」，但未必都会去做，大部分选择不配置的理由是觉得混淆麻烦，甚至是说，有点乱，不想去触碰这个“雷区”。 曾经不止一次旁敲侧击的从身边的朋友打听，回答大抵相同：「当然，使用自带的功能，如果 Google 连这个都没做到，那真是太 Low 了」，听到这话我就放心了，心里默默「呵呵」了一声。 嗨，说到这里，插入一个话题：「如何反编译 APK，并查看源码呢？」，这里推荐两篇博文：「Android 代码 混淆- 原来如此简单」和「Android APK反编译就这么简单 详解」。看了这两篇博文之后，相信你一定会破骂两句「MD，辛辛苦苦费了老大劲搞出来的项目，几分钟就被人把源码破了，真TM蛋疼」。 从这里开始首先，需要告知 Gradle 需要混淆。在 app/build.gradle 中把 minifyEnabled 设置为 true，代码如下： 12345678910111213buildTypes &#123; // release模式 release &#123; // 是否进行混淆，默认false minifyEnabled true // Zipalign 优化 zipAlignEnabled true // 移除无用的资源文件 shrinkResources true // 混淆文件的位置 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' &#125;&#125; 混淆模板「Android SDK」已经内置了默认的混淆配置文件 (android-sdk/tools/proguard/proguard-android.txt)。但只有这个是不够的，我们还需要添加自己的配置，「AS」在创建 Project 之初就已经为我们生成了这么一个文件 app/proguard-rules.pro，接下来，所做的混淆配置都必须写入这个文件。 常规的混淆模板这里给出一个常规的混淆模板，直接复制使用即可： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150-optimizationpasses 5 # 指定代码的压缩级别-verbose # 混淆时是否记录日志-ignorewarnings # 忽略警告，避免打包时某些警告出现-keepattributes SourceFile,LineNumberTable-dontshrink # 不压缩输入的类文件-dontoptimize # 不优化输入的类文件# 手动启用support keep注解 可使用注解@Keep-dontskipnonpubliclibraryclassmembers-printconfiguration-keep,allowobfuscation @interface android.support.annotation.Keep-keep @android.support.annotation.Keep class *-keepclassmembers class * &#123; @android.support.annotation.Keep *;&#125;##--- For:Remove log ----assumenosideeffects class android.util.Log &#123; public static boolean isLoggable(java.lang.String, int); public static int v(...); public static int i(...); public static int w(...); public static int d(...); public static int e(...);&#125;-keepclassmembers class fqcn.of.javascript.interface.for.webview &#123; public *;&#125;# 不混淆R文件-keep class *.R-keepclasseswithmembers class **.R$* &#123; public static &lt;fields&gt;; &#125;-keepclassmembers class **.R$* &#123; public static &lt;fields&gt;;&#125;# BuildConfig-keep class *.BuildConfig-keepclasseswithmembers class **.BuildConfig$* &#123; public static &lt;fields&gt;; &#125;-keepclassmembers class **.BuildConfig$* &#123; public static &lt;fields&gt;;&#125;##--- For:保持自定义控件类不被混淆 ----keepclasseswithmembers class * &#123; public &lt;init&gt;(android.content.Context, android.util.AttributeSet);&#125;-keepclasseswithmembers class * &#123; public &lt;init&gt;(android.content.Context, android.util.AttributeSet, int);&#125;# 保留Annotation-keepattributes *Annotation*-keep public class com.google.vending.licensing.ILicensingService-keep public class com.android.vending.licensing.ILicensingService-keepclasseswithmembernames class * &#123; # 保持 native 方法不被混淆 native &lt;methods&gt;;&#125;-keepclassmembers class ** &#123; @org.greenrobot.eventbus.Subscribe &lt;methods&gt;; &#125;##--- For:Serializable ----keepnames class * implements java.io.Serializable-keep class * implements java.io.Serializable &#123; *; &#125;-keepclassmembers class * implements java.io.Serializable &#123; *; &#125;-keepnames class * implements java.lang.Cloneable-keep class * implements java.lang.Cloneable &#123; public *; &#125;##---------------- 不被混淆，这里列出一些常规不需要混淆的 -----------------dontwarn org.mockito.**-dontwarn sun.reflect.**-dontwarn android.test.**-keep class org.junit.** &#123; *; &#125;-dontwarn org.junit.**-keep class junit.** &#123; *; &#125;-dontwarn junit.**-keep class sun.misc.** &#123; *; &#125;-dontwarn sun.misc.**-keep class com.google.** &#123; *; &#125;-keep class org.apache.** &#123; *; &#125;-dontwarn android.support.**-keep class * extends android.app.Activity-keep class * extends android.app.Application-keep class * extends android.app.Service-keep class * extends android.content.BroadcastReceiver-keep class * extends android.content.ContentProvider-keep class * extends android.app.backup.BackupAgentHelper-keep class * extends android.preference.Preference-keep class * extends android.view.View-keep class com.android.vending.licensing.ILicensingService-keep class android.telephony.CellLocation-keep class android.view.View-keepclassmembers public class * extends android.view.View &#123; void set*(***); *** get*(); public *; protected *;&#125;-keepclassmembers class * extends android.app.Activity &#123; public void *(android.view.View); public *; protected *;&#125;# 保持枚举 enum 类不被混淆-keepclassmembers enum * &#123; public static **[] values(); public static ** valueOf(java.lang.String);&#125;# 保持 Parcelable 不被混淆-keep class * implements android.os.Parcelable &#123; public static final android.os.Parcelable$Creator *;&#125;-keep class * extends android.support.v4.app.Fragment&#123; public *; protected *;&#125;-keep class * extends android.app.Fragment&#123; public *; protected *;&#125;-keep class * extends android.app.Application&#123; public *; protected *;&#125;# Dialog不参与混淆-keep class * extends android.app.Dialog-keep class * implements android.content.DialogInterface-keep class * extends android.widget.PopupWindow# Adapter不参与混淆-keep class * extends android.view.View-keep class * implements android.widget.Adapter-keep class * extends android.widget.BaseAdapter-keep class * implements android.widget.ListAdapter 日志数据模板记录生成的日志数据(可以不用配置)，gradle build 时在本项目根目录输出： 12345##---------------- 记录生成的日志数据，这里列出一些常规不需要混淆的 -----------------dump class_files.txt # apk 包内所有 class 的内部结构-printseeds seeds.txt # 未混淆的类和成员-printusage unused.txt # 列出从 apk 中删除的代码-printmapping mapping.txt # 混淆前后的映射 Android Support Lib 模板如果使用了 Android 扩展包，添加下面的配置准没错： 1234567891011121314151617181920212223242526272829# 保留android support包# android support eg. v4、v7、annotations、design、compat==-keep class android.support.** &#123; *; &#125;-keepclassmembers class * implements android.support.v4.app.FragmentManager &#123; *;&#125;-dontwarn android.support.**-keep class dagger.** &#123; *; &#125;-keep class android.app.** &#123; *; &#125;-dontwarn android.app.**# nineoldandroids-keep class com.nineoldandroids.** &#123; *; &#125;-keep public class com.nineoldandroids.animation.** &#123; public *; &#125;-keep public class com.nineoldandroids.view.ViewHelper &#123; public *; &#125;-keep class com.android.test.** &#123; *; &#125;##--- For:android-support-v4 ----dontwarn android.support.v4.**-keep class android.support.v4.** &#123; *; &#125;-keep interface android.support.v4.app.** &#123; *; &#125;-keep class * extends android.support.v4.** &#123; *; &#125;-keep public class * extends android.support.v4.**-keep public class * extends android.support.v4.widget-keep class * extends android.support.v4.app.** &#123;*;&#125;-keep class * extends android.support.v4.view.** &#123;*;&#125; 常用第三方模块的混淆对于第三方库的使用，最好是 -dontwarn 与 -keep 配套使用。 下面是一些常用第三方包的混淆配置。如：gson zxin ButterKnife OkHttp RxJava RxAndroid Google、阿里巴巴、百度等，模块以空行为准，复制可使用。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172# gson 用到Gson解析包的，直接添加下面这几行就能成功混淆，不然会报错# -libraryjars libs/gson-2.8.0.jar-keepattributes Signature-dontskipnonpubliclibraryclassmembers-dontskipnonpubliclibraryclasses# -keep class com.google.** &#123; *; &#125;-keep class sun.misc.Unsafe &#123; *; &#125;-keep class com.google.gson.** &#123; *;&#125;-keep class com.google.gson.examples.android.model.** &#123; *; &#125;-keep class com.google.** &#123; &lt;fields&gt;; &lt;methods&gt;;&#125;-dontwarn com.google.gson.**##--- For:Gson ----keepattributes *Annotation*-keep class sun.misc.Unsafe &#123; *; &#125;-keep class com.idea.fifaalarmclock.entity.***-keep class com.google.gson.stream.** &#123; *; &#125;# zxing-keep class com.google.zxing.** &#123; *; &#125;# butterknife -keep class butterknife.*-keep class butterknife.** &#123; *; &#125;-dontwarn butterknife.internal.**-keep class **$$ViewBinder &#123; *; &#125;-keepclasseswithmembernames class * &#123; @butterknife.* &lt;fields&gt;; &#125;-keepclasseswithmembernames class * &#123; @butterknife.* &lt;methods&gt;; &#125;-keep public class * implements butterknife.Unbinder &#123; public &lt;init&gt;(...); &#125;# AMap_Location-keep class com.aps.** &#123; *; &#125;-keep class com.amap.** &#123; *; &#125;-keep class com.autonavi.** &#123; *; &#125;-keep class com.amap.api.** &#123; *; &#125;-keep class com.amap.api.location.** &#123; *; &#125;# commons-cli-keep class org.apache.commons.cli.** &#123; *; &#125;# commons-codec-keep class org.apache.commons.codec.** &#123; *; &#125;# commons-logging-keep class org.apache.** &#123; *; &#125;-keep class org.apache.commons.** &#123; *; &#125;-keep class org.apache.commons.lang3.** &#123; *; &#125;-keep class org.apache.commons.logging.** &#123; *; &#125;-keepnames class * implements org.apache.commons.logging.Log# converter-gson-keep class retrofit2.** &#123; *; &#125;# hamcrest-core-keep class org.hamcrest.** &#123; *; &#125;-keep class org.hamcrest.core.** &#123; *; &#125;-keep class org.hamcrest.internal.** &#123; *; &#125;# httpclient/httpmime/httpcore-keep class org.apache.http.** &#123; *; &#125;-dontwarn org.apache.http.**# javawriter-keep class com.squareup.javawriter.** &#123; *; &#125;# javax.inject javax.annotation jsr-keep class javax.** &#123; *; &#125;-keep class javax.inject.** &#123; *;&#125;-keep class javax.annotation.** &#123; *; &#125;# junit-keep class junit.** &#123; *; &#125;-keep class org.junit.** &#123; *; &#125;# logging-interceptor-keep class okhttp3.logging.** &#123; *; &#125;# okhttp-keep class okio.** &#123; *; &#125;-keep class okhttp3.** &#123; *; &#125;-keep class com.squareup.okhttp.** &#123; *; &#125;-dontwarn okio.**# reactive-streams-keep class org.reactivestreams.** &#123; *; &#125;# retrofit2-keep class retrofit2.** &#123; *; &#125;-keep class com.jakewharton.retrofit2.** &#123; *; &#125;-dontwarn retrofit2.**# org.apache.heep.legacy-keep class android.net.** &#123; *; &#125;-keep class com.android.internal.http.** &#123; *; &#125;-keep class org.apache.http.** &#123; *; &#125;-keep class org.apache.commons.codec.** &#123; *; &#125;-keep class org.apache.commons.logging.** &#123; *; &#125;# rxjava rxandroid-keep class rx.** &#123; *; &#125;-keep class rx.android.** &#123; *; &#125;-keep class io.reactivex.** &#123; *; &#125;-keep class org.reactivestreams.** &#123; *; &#125;# rxbinding-keep class com.jakewharton.** &#123; *; &#125;-keep class com.jakewharton.rxbinding.** &#123; *; &#125;# stream-keep class com.annimon.stream.** &#123; *; &#125;# stetho-keep class com.facebook.** &#123; *; &#125;-keep class com.facebook.stetho.** &#123; *; &#125;-keep class com.facebook.stetho.okhttp.** &#123; *; &#125;# libmmsdk mta-sdk open-sdk-keep class com.tencent.** &#123; *; &#125;# fastjason android-keep class com.alibaba.** &#123; *; &#125;-keep class com.alibaba.fastjson.** &#123; *; &#125;# 百度sdk-keep class com.baidu.** &#123; *; &#125;-keep class vi.com.** &#123; *; &#125;-keep class com.baidu.location.** &#123; *; &#125;-dontwarn com.baidu.**-keep class com.sina.** &#123; *; &#125;-keep class com.weibo.** &#123; *; &#125;-keep class com.alibaba.** &#123; *; &#125;-keep class android.net.http.** &#123; *; &#125;-dontwarn com.sina.**-dontwarn com.tencent.**-dontwarn com.alibaba.**-keep class com.alipay.** &#123; *; &#125;-keep class com.squareup.** &#123; *; &#125;-keep class com.squareup.picasso.** &#123; *; &#125;-keep class com.ut.*-keep class com.samsung.android.sdk.** &#123; *; &#125;-keep class com.ta.utdid2.** &#123; *; &#125;-keep class com.ut.device.** &#123; *; &#125;-keep class a.** &#123; *; &#125;-keep class b.** &#123; *; &#125;-keep class c.** &#123; *; &#125;-keep class d.** &#123; *; &#125;-keep class e.** &#123; *; &#125;-keep class f.** &#123; *; &#125;-keep class g.** &#123; *; &#125;-keep class h.** &#123; *; &#125;-keep class i.** &#123; *; &#125;-keep class j.** &#123; *; &#125;-keep class k.** &#123; *; &#125;-keep class l.** &#123; *; &#125;-keep class m.** &#123; *; &#125;-keep class n.** &#123; *; &#125;-keep class o.** &#123; *; &#125;-keep class p.** &#123; *; &#125;-keep class q.** &#123; *; &#125;-keep class r.** &#123; *; &#125;-keep class s.** &#123; *; &#125;-keep class t.** &#123; *; &#125;-keep class u.** &#123; *; &#125;-keep class v.** &#123; *; &#125; 主程序混淆配置对 App 来说，Model 层数据是不应该混淆的，尤其是参与网络请求的 Request 相关数据 1234-dontwarn xxx.model.**-keep class xxx.model.** &#123; *; &#125;## == 采坑在 Release 版本混淆之后，有些像「友盟」、「百度」这样的统计系统会出现 NullPointerException，这个是比较要命的，排查错误无法定位到具体位置，最终的解决方案是在 proguard-rules.pro 中添加如下代码即可： 1-keepattributes SourceFile,LineNumberTable]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Gradle</tag>
-        <tag>ProGuard</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[无聊的汉字多胞胎：汆氽]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F16%2Fhanzi-cuan-tun%2F</url>
-    <content type="text"><![CDATA[闲无聊无聊的汉字多胞胎入 cuan 汆，人 tun 氽 就喜欢这么简单粗暴、直截了当，上图。]]></content>
-      <categories>
-        <category>无聊</category>
-      </categories>
-      <tags>
-        <tag>无聊</tag>
-        <tag>蛋疼</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[无聊的汉字多胞胎：火炎焱燚]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F16%2Fhanzi-huo-yan-yan-yi%2F</url>
-    <content type="text"><![CDATA[闲无聊无聊的汉字多胞胎横 xu 戌，点 shu 戍，空心 wu 戊 我可能是太无聊了。。。领导看到会是什么心情：「最近玩舒服了，工作不饱和，赶明儿给你多派点活」。]]></content>
-      <categories>
-        <category>无聊</category>
-      </categories>
-      <tags>
-        <tag>无聊</tag>
-        <tag>蛋疼</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hexo 搭建 GitHub 博客（III）- NexT 主题配置]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F13%2FHexo-GitHub-NexT-Config-3%2F</url>
-    <content type="text"><![CDATA[PS：本博是在 MAC 环境下进行操作的本博主要介绍 NexT 主题的配置 NexT 是一款简洁优雅且功能比较齐全的主题，配置比较简单，只需要稍微修改配置文件即可。Hexo 有两份主要的配置文件，其名称都是 _config.yml。其中一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。 为了描述方便，在以下说明中，将前者称为站点配置文件， 后者称为主题配置文件 安装 NexTHexo 安装非常简单，只需要将主题文件拷贝至站点目录的 themes 目录下， 然后修改下配置文件即可。具安装步骤如下。 下载主题12$ cd your-hexo-site # 这里是有前面的目录 ~/Blog$ git clone https://github.com/iissnan/hexo-theme-next themes/next 启用主题当克隆/下载完成后，打开 站点配置文件， 找到 theme 字段，并将其值更改为 next，即theme: next，至此，NexT 主题就安装好了。 验证主题首先启动 Hexo 本地站点，并开启调试模式（即加上 –debug），整个命令是 hexo s --debug。 当命令行输出中提示出： hexo s –debug INFO Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop. 使用浏览器访问 http://localhost:4000 即可看到效果。 主题配置参考：NexT 配置，这里有详细的说明。]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Blog</tag>
-        <tag>NexT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F13%2FHexo-GitHub-NexT-Config-2%2F</url>
-    <content type="text"><![CDATA[PS：本博是在 MAC 环境下进行操作的本博主要介绍 Hexo 的配置安装，以及如何部署博客到 GitHub参考：Hexo 安装与初体验 安装12345$ cd ~$ sudo npm install hexo-cli -g$ hexo init Blog$ cd Blog$ npm install 安装成功，Blog 文件夹的目录结构看起来会像下面这个样子： 12345678910111213.├── _config.yml├── db.json├── node_modules│ ├── JSONStream│ │ ├── LICENSE.APACHE2│ │ ├── LICENSE.MIT│ │ ├── examples│ │ │ └── all_docs.js│ │ ├── index.js│ │ ├── package.json│ │ ├── readme.markdown│ │ └── test 体验站点123$ hexo clean$ hexo generate （简写：hexo g）$ hexo server （简写：hexo s） 默认状态下，网站是运行在 http://localhost:4000 创建你的第一篇文章运行以下命令，可生成一篇文章，刷新 http://localhost:4000 即可看到新生成的文章。 1$ hexo new "the-first-one" 同时在 ~\Blog\source_posts 目录下会生成一个名为「the-first-one.md」的文件，编辑该文件，刷新 http://localhost:4000 即可看到修改后的结果。 文件默认会为我们添加 Title 12345678---title: the-first-one # 文章标题date: 2017-10-13 12:00:07 # 发表日期categories: blog # 文章文类tags: # 文章标签 - 博客 - 文章 --- 生成静态网页1$ hexo generate （简写：hexo g） 生成静态网页，强烈推荐使用下面的方式： 123$ hexo clean$ hexo g$ hexo s 部署到 GitHub经过上面的一系列步骤（其实也没几步），我们终于可以在本地访问自己的 Blog 了。纳尼，只能在本地访问？那我费这么大劲干嘛呢，还不如写个静态 Markdown 文件。我们需要的是随时随地访问，同行之间的相互分享，要达到这个效果还需一步，即，部署到 GitHub 上。一般的做法是，在本地调试编辑好文章后再推送到 GitHub 上。下面是部署到 GitHub 的过程。 前提是，你已经拥有了自己专属的「GitHub Pages」。如果还没有「GitHub Pages」，请参考：Hexo 搭建 GitHub 博客（I）- 环境搭建 安装自动部署插件初始化博客时运行的 npm install 命令默认并没有安装这个插件，所以要手动安装： 1$ npm install hexo-deployer-git 修改配置文件这里的配置文件指站点配置文件，即，~/Blog/_config.yml，找到 deploy 标签，添加你的「GitHub Pages」路径，如下（替换「repo」为你的 GitHub 路径即可）： 部署 1$ hexo deploy 部署过程中会提示输入你的 GitHub 账号和密码，等待命令运行完成即可。部署完成后，在浏览器中访问 https://yoursname.github.is，如：https://rogerscj.github.io，这时就能看到你在本地调试好的博客了。 部署建议，FYI：上面的部署方式，我并不是很推荐，这里给出我平时的操作方式在 Blog 下新建一个专门用于部署的目录，deployHub，我的路径为 ~/Blog/deployHub发布脚本 deploy.sh，脚本内容如下： 123456789$ hexo clean$ hexo generate$ cp -R public/* deployHub/RogersCj.github.io$ cd deployHub/RogersCj.github.io$ git add .$ git commit -m "update"$ git push origin master$ cd ..$ cd .. 每次发布运行脚本 deploy.sh 即可 1./deploy.sh Hexo 常用命令常用命令12345678910111213141516$ hexo init [folder] # 新建一个网站$ hexo new "postName" # 新建文章$ hexo generate # 生成静态页面至public目录$ hexo server # 开启预览访问端口（默认端口4000，'ctrl + c'关闭server）$ hexo deploy # 将.deploy目录部署到GitHub$ hexo help # 查看帮助$ hexo version # 查看Hexo的版本$ hexo --draf # 显示草稿$ hexo --debug # 调试模式$ hexo --silent # 简洁模式$ $ hexo --config custom.yml # 自定义配置文件的路径$ hexo s -g # 生成静态文件并启动本地服务 命令简写1234$ hexo n == hexo new$ hexo g == hexo generate$ hexo s == hexo server$ hexo d == hexo deploy]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Blog</tag>
-        <tag>GitHub</tag>
-        <tag>GitHub Pages</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hexo 搭建 GitHub 博客（I）- 环境搭建]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F13%2FHexo-GitHub-NexT-Config-1%2F</url>
-    <content type="text"><![CDATA[PS：本博是在 MAC 环境下进行搭建的本博主要介绍「GitHub Pages」的相关环境搭建 在平常的工作和生活中，记录一些笔记是必不可少的。设备更新换代又日趋频繁，免不了丢三落四，搭建一个便捷、稳定的个人站点还是挺有必要的，如果能将一些有用的笔记分享给有相同需求的同伴，那再好不过了。「GitHub Pages」就是一个不错的选择。 搭建流程大致分下面几步： 注册一个 Github 拥有一个 GitHub Pages 配置本地 Hexo 环境 绑定自己的域名（可直接使用 Github Pages 二级域名） 几个简单的概念GitHub Pages如果你对编程有所了解，就一定听说过 GitHub。它号称程序员的 Facebook，有着极高的人气，也是目前最流行的代码仓库，许多重要的项目都托管在上面。 GitHub Pages 是面向用户、组织和项目开放的公共静态页面搭建托管服务，站点可以被免费托管在Github上。这里有更详细的介绍 HexoHexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。参见 Hexo 文档 环境配置安装Git下载地址：http://git-scm.com/downloads 安装 NodeJS参考地址：安装Node.js下载地址：http://nodejs.org/download/ 安装 Hexo1$ sudo npm install hexo-cli -g 安装成功后，会出现诸如 -- hexo-cli@1.0.3 的信息。 快速开始从注册一个 GitHub 账号开始要使用「GitHub Pages」，首先你要注册一个 GitHub 账号，GitHub 是全球最大的同性交友网站，你值得拥有^_^。 创建 GitHub Pages仓库的名字要和你的账号对应，如：RogersCj.github.io这里介绍2种创建「GitHub Pages」的方式，第一种比较官方；第二种最简单，连带 Hexo 一起被创建好。 官方的方式创建Create repository 仓库的名字要和你的账号对应设置默认的页面（如果决定使用 Hexo，这一步可省略，后面会将 Hexo 导入）参考：GitHub Pages 克隆我的博客模板PS：如果希望一步一步走完 Hexo 部署到 GitHub，可略过下面的篇幅修改成你自己的仓库名 yoursname.github.io，如：RogersCj.github.io 注册完成后搜索 rogerscj.github.io 进入我的仓库 点击右上角的 Fork 将我的仓库拉倒你的账号下： 稍等片刻，点击刷新，你会看到 Fork 成功的页面： 修改仓库名，并删除文件 CNAME 文件的内容： 在浏览器中访问 https://yoursname.github.is，如：https://rogerscj.github.io，这时就能看到你博客了，PS: 博文内容保留了我的^_^。 OK，至此完毕，完美！]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Blog</tag>
-        <tag>GitHub</tag>
-        <tag>GitHub Pages</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[APK 签名文件]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F12%2Fapk-signature%2F</url>
-    <content type="text"><![CDATA[标记，Tag 一下记录下签名生成的过程，方便下次使用。 简单来说，签名就是个标识，它可以保证 APP 正常升级，并且不被别人覆盖。 Tools java jdk keytool 密钥和证书管理工具,可以用来生成证书 使用 keytool 生成证书： 12# 文件名和别名相同，为: test.keystore$ keytool -genkey -alias test.keystore -keyalg RSA -validity 20000 -keystore test.keystore 参数解释: -genkey 产生证书文件 -keystore 指定密钥库的.keystore文件中 -keyalg 指定密钥的算法,这里指定为RSA(非对称密钥算法) -validity 为证书有效天数，这里我们写的是10000天 -alias 产生别名 查看信息1$ keytool -list -keystore test.keystore]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Activity 生命周期]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F11%2FActivity-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%2F</url>
-    <content type="text"><![CDATA[这是个被谈烂了的问题，网上介绍的文章也铺天盖地。但是，作为一名有轻微强迫症的攻城狮，想写写 Android 相关的东西，如果不从这里入手，总觉得心里缺了点啥似的，也就不免俗了，从这里开始吧。 生命周期流程相信学习安卓的人对 Android Activity 的生命周期活动并不陌生，下图详细而直观得表现了 Activity 各生命周期间的关系。 正常完整的流程走向1onCreate –&gt; onStart –&gt; onPostCreate –&gt; onResume –&gt; onPostResume –&gt; onPause –&gt; onStop –&gt; onDestroy onCreatecreate 表示创建，这是 Activity 生命周期的第一个方法，也是我们在 android 开发中接触的最多的生命周期方法。它本身的作用是进行 Activity 的一些初始化工作，比如使用 setContentView 加载布局，对一些控件和变量进行初始化等。此时 Activity 还在后台，为非可见非可视状态。 onStartstart 即启动，这是 Activity 生命周期的第二个方法。此时 Activity 已经可见了，但是还没出现在前台，我们还看不到，无法与 Activity 交互。其实将 Activity 的初始化工作放在这也没有什么问题，放在 onCreate 中是由于官方推荐的以及我们开发的习惯。此时 Activity 为非可视状态。 onContentChanged当 Activity 的布局改动时，即 set 或 add ContentView 执行完毕时会调用该方法。Activity 中各种 View 的初始化，如：findViewById()，都可以放到该方法中。 onResumeresume 表示继续、重新开始。经过前两个阶段的初始化，此时 Activity 已处于栈顶，用户可交互。此时 Activity 为可视状态。 onPostCreate、onPostResumeonPostCreate、onPostResume方法分别在 onCreate、onResume方法彻底执行完毕后回调。 onPause暂停状态。该状态下，Activity 的部分被另外一个 Activity 所遮盖，另外的 Activity 来到前台，但是半透明的，不会覆盖整个屏幕。被暂停的 Activity 不再接受用户的输入且不再执行任何代码。 onStoponStop 在整个窗口被完全遮盖才会触发，此时 Activity 不可见，处于后台运行。触发 onStop 之前必定会触发onPause。 onSaveInstanceState、 onRestoreInstanceStateonSaveInstanceState 是恢复实例的状态，但需要注意 onSaveInstanceState 和 onRestoreInstanceState “不一定”是成对的被调用的，onRestoreInstanceState 被调用的前提是，Activity A “确实”被系统销毁了，而如果仅仅是停留在有这种可能性的情况下，则该方法不会被调用。 长时间处于 Stop 形态，系统可能回收 Activity 比如旋转屏幕: 1onResume –&gt; onSaveInstanceState() –&gt; onDestory 重新创建: 1onCreate –&gt; onRestoreIntanceState() –&gt; onResume 返回当前（按机器返回键）12onPause –&gt; onStop –&gt; onDestoryonRestart –&gt; onStart –&gt; onResume –&gt; onPostResume 屏幕待机（黑掉）1onPause Home键退出1onPause –&gt; onSaveInstanceState –&gt; onStop 旋转屏幕默认屏幕旋转会重新创建，配置 configChanges 可改变这一现象 12android:configChanges=&quot;keyboardHidden|orientation|screenSize&quot;（sdk&gt;13时需加上screenSize）onPause –&gt; onStop –&gt; onDestory –&gt; onCreate –&gt; onStart –&gt; onPostCreate –&gt; onResume –&gt; onPostResume]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[adb 录屏]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F11%2FAdb-%E5%BD%95%E5%B1%8F%2F</url>
-    <content type="text"><![CDATA[记录2个捕获屏幕的 adb 命令。 截屏「Screencap」1$ adb shell screencap -p /sdcard/screen.png 录制屏幕「Screenrecord」录制默认分辨率，默认 4Mbps，时间为 180s 的 MP4 视频，并且保存到 Sdcard 上 12$ adb shell screenrecord /sdcard/yourFileName.mp4$ adb pull /sdcard/yourFileName.mp4 ~/mp4File/ 第三方工具AndroidTool]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Adb</tag>
-        <tag>命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Android Studio 插件配置: FindBugs]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F11%2FAndroid-Studio-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-FindBugs%2F</url>
-    <content type="text"><![CDATA[FindBugs 是一个静态分析工具，它检查类或者 JAR 文件，将字节码与一组缺陷模式进行对比来发现可能的问题，可以以独立的 JAR 包形式运行，也可以作为集成开发工具的插件形式存在。 安装FindBugs插件首先需要在 Android Studio 中安装 FindBugs 的插件。在 Android Studio 中找到「Preferences/Plugins」选项，在该复选框中通过上方搜索，或将 FindBugs 插件下载到本地，使用「Install plugin from disk」进行安装。安装示意图如下所示，安装完成后需要重启 Android Studio。 扩展优化安装「Android Code Arbiter」插件FindBugs 插件具有着极强的可扩展性，只需要将扩展的 JAR 包导入 FindBugs 插件，重启，即可完成相关功能的扩展。 FindBugs 插件安装后，将会在 「Preferences/Other Settings」 中找到安装插件的选项 FindBugs-IDEA，点击中测靠左的「+」号，在弹出的选框中选择 「4.Install plugin from disk」，在弹出的选框中选择下载的 Android Code Arbiter 的 jar 包，点击 OK，此时会发现插件已经安装了，点击 OK，并重启 Android Studio 完成插件安装。 安装部分示意图，如下所示。 添加过滤在没有进行任何过滤的情况下找到的结果可能会令人失望，它会把自动生成的代码也考虑在内。因此我们在进行 Bug 查找的时候首先需要添加过滤 下面是过滤掉 Android 自动生成的代码的配置文件「findbugs-exclude.xml」 12345678910111213141516171819202122232425262728&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;FindBugsFilter&gt; &lt;Match&gt; &lt;!-- ignore all issues in resource generation --&gt; &lt;Class name="~.*\.R\$.*"/&gt; &lt;/Match&gt; &lt;Match&gt; &lt;Class name="~.*\.Manifest\$.*"/&gt; &lt;/Match&gt; &lt;!-- &lt;Match&gt; &lt;Or&gt; &lt;Class name="~.*\.R\$.*"/&gt; &lt;Class name="~.*\.Manifest\$.*"/&gt; &lt;/Or&gt; &lt;/Match&gt; --&gt; &lt;!-- 测试用例警告 --&gt; &lt;Match&gt; &lt;Class name="~.*\.*Test"/&gt; &lt;Not&gt; &lt;Bug code="IJU"/&gt; &lt;!-- 'IJU' is the code for bugs related to JUnit test code --&gt; &lt;/Not&gt; &lt;/Match&gt;&lt;/FindBugsFilter&gt; 添加过滤文件，如下示意图]]></content>
-      <categories>
-        <category>Android Studio</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>FindBugs</tag>
-        <tag>Android Studio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Git 命令清单]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F10%2FGit-%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95%2F</url>
-    <content type="text"><![CDATA[参考Pro Gitgit - 简易指南阮一峰的网络日志 我们每天都在使用 Git ，但是除了 git push 和 git pull 还有多少命令是记得住的。下面是一些常用的 Git 命令，以供参考。 配置信息12345678910111213141516# 显示Git配置$ git config --list# 显示Git配置 global$ git config --list --global# 显示Git配置 local$ git config --list --local# 设置提交代码的用户信息$ git config [--global] user.name "name"$ git config [--global] user.email "email"# 设置当前仓库提交代码的用户信息 local$ git config --local user.name "name]"$ git config --local user.email "email" 创建新仓库12345# 初始化本地git仓库（创建新仓库）$ git init# clone远程仓库，包括这个项目的整个代码历史$ git clone [url] 查看信息12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576# 查看当前版本状态（是否修改）$ git status# 显示提交日志$ git log$ git log -5# 显示commit历史，以及每次commit发生变更的文件$ git log --stat# 搜索commit历史$ git log -S [keyword]# 显示某个文件的版本历史，包括文件改名$ git log --follow [file]$ git whatchanged [file]# 显示指定文件相关的每一次diff$ git log -p [file]# 显示过去n次提交$ git log -5 --pretty --oneline# 显示v2.0的日志$ git log v2.0# 显示所有提交过的用户，按提交次数排序$ git shortlog -sn# 显示暂存区和工作区的差异$ git diff# 显示暂存区和上一个commit的差异$ git diff --cached$ git diff --cached [file]# 比较与上一个版本的差异$ git diff HEAD^# 比较与HEAD版本lib目录的差异$ git diff HEAD -- ./lib# 比较远程分支master上有本地分支master上没有的$ git diff origin/master..master# 只显示差异的文件，不显示具体内容$ git diff origin/master..master --stat# 显示今天你写了多少行代码$ git diff --shortstat "@&#123;0 day ago&#125;"# 显示某个提交的详细内容(可只用commitid的前几位)$ git show [commit]$ git show dfb02e6e4f2f7b573337763e5c0013802e392818$ git show dfb02# 显示某次提交发生变化的文件$ git show --name-only [commit]# 显示某次提交时，某个文件的内容$ git show [commit]:[filename]# 显示HEAD提交日志$ git show HEAD# 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本$ git show HEAD^# 显示v2.0的日志及详细内容$ git show v2.0# 显示已存在的tag$ git tag# 显示当前分支的最近几次提交$ git reflog 增加/删除123456789101112131415161718192021222324# 添加指定文件到暂存区$ git add [file1] [file2] ...# 添加指定目录到暂存区，包括子目录$ git add [dir]# 添加当前目录的所有更改过的文件到暂存区$ git add .# 添加每个变化前，都会要求确认# 对于同一个文件的多处变化，可以实现分次提交$ git add -p# 删除工作区文件，并且将这次删除放入暂存区$ git rm [file1] [file2] ...# 递归删除$ git rm -r *# 停止追踪指定文件，但该文件会保留在工作区$ git rm --cached [file]# 改名文件，并且将这个改名放入暂存区$ git mv [file-original] [file-renamed] 代码提交123456789101112131415# 提交暂存区到仓库区$ git commit [file1] [file2] ... -m '[message]'# 合并上一次提交（用于反复修改）# 如果代码没有任何新变化，则用来改写上一次commit的提交信息$ git commit --amend -m 'message'# 将add和commit合为一步$ git commit -am 'message' # 重做上一次commit，并包括指定文件的新变化$ git commit --amend [file1] [file2] ...# 提交时显示所有diff信息$ git commit -v 撤销1234567891011121314151617181920# 恢复暂存区的指定文件到工作区$ git checkout [file]$ git checkout .# 恢复某个commit的指定文件到暂存区和工作区$ git checkout [commit] [file]# 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变$ git reset [file]# 重置暂存区与工作区，与上一次commit保持一致$ git reset --hard# 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818$ git revert [commit]$ git revert dfb02e6e4f2f7b573337763e5c0013802e392818# 暂时将未提交的变化移除，稍后再移入$ git stash$ git stash pop 远程同步123456789101112131415161718192021222324252627282930313233343536373839# 获取所有远程分支（不更新本地分支，另需merge）$ git fetch# 获取所有原创分支并清除服务器上已删掉的分支$ git fetch --prune# 显示所有远程仓库$ git remote -v# 显示某个远程仓库的信息$ git remote show [remote]# 增加一个新的远程仓库，并命名$ git remote add [shortname] [url]# 获取远程分支master并merge到当前分支$ git pull origin master# 取回远程仓库的变化，并与本地分支合并$ git pull [remote] [branch]$ git pull origin dev# 上传本地指定分支到远程仓库$ git push [remote] [branch]$ git push origin master$ git push origin devV1.81$ git push orgin devV1.81:devV1.81# 删除远程仓库的hotfixes/BJVEP933分支$ git push origin :hotfixes/BJVEP933# 强行推送当前分支到远程仓库，即使有冲突$ git push [remote] --force# 推送所有分支到远程仓库$ git push [remote] --all# 把所有tag推送到远程仓库$ git push --tags 分支123456789101112131415161718192021222324252627282930313233343536373839404142434445# 显示本地分支# 显示远程分支# 显示所有本地和远程分支$ git branch$ git branch -r$ git branch -a# 显示包含提交50089的分支$ git branch --contains 50089# 显示所有已合并到当前分支的分支$ git branch --merged# 显示所有未合并到当前分支的分支$ git branch --no-merged# 新建分支，但依然停留在当前分支$ git branch [branch-name]# 新建分支，并切换到该分支$ git checkout -b [branch]# 切换到指定分支$ git checkout [branch-name]# 切换到上一个分支$ git checkout -# 合并指定分支到当前分支$ git merge [branch]# 合并远程master分支至当前分支$ git merge origin/master# 删除分支$ git branch -d [branch-name]# 删除远程分支$ git push origin --delete [branch-name]$ git branch -dr [remote/branch]# 合并分支到master$ git checkout master$ git merge --no-ff branch-name$ git push orgin master 标签1234567891011121314151617181920212223242526# 列出所有tag$ git tag# 新建一个tag在当前commit$ git tag [tag]# 新建一个tag在指定commit$ git tag [tag] [commit]# 删除本地tag$ git tag -d [tag]# 删除远程tag$ git push origin :refs/tags/[tagName]# 查看tag信息$ git show [tag]# 提交指定tag$ git push [remote] [tag]# 提交所有tag$ git push [remote] --tags# 新建一个分支，指向某个tag$ git checkout -b [branch] [tag]]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>命令</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[常用正则表达式汇总]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F10%2FRegular-Expression%2F</url>
-    <content type="text"><![CDATA[数字校验 数字：^[0-9]*$ n位的数字：^\d{n}$ m-n位的数字：^\d{m,n}$ 至少n位的数字：^\d{n,}$ 零和非零开头的数字：^(0|[1-9][0-9]*)$ 非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$ 带1-2位小数的正数或负数：^(\-)?\d+(\.\d{1,2})?$ 正数、负数、和小数：^(\-|\+)?\d+(\.\d+)?$ 有两位小数的正实数：^[0-9]+(.[0-9]{2})?$ 有1~3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$ 非零的正整数：^[1-9]\d*$ 或 ^([1-9][0-9]*){1,3}$ 或 ^\+?[1-9][0-9]*$ 非零负整数：^\-[1-9][]0-9″*$ 或 ^-[1-9]\d*$ 非负整数：^\d+$ 或 ^[1-9]\d*|0$ 非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$ 非负浮点数：^\d+(\.\d+)?$ 或 ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$ 非正浮点数：^((-\d+(\.\d+)?)|(0+(\.0+)?))$ 或 ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$ 正浮点数：^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$ 或 ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$ 负浮点数：^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$ 或 ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$ 浮点数：^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$ 字符校验 汉字：^[\u4e00-\u9fa5]{0,}$ 英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$ 长度为3-20的所有字符：^.{3,20}$ 由26个英文字母组成的字符串：^[A-Za-z]+$ 由26个大写英文字母组成的字符串：^[A-Z]+$ 由26个小写英文字母组成的字符串：^[a-z]+$ 由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$ 由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w{3,20}$ 中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$ 中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$ 可以输入含有^%&amp;’,;=?$\”等字符：[^%&amp;&#39;,;=?$\x22]+ 禁止输入含有~的字符：[^~\x22]+ 特殊需求表达式 Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$ 域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.? InternetURL：[a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$ 或 ^http://(\w+(-\w+)*)(\.(\w+(-\w+)*))*(\?\S*)?$ 或 ^(http|www|ftp|)?(://)?(\w+(-\w+)*)(\.(\w+(-\w+)*))*((:\d+)?)(/(\w+(-\w+)*))*(\.?(\w)*)(\?)?(((\w*%)*(\w*\?)*(\w*:)*(\w*\+)*(\w*\.)*(\w*&amp;)*(\w*-)*(\w*=)*(\w*%)*(\w*\?)*(\w*:)*(\w*\+)*(\w*\.)*(\w*&amp;)*(\w*-)*(\w*=)*)*(\w*)*)$ 手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$ 电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^($$\d{3,4}-)|\d{3.4}-)?\d{7,8}$ 国内电话号码(0511-4405222、021-87888822)：\d{3}-\d{8}|\d{4}-\d{7} 身份证号(15位、18位数字)：^\d{15}|\d{18}$ 短身份证号码(数字、字母x结尾)：^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$ 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$ 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w{5,17}$ 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$ 日期格式：^\d{4}-\d{1,2}-\d{1,2} 一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$ 一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$ 钱的输入格式： 有四种钱的表示形式我们可以接受:”10000.00″ 和 “10,000.00″, 和没有 “分” 的 “10000″ 和 “10,000″：^[1-9][0-9]*$ 这表示任意一个不以0开头的数字，但是，这也意味着一个字符”0″不通过，所以我们采用下面的形式：^(0|[1-9][0-9]*)$ 一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0|-?[1-9][0-9]*)$ 这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉，因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$ 必须说明的是，小数点后面至少应该有1位数，所以”10.”是不通过的，但是 “10″ 和 “10.2″ 是通过的：^[0-9]+(.[0-9]{2})?$ 这样我们规定小数点后面必须有两位，如果你认为太苛刻了，可以这样：^[0-9]+(.[0-9]{1,2})?$ 这样就允许用户只写一位小数。下面我们该考虑数字中的逗号了，我们可以这样：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$ 1到3个数字，后面跟着任意个 逗号+3个数字，逗号成为可选，而不是必须：^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$ 备注：这就是最终结果了，别忘了”+”可以用”*”替代。如果你觉得空字符串也可以接受的话(奇怪，为什么?)最后，别忘了在用函数时去掉去掉那个反斜杠，一般的错误都在这里 xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$ 中文字符的正则表达式：[\u4e00-\u9fa5] 双字节字符：[^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1)) 空白行的正则表达式：\n\s*\r (可以用来删除空白行) HTML标记的正则表达式：&lt;(\S*?)[^&gt;]*&gt;.*?&lt;/\1&gt;|&lt;.*? /&gt; (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力) 首尾空白字符的正则表达式：^\s*|\s*$或(^\s*)|(\s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式) 腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始) 中国邮政编码：[1-9]\d{5}(?!\d) (中国邮政编码为6位数字) IP地址：\d+\.\d+\.\d+\.\d+ (提取IP地址时有用) IP地址：((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))]]></content>
-      <categories>
-        <category>正则表达式</category>
-      </categories>
-      <tags>
-        <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F03%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-      <categories>
-        <category>Testing</category>
-      </categories>
-      <tags>
-        <tag>Testing</tag>
-      </tags>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[Mac 终端环境 iTerm2 + Zsh + Oh My Zsh]]></title>
+      <url>/notes/2017/10/19/mark-memoa-iterm2-zsh/</url>
+      <content type="html"><![CDATA[<!-- 标签 方式，要求版本在0.4.5或以上 -->
+<blockquote class="blockquote-center"><p><strong>iTerm2</strong> is a terminal emulator. It works on Macs with macOS 10.8 or newer.</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h3><p>iTerm2 官方网站：<a href="http://www.iterm2.com/" target="_blank" rel="external">http://www.iterm2.com/</a></p>
+<h3 id="Solarized-配色"><a href="#Solarized-配色" class="headerlink" title="Solarized 配色"></a>Solarized 配色</h3><p>Solarized 主页：<a href="http://ethanschoonover.com/solarized" target="_blank" rel="external">http://ethanschoonover.com/solarized</a></p>
+<p>Get Solarized 配色包，这里使用 Git 方式克隆：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git://github.com/altercation/solarized.git</div></pre></td></tr></table></figure>
+<div class="note success"><p>找到<strong>solarized/iterm2-colors-solarized/</strong>，双击添加配色 </p></div>
+<h3 id="Zsh-配置"><a href="#Zsh-配置" class="headerlink" title="Zsh 配置"></a>Zsh 配置</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>Zsh 是 Mac 系统自带的，一般来说不是最新版本，可通过 Homebrew 安装最新版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install zsh</div></pre></td></tr></table></figure>
+<h4 id="修改默认-Shell"><a href="#修改默认-Shell" class="headerlink" title="修改默认 Shell"></a>修改默认 Shell</h4><p>在 <strong>/etc/shells</strong> 文件中加入 <code>/usr/local/bin/zsh</code>，并运行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chsh -s /usr/<span class="built_in">local</span>/bin/zsh</div></pre></td></tr></table></figure>
+<h4 id="Oh-My-Zsh"><a href="#Oh-My-Zsh" class="headerlink" title="Oh My Zsh"></a>Oh My Zsh</h4><p>Oh My Zsh 是用来管理 Zsh 配置的，自带了很多很好用的基本配置。安装也非常简单，可参考主页：<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh</a>。</p>
+<p>Oh My Zsh 目录文件在 <strong>~/.oh-my-zsh</strong>，包含了各种 Theme 和 Plugs，配置文件在 <strong>~/.zshrc</strong>。</p>
+<p>如需「修改/添加」配置，可编辑 <strong>~/.zshrc</strong>。<br>例如启用插件 Git、Autojumps，只需修改 <strong>~/.zshrc</strong> 中对应的 <strong>pluins</strong> (大概在55行左右)，配置如下形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ plugins=(git autojumps osx)</div></pre></td></tr></table></figure>
+<h3 id="快捷键-备忘录"><a href="#快捷键-备忘录" class="headerlink" title="快捷键 - 备忘录"></a>快捷键 - 备忘录</h3><ul>
+<li>选中即复制，鼠标中键粘贴</li>
+<li><font color="red"><strong>⌃ + u</strong></font>：清空当前行</li>
+<li><font color="red"><strong>⌃ + a</strong></font>：移动到行首</li>
+<li><font color="red"><strong>⌃ + e</strong></font>：移动到行尾</li>
+<li><font color="red"><strong>⌃ + f</strong></font>：向前移动</li>
+<li><font color="red"><strong>⌃ + b</strong></font>：向后移动</li>
+<li>⌃ + p：上一条命令</li>
+<li>⌃ + n：下一条命令</li>
+<li>⌃ + r：搜索历史命令</li>
+<li>⌃ + y：召回最近用命令删除的文字</li>
+<li>⌃ + h：删除光标之前的字符</li>
+<li>⌃ + d：删除光标所指的字符</li>
+<li>⌃ + w：删除光标之前的单词</li>
+<li>⌃ + k：删除从光标到行尾的内容</li>
+<li>⌃ + t：交换光标和之前的字符</li>
+<li>⌘ + Click：打开文件、文件夹和链接</li>
+<li>⌘ + n：新建窗口</li>
+<li>⌘ + t：新建标签页</li>
+<li>⌘ + w：关闭当前页</li>
+<li>⌘ + 数字 &amp; ⌘ + 方向键：切换标签页</li>
+<li>⌥⌘ + 数字：切换窗口</li>
+<li>⌘ + enter：切换全屏</li>
+<li>⌘ + d：左右分屏</li>
+<li>⇧⌘ + d：上下分屏</li>
+<li>⌘ + ;：自动补全历史记录</li>
+<li>⇧⌘ + h：自动补全剪贴板历史</li>
+<li>⌥⌘ + e：查找所有来定位某个标签页</li>
+<li>⌘ + r &amp; ⌃ + l：清屏</li>
+<li>⌘ + /：显示光标位置</li>
+<li>⌥⌘ + b：历史回放</li>
+<li>⌘ + f：查找，配合使用 Tab、「⇧ + Tab」进行向右、向左补全，「⌥ + Enter」将查找结果输入终端</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 备忘录 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Mac </tag>
+            
+            <tag> Mark </tag>
+            
+            <tag> 备忘录 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[APK 混淆打包]]></title>
+      <url>/notes/2017/10/17/android-proguard-project/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p><strong>Java</strong> 编译后生成的 <strong>.class</strong> 可以很轻易地被反编译。<br>混淆能让反编译的代码可读性变得很差，而且还能显著的减少 <strong>APK</strong> 包的大小。</p>
+</blockquote>
+<p>相信搞 <strong>Android</strong> 开发的朋友都知道这个道理<strong>「混淆能让反编译的代码可读性变得很差，而且还能显著的减少 APK 包的大小」</strong>，但未必都会去做，大部分选择不配置的理由是觉得混淆麻烦，甚至是说，有点乱，不想去触碰这个“雷区”。</p>
+<a id="more"></a>
+<p>曾经不止一次旁敲侧击的从身边的朋友打听，回答大抵相同：「当然，使用自带的功能，如果 Google 连这个都没做到，那真是太 Low 了」，听到这话我就放心了，心里默默「呵呵」了一声。</p>
+<p>嗨，说到这里，插入一个话题：<font color="red">「如何反编译 APK，并查看源码呢？」</font>，这里推荐两篇博文：<a href="http://www.cnblogs.com/classic/archive/2011/04/27/2030234.html" target="_blank" rel="external">「Android 代码 混淆- 原来如此简单」</a>和<a href="http://blog.csdn.net/vipzjyno1/article/details/21039349" target="_blank" rel="external">「Android APK反编译就这么简单 详解」</a>。看了这两篇博文之后，相信你一定会破骂两句「MD，辛辛苦苦费了老大劲搞出来的项目，几分钟就被人把源码破了，真TM蛋疼」。</p>
+<h3 id="从这里开始"><a href="#从这里开始" class="headerlink" title="从这里开始"></a>从这里开始</h3><p>首先，需要告知 <strong>Gradle</strong> 需要混淆。在 <code>app/build.gradle</code> 中把 <strong>minifyEnabled</strong> 设置为 true，代码如下：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">buildTypes &#123;</div><div class="line">    <span class="comment">// release模式</span></div><div class="line">    release &#123;</div><div class="line">        <span class="comment">// 是否进行混淆，默认false</span></div><div class="line">        minifyEnabled <span class="keyword">true</span></div><div class="line">        <span class="comment">// Zipalign 优化</span></div><div class="line">        zipAlignEnabled <span class="keyword">true</span></div><div class="line">        <span class="comment">// 移除无用的资源文件</span></div><div class="line">        shrinkResources <span class="keyword">true</span></div><div class="line">        <span class="comment">// 混淆文件的位置</span></div><div class="line">        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="混淆模板"><a href="#混淆模板" class="headerlink" title="混淆模板"></a>混淆模板</h3><p>「Android SDK」已经内置了默认的混淆配置文件 <code>(android-sdk/tools/proguard/proguard-android.txt)</code>。但只有这个是不够的，我们还需要添加自己的配置，「AS」在创建 Project 之初就已经为我们生成了这么一个文件 <code>app/proguard-rules.pro</code>，接下来，所做的混淆配置都必须写入这个文件。</p>
+<h4 id="常规的混淆模板"><a href="#常规的混淆模板" class="headerlink" title="常规的混淆模板"></a>常规的混淆模板</h4><p>这里给出一个常规的混淆模板，直接复制使用即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div></pre></td><td class="code"><pre><div class="line">-optimizationpasses 5                           # 指定代码的压缩级别</div><div class="line"></div><div class="line">-verbose                                        # 混淆时是否记录日志</div><div class="line">-ignorewarnings                                 # 忽略警告，避免打包时某些警告出现</div><div class="line">-keepattributes SourceFile,LineNumberTable</div><div class="line"></div><div class="line">-dontshrink                                     # 不压缩输入的类文件</div><div class="line">-dontoptimize                                   # 不优化输入的类文件</div><div class="line"></div><div class="line"># 手动启用support keep注解 可使用注解@Keep</div><div class="line">-dontskipnonpubliclibraryclassmembers</div><div class="line">-printconfiguration</div><div class="line">-keep,allowobfuscation @interface android.support.annotation.Keep</div><div class="line">-keep @android.support.annotation.Keep class *</div><div class="line">-keepclassmembers class * &#123;</div><div class="line">    @android.support.annotation.Keep *;</div><div class="line">&#125;</div><div class="line"></div><div class="line">##--- For:Remove log ---</div><div class="line">-assumenosideeffects class android.util.Log &#123;</div><div class="line">    public static boolean isLoggable(java.lang.String, int);</div><div class="line">    public static int v(...);</div><div class="line">    public static int i(...);</div><div class="line">    public static int w(...);</div><div class="line">    public static int d(...);</div><div class="line">    public static int e(...);</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keepclassmembers class fqcn.of.javascript.interface.for.webview &#123;</div><div class="line">    public *;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 不混淆R文件</div><div class="line">-keep class *.R</div><div class="line">-keepclasseswithmembers class **.R$* &#123;   public static &lt;fields&gt;; &#125;</div><div class="line">-keepclassmembers class **.R$* &#123;</div><div class="line">    public static &lt;fields&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># BuildConfig</div><div class="line">-keep class *.BuildConfig</div><div class="line">-keepclasseswithmembers class **.BuildConfig$* &#123;   public static &lt;fields&gt;; &#125;</div><div class="line">-keepclassmembers class **.BuildConfig$* &#123;</div><div class="line">    public static &lt;fields&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">##--- For:保持自定义控件类不被混淆 ---</div><div class="line">-keepclasseswithmembers class * &#123;</div><div class="line">    public &lt;init&gt;(android.content.Context, android.util.AttributeSet);</div><div class="line">&#125;</div><div class="line">-keepclasseswithmembers class * &#123;</div><div class="line">    public &lt;init&gt;(android.content.Context, android.util.AttributeSet, int);</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 保留Annotation</div><div class="line">-keepattributes *Annotation*</div><div class="line">-keep public class com.google.vending.licensing.ILicensingService</div><div class="line">-keep public class com.android.vending.licensing.ILicensingService</div><div class="line">-keepclasseswithmembernames class * &#123; # 保持 native 方法不被混淆</div><div class="line">    native &lt;methods&gt;;</div><div class="line">&#125;</div><div class="line">-keepclassmembers class ** &#123; @org.greenrobot.eventbus.Subscribe &lt;methods&gt;; &#125;</div><div class="line"></div><div class="line">##--- For:Serializable ---</div><div class="line">-keepnames class * implements java.io.Serializable</div><div class="line">-keep class * implements java.io.Serializable &#123; *; &#125;</div><div class="line">-keepclassmembers class * implements java.io.Serializable &#123; *; &#125;</div><div class="line"></div><div class="line">-keepnames class * implements java.lang.Cloneable</div><div class="line">-keep class * implements java.lang.Cloneable &#123; public *; &#125;</div><div class="line"></div><div class="line">##---------------- 不被混淆，这里列出一些常规不需要混淆的 ----------------</div><div class="line">-dontwarn org.mockito.**</div><div class="line">-dontwarn sun.reflect.**</div><div class="line">-dontwarn android.test.**</div><div class="line"></div><div class="line">-keep class org.junit.** &#123; *; &#125;</div><div class="line">-dontwarn org.junit.**</div><div class="line"></div><div class="line">-keep class junit.** &#123; *; &#125;</div><div class="line">-dontwarn junit.**</div><div class="line"></div><div class="line">-keep class sun.misc.** &#123; *; &#125;</div><div class="line">-dontwarn sun.misc.**</div><div class="line"></div><div class="line">-keep class com.google.** &#123; *; &#125;</div><div class="line">-keep class org.apache.** &#123; *; &#125;</div><div class="line"></div><div class="line">-dontwarn android.support.**</div><div class="line">-keep  class * extends android.app.Activity</div><div class="line">-keep  class * extends android.app.Application</div><div class="line">-keep  class * extends android.app.Service</div><div class="line">-keep  class * extends android.content.BroadcastReceiver</div><div class="line">-keep  class * extends android.content.ContentProvider</div><div class="line">-keep  class * extends android.app.backup.BackupAgentHelper</div><div class="line">-keep  class * extends android.preference.Preference</div><div class="line">-keep  class * extends android.view.View</div><div class="line">-keep  class com.android.vending.licensing.ILicensingService</div><div class="line">-keep  class android.telephony.CellLocation</div><div class="line">-keep  class android.view.View</div><div class="line"></div><div class="line">-keepclassmembers public class * extends android.view.View &#123;</div><div class="line">   void set*(***);</div><div class="line">   *** get*();</div><div class="line">   public *;</div><div class="line">   protected *;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keepclassmembers class * extends android.app.Activity &#123;</div><div class="line">   public void *(android.view.View);</div><div class="line">   public *;</div><div class="line">   protected *;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 保持枚举 enum 类不被混淆</div><div class="line">-keepclassmembers enum * &#123;</div><div class="line">    public static **[] values();</div><div class="line">    public static ** valueOf(java.lang.String);</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 保持 Parcelable 不被混淆</div><div class="line">-keep class * implements android.os.Parcelable &#123;</div><div class="line">  public static final android.os.Parcelable$Creator *;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keep class * extends android.support.v4.app.Fragment&#123;</div><div class="line">   public *;</div><div class="line">   protected *;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keep class * extends android.app.Fragment&#123;</div><div class="line">  public *;</div><div class="line">  protected *;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keep class * extends android.app.Application&#123;</div><div class="line">  public *;</div><div class="line">  protected *;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Dialog不参与混淆</div><div class="line">-keep class * extends android.app.Dialog</div><div class="line">-keep class * implements android.content.DialogInterface</div><div class="line">-keep class * extends android.widget.PopupWindow</div><div class="line"></div><div class="line"># Adapter不参与混淆</div><div class="line">-keep class * extends android.view.View</div><div class="line">-keep class * implements android.widget.Adapter</div><div class="line">-keep class * extends android.widget.BaseAdapter</div><div class="line">-keep class * implements android.widget.ListAdapter</div></pre></td></tr></table></figure>
+<h4 id="日志数据模板"><a href="#日志数据模板" class="headerlink" title="日志数据模板"></a>日志数据模板</h4><p>记录生成的日志数据(可以不用配置)，gradle build 时在本项目根目录输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">##---------------- 记录生成的日志数据，这里列出一些常规不需要混淆的 ----------------</div><div class="line">-dump class_files.txt                   # apk 包内所有 class 的内部结构</div><div class="line">-printseeds seeds.txt                   # 未混淆的类和成员</div><div class="line">-printusage unused.txt                  # 列出从 apk 中删除的代码</div><div class="line">-printmapping mapping.txt               # 混淆前后的映射</div></pre></td></tr></table></figure>
+<h4 id="Android-Support-Lib-模板"><a href="#Android-Support-Lib-模板" class="headerlink" title="Android Support Lib 模板"></a>Android Support Lib 模板</h4><p>如果使用了 Android 扩展包，添加下面的配置准没错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"># 保留android support包</div><div class="line"># android support eg. v4、v7、annotations、design、compat==</div><div class="line">-keep class android.support.** &#123; *; &#125;</div><div class="line">-keepclassmembers class * implements android.support.v4.app.FragmentManager &#123;</div><div class="line">    *;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-dontwarn android.support.**</div><div class="line"></div><div class="line">-keep class dagger.** &#123; *; &#125;</div><div class="line">-keep class android.app.** &#123; *; &#125;</div><div class="line">-dontwarn android.app.**</div><div class="line"></div><div class="line"># nineoldandroids</div><div class="line">-keep class com.nineoldandroids.** &#123; *; &#125;</div><div class="line">-keep public class com.nineoldandroids.animation.** &#123; public *; &#125;</div><div class="line">-keep public class com.nineoldandroids.view.ViewHelper &#123; public *; &#125;</div><div class="line"></div><div class="line">-keep class com.android.test.** &#123; *; &#125;</div><div class="line"></div><div class="line">##--- For:android-support-v4 ---</div><div class="line">-dontwarn android.support.v4.**</div><div class="line">-keep class android.support.v4.** &#123; *; &#125;</div><div class="line">-keep interface android.support.v4.app.** &#123; *; &#125;</div><div class="line">-keep class * extends android.support.v4.** &#123; *; &#125;</div><div class="line">-keep public class * extends android.support.v4.**</div><div class="line">-keep public class * extends android.support.v4.widget</div><div class="line">-keep class * extends android.support.v4.app.** &#123;*;&#125;</div><div class="line">-keep class * extends android.support.v4.view.** &#123;*;&#125;</div></pre></td></tr></table></figure>
+<h4 id="常用第三方模块的混淆"><a href="#常用第三方模块的混淆" class="headerlink" title="常用第三方模块的混淆"></a>常用第三方模块的混淆</h4><p>对于第三方库的使用，最好是 <code>-dontwarn</code> 与 <code>-keep</code> 配套使用。</p>
+<p>下面是一些常用第三方包的混淆配置。如：<code>gson</code> <code>zxin</code> <code>ButterKnife</code> <code>OkHttp</code> <code>RxJava</code> <code>RxAndroid</code> Google、阿里巴巴、百度等，模块以空行为准，复制可使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div></pre></td><td class="code"><pre><div class="line"># gson 用到Gson解析包的，直接添加下面这几行就能成功混淆，不然会报错</div><div class="line"># -libraryjars libs/gson-2.8.0.jar</div><div class="line">-keepattributes Signature</div><div class="line">-dontskipnonpubliclibraryclassmembers</div><div class="line">-dontskipnonpubliclibraryclasses</div><div class="line"></div><div class="line"># -keep class com.google.** &#123; *; &#125;</div><div class="line">-keep class sun.misc.Unsafe &#123; *; &#125;</div><div class="line">-keep class com.google.gson.** &#123; *;&#125;</div><div class="line">-keep class com.google.gson.examples.android.model.** &#123; *; &#125;</div><div class="line">-keep class com.google.** &#123;</div><div class="line">    &lt;fields&gt;;</div><div class="line">    &lt;methods&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-dontwarn com.google.gson.**</div><div class="line"></div><div class="line">##--- For:Gson ---</div><div class="line">-keepattributes *Annotation*</div><div class="line">-keep class sun.misc.Unsafe &#123; *; &#125;</div><div class="line">-keep class com.idea.fifaalarmclock.entity.***</div><div class="line">-keep class com.google.gson.stream.** &#123; *; &#125;</div><div class="line"></div><div class="line"># zxing</div><div class="line">-keep class com.google.zxing.** &#123; *; &#125;</div><div class="line"></div><div class="line"># butterknife -keep class butterknife.*</div><div class="line">-keep class butterknife.** &#123; *; &#125;</div><div class="line">-dontwarn butterknife.internal.**</div><div class="line">-keep class **$$ViewBinder &#123; *; &#125;</div><div class="line">-keepclasseswithmembernames class * &#123; @butterknife.* &lt;fields&gt;; &#125;</div><div class="line">-keepclasseswithmembernames class * &#123; @butterknife.* &lt;methods&gt;; &#125;</div><div class="line">-keep public class * implements butterknife.Unbinder &#123; public &lt;init&gt;(...); &#125;</div><div class="line"></div><div class="line"># AMap_Location</div><div class="line">-keep class com.aps.** &#123; *; &#125;</div><div class="line">-keep class com.amap.** &#123; *; &#125;</div><div class="line">-keep class com.autonavi.** &#123; *; &#125;</div><div class="line">-keep class com.amap.api.** &#123; *; &#125;</div><div class="line">-keep class com.amap.api.location.** &#123; *; &#125;</div><div class="line"></div><div class="line"># commons-cli</div><div class="line">-keep class org.apache.commons.cli.** &#123; *; &#125;</div><div class="line"></div><div class="line"># commons-codec</div><div class="line">-keep class org.apache.commons.codec.** &#123; *; &#125;</div><div class="line"></div><div class="line"># commons-logging</div><div class="line">-keep class org.apache.** &#123; *; &#125;</div><div class="line">-keep class org.apache.commons.** &#123; *; &#125;</div><div class="line">-keep class org.apache.commons.lang3.** &#123; *; &#125;</div><div class="line">-keep class org.apache.commons.logging.** &#123; *; &#125;</div><div class="line">-keepnames class * implements org.apache.commons.logging.Log</div><div class="line"></div><div class="line"># converter-gson</div><div class="line">-keep class retrofit2.** &#123; *; &#125;</div><div class="line"></div><div class="line"># hamcrest-core</div><div class="line">-keep class org.hamcrest.** &#123; *; &#125;</div><div class="line">-keep class org.hamcrest.core.** &#123; *; &#125;</div><div class="line">-keep class org.hamcrest.internal.** &#123; *; &#125;</div><div class="line"></div><div class="line"># httpclient/httpmime/httpcore</div><div class="line">-keep class org.apache.http.** &#123; *; &#125;</div><div class="line">-dontwarn org.apache.http.**</div><div class="line"></div><div class="line"># javawriter</div><div class="line">-keep class com.squareup.javawriter.** &#123; *; &#125;</div><div class="line"></div><div class="line"># javax.inject javax.annotation jsr</div><div class="line">-keep class javax.** &#123; *; &#125;</div><div class="line">-keep class javax.inject.** &#123; *;&#125;</div><div class="line">-keep class javax.annotation.** &#123; *; &#125;</div><div class="line"></div><div class="line"># junit</div><div class="line">-keep class junit.** &#123; *; &#125;</div><div class="line">-keep class org.junit.** &#123; *; &#125;</div><div class="line"></div><div class="line"># logging-interceptor</div><div class="line">-keep class okhttp3.logging.** &#123; *; &#125;</div><div class="line"></div><div class="line"># okhttp</div><div class="line">-keep class okio.** &#123; *; &#125;</div><div class="line">-keep class okhttp3.** &#123; *; &#125;</div><div class="line">-keep class com.squareup.okhttp.** &#123; *; &#125;</div><div class="line">-dontwarn okio.**</div><div class="line"></div><div class="line"># reactive-streams</div><div class="line">-keep class org.reactivestreams.** &#123; *; &#125;</div><div class="line"></div><div class="line"># retrofit2</div><div class="line">-keep class retrofit2.** &#123; *; &#125;</div><div class="line">-keep class com.jakewharton.retrofit2.** &#123; *; &#125;</div><div class="line">-dontwarn retrofit2.**</div><div class="line"></div><div class="line"># org.apache.heep.legacy</div><div class="line">-keep class android.net.** &#123; *; &#125;</div><div class="line">-keep class com.android.internal.http.** &#123; *; &#125;</div><div class="line">-keep class org.apache.http.** &#123; *; &#125;</div><div class="line">-keep class org.apache.commons.codec.** &#123; *; &#125;</div><div class="line">-keep class org.apache.commons.logging.** &#123; *; &#125;</div><div class="line"></div><div class="line"># rxjava rxandroid</div><div class="line">-keep class rx.** &#123; *; &#125;</div><div class="line">-keep class rx.android.** &#123; *; &#125;</div><div class="line">-keep class io.reactivex.** &#123; *; &#125;</div><div class="line">-keep class org.reactivestreams.** &#123; *; &#125;</div><div class="line"></div><div class="line"># rxbinding</div><div class="line">-keep class com.jakewharton.** &#123; *; &#125;</div><div class="line">-keep class com.jakewharton.rxbinding.** &#123; *; &#125;</div><div class="line"></div><div class="line"># stream</div><div class="line">-keep class com.annimon.stream.** &#123; *; &#125;</div><div class="line"></div><div class="line"># stetho</div><div class="line">-keep class com.facebook.** &#123; *; &#125;</div><div class="line">-keep class com.facebook.stetho.** &#123; *; &#125;</div><div class="line">-keep class com.facebook.stetho.okhttp.** &#123; *; &#125;</div><div class="line"></div><div class="line"># libmmsdk mta-sdk open-sdk</div><div class="line">-keep class com.tencent.** &#123; *; &#125;</div><div class="line"></div><div class="line"># fastjason android</div><div class="line">-keep class com.alibaba.** &#123; *; &#125;</div><div class="line">-keep class com.alibaba.fastjson.** &#123; *; &#125;</div><div class="line"></div><div class="line"># 百度sdk</div><div class="line">-keep class com.baidu.** &#123; *; &#125;</div><div class="line">-keep class vi.com.** &#123; *; &#125;</div><div class="line">-keep class com.baidu.location.** &#123; *; &#125;</div><div class="line">-dontwarn com.baidu.**</div><div class="line"></div><div class="line">-keep class com.sina.** &#123; *; &#125;</div><div class="line">-keep class com.weibo.** &#123; *; &#125;</div><div class="line">-keep class com.alibaba.** &#123; *; &#125;</div><div class="line">-keep class android.net.http.** &#123; *; &#125;</div><div class="line"></div><div class="line">-dontwarn com.sina.**</div><div class="line">-dontwarn com.tencent.**</div><div class="line">-dontwarn com.alibaba.**</div><div class="line"></div><div class="line">-keep class com.alipay.** &#123; *; &#125;</div><div class="line">-keep class com.squareup.** &#123; *; &#125;</div><div class="line">-keep class com.squareup.picasso.** &#123; *; &#125;</div><div class="line">-keep class com.ut.*</div><div class="line">-keep class com.samsung.android.sdk.** &#123; *; &#125;</div><div class="line">-keep class com.ta.utdid2.** &#123; *; &#125;</div><div class="line">-keep class com.ut.device.** &#123; *; &#125;</div><div class="line"></div><div class="line">-keep class a.** &#123; *; &#125;</div><div class="line">-keep class b.** &#123; *; &#125;</div><div class="line">-keep class c.** &#123; *; &#125;</div><div class="line">-keep class d.** &#123; *; &#125;</div><div class="line">-keep class e.** &#123; *; &#125;</div><div class="line">-keep class f.** &#123; *; &#125;</div><div class="line">-keep class g.** &#123; *; &#125;</div><div class="line">-keep class h.** &#123; *; &#125;</div><div class="line">-keep class i.** &#123; *; &#125;</div><div class="line">-keep class j.** &#123; *; &#125;</div><div class="line">-keep class k.** &#123; *; &#125;</div><div class="line">-keep class l.** &#123; *; &#125;</div><div class="line">-keep class m.** &#123; *; &#125;</div><div class="line">-keep class n.** &#123; *; &#125;</div><div class="line">-keep class o.** &#123; *; &#125;</div><div class="line">-keep class p.** &#123; *; &#125;</div><div class="line">-keep class q.** &#123; *; &#125;</div><div class="line">-keep class r.** &#123; *; &#125;</div><div class="line">-keep class s.** &#123; *; &#125;</div><div class="line">-keep class t.** &#123; *; &#125;</div><div class="line">-keep class u.** &#123; *; &#125;</div><div class="line">-keep class v.** &#123; *; &#125;</div></pre></td></tr></table></figure>
+<h3 id="主程序混淆配置"><a href="#主程序混淆配置" class="headerlink" title="主程序混淆配置"></a>主程序混淆配置</h3><p>对 <strong>App</strong> 来说，<strong>Model</strong> 层数据是不应该混淆的，尤其是参与网络请求的 <strong>Request</strong> 相关数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-dontwarn xxx.model.**</div><div class="line">-keep class xxx.model.** &#123; *; &#125;</div><div class="line"></div><div class="line">## ==</div></pre></td></tr></table></figure>
+<h3 id="采坑"><a href="#采坑" class="headerlink" title="采坑"></a>采坑</h3><p>在 <strong>Release</strong> 版本混淆之后，有些像「友盟」、「百度」这样的统计系统会出现 <code>NullPointerException</code>，这个是比较要命的，排查错误无法定位到具体位置，最终的解决方案是在 <code>proguard-rules.pro</code> 中添加如下代码即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keepattributes SourceFile,LineNumberTable</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> Gradle </tag>
+            
+            <tag> ProGuard </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[无聊的汉字多胞胎：汆氽]]></title>
+      <url>/notes/2017/10/16/hanzi-cuan-tun/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲<br>无聊<br>无聊的汉字多胞胎<br><strong>入 cuan 汆，人 tun 氽</strong></p>
+</blockquote>
+<p>就喜欢这么简单粗暴、直截了当，上图。</p>
+<a id="more"></a>
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-1.jpeg" alt="hzct-1.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-2.jpeg" alt="hzct-2.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-3.jpeg" alt="hzct-3.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-4.jpeg" alt="hzct-4.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-5.jpeg" alt="hzct-5.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-6.jpeg" alt="hzct-6.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-7.jpeg" alt="hzct-7.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-8.jpeg" alt="hzct-8.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-9.jpeg" alt="hzct-9.jpeg" title="">
+]]></content>
+      
+        <categories>
+            
+            <category> 无聊 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 无聊 </tag>
+            
+            <tag> 蛋疼 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[无聊的汉字多胞胎：火炎焱燚]]></title>
+      <url>/notes/2017/10/16/hanzi-huo-yan-yan-yi/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲<br>无聊<br>无聊的汉字多胞胎<br><strong>横 xu 戌，点 shu 戍，空心 wu 戊</strong></p>
+</blockquote>
+<p>我可能是太无聊了。。。<br>领导看到会是什么心情：「最近玩舒服了，工作不饱和，赶明儿给你多派点活」。</p>
+<a id="more"></a>
+<img src="/notes/2017/10/16/hanzi-huo-yan-yan-yi/hzhyyy-0-0.jpeg" alt="hzhyyy-0-0.jpeg" title=""> 
+<img src="/notes/2017/10/16/hanzi-huo-yan-yan-yi/hzhyyy-0-1.jpeg" alt="hzhyyy-0-1.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-huo-yan-yan-yi/hzhyyy-0-2.jpeg" alt="hzhyyy-0-2.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-huo-yan-yan-yi/hzhyyy-0-3.jpeg" alt="hzhyyy-0-3.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-huo-yan-yan-yi/hzhyyy-0-4.jpeg" alt="hzhyyy-0-4.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-huo-yan-yan-yi/hzhyyy-0-5.jpeg" alt="hzhyyy-0-5.jpeg" title="">
+<img src="/notes/2017/10/16/hanzi-huo-yan-yan-yi/hzhyyy-0-6.jpeg" alt="hzhyyy-0-6.jpeg" title="">
+]]></content>
+      
+        <categories>
+            
+            <category> 无聊 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 无聊 </tag>
+            
+            <tag> 蛋疼 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo 搭建 GitHub 博客（III）- NexT 主题配置]]></title>
+      <url>/notes/2017/10/13/Hexo-GitHub-NexT-Config-3/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>PS：本博是在 <strong>MAC</strong> 环境下进行操作的<br>本博主要介绍 <strong>NexT</strong> 主题的配置</p>
+</blockquote>
+<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="external"><strong>NexT</strong></a> 是一款简洁优雅且功能比较齐全的主题，配置比较简单，只需要稍微修改配置文件即可。<strong>Hexo</strong> 有两份主要的配置文件，其名称都是 _config.yml。其中一份位于站点根目录下，主要包含 <strong>Hexo</strong> 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。</p>
+<p>为了描述方便，在以下说明中，将前者称为<font color="red"><strong>站点配置文件</strong></font>， 后者称为<font color="purple"><strong>主题配置文件</strong></font></p>
+<a id="more"></a>
+<h3 id="安装-NexT"><a href="#安装-NexT" class="headerlink" title="安装 NexT"></a>安装 NexT</h3><p><strong>Hexo</strong> 安装非常简单，只需要将主题文件拷贝至站点目录的 <code>themes</code> 目录下， 然后修改下配置文件即可。具安装步骤如下。</p>
+<h4 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site     <span class="comment"># 这里是有前面的目录 ~/Blog</span></div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>当<strong>克隆/下载</strong>完成后，打开 <font color="red"><strong>站点配置文件</strong></font>， 找到 <code>theme</code> 字段，并将其值更改为 <code>next</code>，即<font color="red">theme: next</font>，至此，<strong>NexT</strong> 主题就安装好了。</p>
+<h4 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h4><p>首先启动 <strong>Hexo</strong> 本地站点，并开启调试模式（即加上 –debug），整个命令是 <code>hexo s --debug</code>。 当命令行输出中提示出：</p>
+<table>
+<thead>
+<tr>
+<th>hexo s –debug</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INFO  Hexo is running at <a href="http://0.0.0.0:4000/" target="_blank" rel="external">http://0.0.0.0:4000/</a>. Press Ctrl+C to stop.</td>
+</tr>
+</tbody>
+</table>
+<p>使用浏览器访问 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 即可看到效果。</p>
+<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>参考：<a href="http://theme-next.iissnan.com/" target="_blank" rel="external"><strong>NexT</strong> 配置</a>，这里有详细的说明。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Hexo </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Blog </tag>
+            
+            <tag> NexT </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo 搭建 GitHub 博客（II）- Hexo +「GitHub Pages」部署]]></title>
+      <url>/notes/2017/10/13/Hexo-GitHub-NexT-Config-2/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>PS：本博是在 <strong>MAC</strong> 环境下进行操作的<br>本博主要介绍 <strong>Hexo</strong> 的配置安装，以及如何部署博客到 <strong>GitHub</strong><br>参考：<a href="https://rogerscj.gitbooks.io/hexo/content/i-installation.html" target="_blank" rel="external">Hexo 安装与初体验</a></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~</div><div class="line">$ sudo npm install hexo-cli -g</div><div class="line">$ hexo init Blog</div><div class="line">$ <span class="built_in">cd</span> Blog</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>安装成功，Blog 文件夹的目录结构看起来会像下面这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── _config.yml</div><div class="line">├── db.json</div><div class="line">├── node_modules</div><div class="line">│   ├── JSONStream</div><div class="line">│   │   ├── LICENSE.APACHE2</div><div class="line">│   │   ├── LICENSE.MIT</div><div class="line">│   │   ├── examples</div><div class="line">│   │   │   └── all_docs.js</div><div class="line">│   │   ├── index.js</div><div class="line">│   │   ├── package.json</div><div class="line">│   │   ├── readme.markdown</div><div class="line">│   │   └── test</div></pre></td></tr></table></figure>
+<h3 id="体验站点"><a href="#体验站点" class="headerlink" title="体验站点"></a>体验站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo generate  （简写：hexo g）</div><div class="line">$ hexo server    （简写：hexo s）</div></pre></td></tr></table></figure>
+<p>默认状态下，网站是运行在 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></p>
+<h4 id="创建你的第一篇文章"><a href="#创建你的第一篇文章" class="headerlink" title="创建你的第一篇文章"></a>创建你的第一篇文章</h4><p>运行以下命令，可生成一篇文章，刷新 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 即可看到新生成的文章。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"the-first-one"</span></div></pre></td></tr></table></figure>
+<p>同时在 <strong>~\Blog\source_posts</strong> 目录下会生成一个名为<strong>「the-first-one.md」</strong>的文件，编辑该文件，刷新 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 即可看到修改后的结果。</p>
+<p>文件默认会为我们添加 <strong>Title</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: the-first-one        # 文章标题</div><div class="line">date: 2017-10-13 12:00:07   # 发表日期</div><div class="line">categories: blog            # 文章文类</div><div class="line">tags:                       # 文章标签</div><div class="line">  - 博客</div><div class="line">  - 文章     </div><div class="line">---</div></pre></td></tr></table></figure>
+<h4 id="生成静态网页"><a href="#生成静态网页" class="headerlink" title="生成静态网页"></a>生成静态网页</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate  （简写：hexo g）</div></pre></td></tr></table></figure>
+<p>生成静态网页，<font color="red"><strong>强烈推荐</strong></font>使用下面的方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<h3 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h3><p>经过上面的一系列步骤（其实也没几步），我们终于可以在本地访问自己的 Blog 了。纳尼，只能在本地访问？那我费这么大劲干嘛呢，还不如写个静态 Markdown 文件。我们需要的是随时随地访问，同行之间的相互分享，要达到这个效果还需一步，即，部署到 <strong>GitHub</strong> 上。一般的做法是，在本地调试编辑好文章后再推送到 <strong>GitHub</strong> 上。下面是部署到 <strong>GitHub</strong> 的过程。</p>
+<p>前提是，你已经拥有了自己专属的<strong>「GitHub Pages」</strong>。如果还没有<strong>「GitHub Pages」</strong>，请参考：<a href="http://notes.issexplorer.com/2017/10/13/Hexo-GitHub-NexT-Config-1/#more" target="_blank" rel="external">Hexo 搭建 GitHub 博客（I）- 环境搭建</a></p>
+<h4 id="安装自动部署插件"><a href="#安装自动部署插件" class="headerlink" title="安装自动部署插件"></a>安装自动部署插件</h4><p>初始化博客时运行的 <code>npm install</code> 命令默认并没有安装这个插件，所以要手动安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git</div></pre></td></tr></table></figure>
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>这里的配置文件指<font color="red"><strong>站点配置文件</strong></font>，即，<code>~/Blog/_config.yml</code>，找到 <code>deploy</code> 标签，添加你的<strong>「GitHub Pages」</strong>路径，如下（替换「<strong>repo</strong>」为<strong>你的 GitHub 路径</strong>即可）：<br><img src="/notes/notes/2017/10/13/Hexo-GitHub-NexT-Config-2/hexo-config.png" alt="hexo-config"></p>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+</blockquote>
+<p>部署过程中会提示输入你的 <strong>GitHub</strong> 账号和密码，等待命令运行完成即可。部署完成后，在浏览器中访问 <code>https://yoursname.github.is</code>，如：<a href="https://rogerscj.github.io">https://rogerscj.github.io</a>，这时就能看到你在本地调试好的博客了。</p>
+<blockquote>
+<p><strong>部署建议，FYI：</strong><br>上面的部署方式，我并不是很推荐，这里给出我平时的操作方式<br>在 <strong>Blog</strong> 下新建一个专门用于部署的目录，<code>deployHub</code>，我的路径为 <code>~/Blog/deployHub</code><br>发布脚本 <code>deploy.sh</code>，脚本内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo generate</div><div class="line">$ cp -R public/* deployHub/RogersCj.github.io</div><div class="line">$ <span class="built_in">cd</span> deployHub/RogersCj.github.io</div><div class="line">$ git add .</div><div class="line">$ git commit -m <span class="string">"update"</span></div><div class="line">$ git push origin master</div><div class="line">$ <span class="built_in">cd</span> ..</div><div class="line">$ <span class="built_in">cd</span> ..</div></pre></td></tr></table></figure>
+<p>每次发布运行脚本 <code>deploy.sh</code> 即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./deploy.sh</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Hexo-常用命令"><a href="#Hexo-常用命令" class="headerlink" title="Hexo 常用命令"></a>Hexo 常用命令</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ hexo init [folder]                <span class="comment"># 新建一个网站</span></div><div class="line"></div><div class="line">$ hexo new <span class="string">"postName"</span>               <span class="comment"># 新建文章</span></div><div class="line">$ hexo generate                     <span class="comment"># 生成静态页面至public目录</span></div><div class="line">$ hexo server                       <span class="comment"># 开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line">$ hexo deploy                       <span class="comment"># 将.deploy目录部署到GitHub</span></div><div class="line">$ hexo <span class="built_in">help</span>                         <span class="comment"># 查看帮助</span></div><div class="line">$ hexo version                      <span class="comment"># 查看Hexo的版本</span></div><div class="line"></div><div class="line">$ hexo --draf                       <span class="comment"># 显示草稿</span></div><div class="line"></div><div class="line">$ hexo --debug                      <span class="comment"># 调试模式</span></div><div class="line">$ hexo --silent                     <span class="comment"># 简洁模式</span></div><div class="line">$ $ hexo --config custom.yml        <span class="comment"># 自定义配置文件的路径</span></div><div class="line"></div><div class="line">$ hexo s -g                         <span class="comment"># 生成静态文件并启动本地服务</span></div></pre></td></tr></table></figure>
+<h4 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ hexo n == hexo new</div><div class="line">$ hexo g == hexo generate</div><div class="line">$ hexo s == hexo server</div><div class="line">$ hexo d == hexo deploy</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Hexo </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Blog </tag>
+            
+            <tag> GitHub </tag>
+            
+            <tag> GitHub Pages </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo 搭建 GitHub 博客（I）- 环境搭建]]></title>
+      <url>/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>PS：本博是在 <strong>MAC</strong> 环境下进行搭建的<br>本博主要介绍<strong>「GitHub Pages」</strong>的相关环境搭建</p>
+</blockquote>
+<p>在平常的工作和生活中，记录一些笔记是必不可少的。设备更新换代又日趋频繁，免不了丢三落四，搭建一个便捷、稳定的个人站点还是挺有必要的，如果能将一些有用的笔记分享给有相同需求的同伴，那再好不过了。<strong>「GitHub Pages」</strong>就是一个不错的选择。</p>
+<a id="more"></a>
+<p>搭建流程大致分下面几步：</p>
+<ol>
+<li>注册一个 <strong>Github</strong></li>
+<li>拥有一个 <strong>GitHub Pages</strong></li>
+<li>配置本地 <strong>Hexo</strong> 环境</li>
+<li>绑定自己的域名（可直接使用 Github Pages 二级域名）</li>
+</ol>
+<h3 id="几个简单的概念"><a href="#几个简单的概念" class="headerlink" title="几个简单的概念"></a>几个简单的概念</h3><h4 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h4><p>如果你对编程有所了解，就一定听说过 <strong>GitHub</strong>。它号称程序员的 <strong>Facebook</strong>，有着极高的人气，也是目前最流行的代码仓库，许多重要的项目都托管在上面。</p>
+<p><a href="https://pages.github.com/" target="_blank" rel="external"><strong>GitHub Pages</strong></a> 是面向用户、组织和项目开放的公共静态页面搭建托管服务，站点可以被免费托管在<strong>Github</strong>上。<a href="http://jekyllcn.com/docs/github-pages/" target="_blank" rel="external"><font color="#999">这里有更详细的介绍</font></a></p>
+<h4 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h4><p><a href="https://hexo.io/zh-cn/index.html" target="_blank" rel="external"><strong>Hexo</strong></a> 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="https://daringfireball.net/projects/markdown/" target="_blank" rel="external"><strong>Markdown</strong></a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external"><font color="#999">参见 Hexo 文档</font></a></p>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><p>下载地址：<a href="http://git-scm.com/downloads" target="_blank" rel="external">http://git-scm.com/downloads</a></p>
+<h4 id="安装-NodeJS"><a href="#安装-NodeJS" class="headerlink" title="安装 NodeJS"></a>安装 NodeJS</h4><p>参考地址：<a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="external">安装Node.js</a><br>下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a></p>
+<h4 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install hexo-cli -g</div></pre></td></tr></table></figure>
+<p>安装成功后，会出现诸如 <code>-- hexo-cli@1.0.3</code> 的信息。</p>
+<h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><h4 id="从注册一个-GitHub-账号开始"><a href="#从注册一个-GitHub-账号开始" class="headerlink" title="从注册一个 GitHub 账号开始"></a>从注册一个 GitHub 账号开始</h4><p>要使用<strong>「GitHub Pages」</strong>，首先你要注册一个 <a href="https://github.com/" target="_blank" rel="external"><strong>GitHub</strong></a> 账号，<strong>GitHub</strong> 是全球最大的同性交友网站，你值得拥有^_^。</p>
+<img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-register-1.jpg" alt="github-register-1.jpg" title="">
+<h4 id="创建-GitHub-Pages"><a href="#创建-GitHub-Pages" class="headerlink" title="创建 GitHub Pages"></a>创建 GitHub Pages</h4><p>仓库的名字要和你的账号对应，如：<a href="RogersCj.github.io">RogersCj.github.io</a><br>这里介绍<font color="red"><strong>2</strong></font>种创建<strong>「GitHub Pages」</strong>的方式，第一种比较官方；第二种最简单，连带 <strong>Hexo</strong> 一起被创建好。</p>
+<blockquote>
+<p><strong>官方的方式创建</strong><br>Create repository 仓库的名字要和你的账号对应<br>设置默认的页面（如果决定使用 Hexo，这一步可省略，后面会将 Hexo 导入）<br>参考：<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a></p>
+</blockquote>
+<img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-io-create.png" alt="github-io-create.png" title="">
+<blockquote>
+<p><strong>克隆我的博客模板</strong><br><strong>PS：如果希望一步一步走完 Hexo 部署到 GitHub，可略过下面的篇幅</strong><br>修改成你自己的仓库名 <strong>yoursname.github.io</strong>，如：<a href="RogersCj.github.io">RogersCj.github.io</a></p>
+</blockquote>
+<p>注册完成后搜索 <code>rogerscj.github.io</code> <a href="https://github.com/RogersCj/RogersCj.github.io" target="_blank" rel="external">进入我的仓库</a><br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-search-rogerscj.png" alt="github-search-rogerscj.png" title=""></p>
+<p>点击右上角的 <strong>Fork</strong> 将我的仓库拉倒你的账号下：<br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj.png" alt="github-fork-rogerscj.png" title=""></p>
+<p>稍等片刻，点击刷新，你会看到 Fork 成功的页面：<br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj-successful.png" alt="github-fork-rogerscj-successful.png" title=""></p>
+<p>修改仓库名，并删除文件 <strong>CNAME</strong> 文件的内容：<br><img src="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/github-fork-rogerscj-yoursname.png" alt="github-fork-rogerscj-yoursname.png" title=""></p>
+<p>在浏览器中访问 <code>https://yoursname.github.is</code>，如：<a href="https://rogerscj.github.io">https://rogerscj.github.io</a>，这时就能看到你博客了，<strong>PS: 博文内容保留了我的^_^</strong>。</p>
+<p>OK，至此完毕，完美！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Hexo </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Blog </tag>
+            
+            <tag> GitHub </tag>
+            
+            <tag> GitHub Pages </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[APK 签名文件]]></title>
+      <url>/notes/2017/10/12/apk-signature/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>标记，<strong>Tag 一下</strong><br>记录下签名生成的过程，方便下次使用。</p>
+</blockquote>
+<a id="more"></a>
+<p>简单来说，签名就是个标识，它可以保证 APP 正常升级，并且不被别人覆盖。</p>
+<h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><ul>
+<li>java jdk</li>
+<li>keytool 密钥和证书管理工具,可以用来生成证书</li>
+</ul>
+<p>使用 <code>keytool</code> 生成证书：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 文件名和别名相同，为: test.keystore</span></div><div class="line">$ keytool -genkey -<span class="built_in">alias</span> test.keystore -keyalg RSA -validity 20000 -keystore test.keystore</div></pre></td></tr></table></figure>
+<p>参数解释:</p>
+<ul>
+<li>-genkey 产生证书文件</li>
+<li>-keystore 指定密钥库的.keystore文件中</li>
+<li>-keyalg 指定密钥的算法,这里指定为RSA(非对称密钥算法)</li>
+<li>-validity 为证书有效天数，这里我们写的是10000天</li>
+<li>-alias 产生别名</li>
+</ul>
+<img src="/notes/2017/10/12/apk-signature/QQ20171012-170824@2x.png" alt="QQ20171012-170824@2x.png" title="">
+<h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -list -keystore test.keystore</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Activity 生命周期]]></title>
+      <url>/notes/2017/10/11/Activity-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+      <content type="html"><![CDATA[<p>这是个被谈烂了的问题，网上介绍的文章也铺天盖地。<br>但是，作为一名有轻微强迫症的攻城狮，想写写 Android 相关的东西，如果不从这里入手，总觉得心里缺了点啥似的，也就不免俗了，从这里开始吧。</p>
+<a id="more"></a>
+<h3 id="生命周期流程"><a href="#生命周期流程" class="headerlink" title="生命周期流程"></a>生命周期流程</h3><p>相信学习安卓的人对 Android Activity 的生命周期活动并不陌生，下图详细而直观得表现了 Activity 各生命周期间的关系。<br><img src="/notes/2017/10/11/Activity-生命周期/activity_lifecycle.png" alt="activity_lifecycle.png" title=""></p>
+<h4 id="正常完整的流程走向"><a href="#正常完整的流程走向" class="headerlink" title="正常完整的流程走向"></a>正常完整的流程走向</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onCreate –&gt; onStart –&gt; onPostCreate –&gt; onResume –&gt; onPostResume –&gt; onPause –&gt; onStop –&gt; onDestroy</div></pre></td></tr></table></figure>
+<h4 id="onCreate"><a href="#onCreate" class="headerlink" title="onCreate"></a>onCreate</h4><p>create 表示创建，这是 Activity 生命周期的第一个方法，也是我们在 android 开发中接触的最多的生命周期方法。它本身的作用是进行 Activity 的一些初始化工作，比如使用 setContentView 加载布局，对一些控件和变量进行初始化等。<br><strong>此时 Activity 还在后台，为非可见非可视状态。</strong></p>
+<h4 id="onStart"><a href="#onStart" class="headerlink" title="onStart"></a>onStart</h4><p>start 即启动，这是 Activity 生命周期的第二个方法。此时 Activity 已经可见了，但是还没出现在前台，我们还看不到，无法与 Activity 交互。其实将 Activity 的初始化工作放在这也没有什么问题，放在 onCreate 中是由于官方推荐的以及我们开发的习惯。<br><strong>此时 Activity 为非可视状态。</strong></p>
+<h4 id="onContentChanged"><a href="#onContentChanged" class="headerlink" title="onContentChanged"></a>onContentChanged</h4><p>当 Activity 的布局改动时，即 set 或 add ContentView 执行完毕时会调用该方法。Activity 中各种 View 的初始化，如：findViewById()，都可以放到该方法中。</p>
+<h4 id="onResume"><a href="#onResume" class="headerlink" title="onResume"></a>onResume</h4><p>resume 表示继续、重新开始。经过前两个阶段的初始化，此时 Activity 已处于栈顶，用户可交互。<br><strong>此时 Activity 为可视状态。</strong></p>
+<h4 id="onPostCreate、onPostResume"><a href="#onPostCreate、onPostResume" class="headerlink" title="onPostCreate、onPostResume"></a>onPostCreate、onPostResume</h4><p>onPostCreate、onPostResume方法分别在 onCreate、onResume方法彻底执行完毕后回调。</p>
+<h4 id="onPause"><a href="#onPause" class="headerlink" title="onPause"></a>onPause</h4><p>暂停状态。<br>该状态下，Activity 的部分被另外一个 Activity 所遮盖，另外的 Activity 来到前台，但是半透明的，不会覆盖整个屏幕。被暂停的 Activity 不再接受用户的输入且不再执行任何代码。</p>
+<h4 id="onStop"><a href="#onStop" class="headerlink" title="onStop"></a>onStop</h4><p>onStop 在整个窗口被完全遮盖才会触发，此时 Activity 不可见，处于后台运行。触发 onStop 之前必定会触发onPause。</p>
+<h4 id="onSaveInstanceState、-onRestoreInstanceState"><a href="#onSaveInstanceState、-onRestoreInstanceState" class="headerlink" title="onSaveInstanceState、 onRestoreInstanceState"></a>onSaveInstanceState、 onRestoreInstanceState</h4><p>onSaveInstanceState 是恢复实例的状态，但需要注意 onSaveInstanceState 和 onRestoreInstanceState “<strong>不一定</strong>”是成对的被调用的，onRestoreInstanceState 被调用的前提是，Activity A “确实”被系统销毁了，而如果仅仅是停留在有这种可能性的情况下，则该方法不会被调用。</p>
+<p>长时间处于 Stop 形态，系统可能回收 Activity</p>
+<ul>
+<li>比如旋转屏幕:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onResume –&gt; onSaveInstanceState() –&gt; onDestory</div></pre></td></tr></table></figure>
+<ul>
+<li>重新创建:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onCreate –&gt; onRestoreIntanceState() –&gt; onResume</div></pre></td></tr></table></figure>
+<h4 id="返回当前（按机器返回键）"><a href="#返回当前（按机器返回键）" class="headerlink" title="返回当前（按机器返回键）"></a>返回当前（按机器返回键）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">onPause –&gt; onStop –&gt; onDestory</div><div class="line">onRestart –&gt; onStart –&gt; onResume –&gt; onPostResume</div></pre></td></tr></table></figure>
+<h4 id="屏幕待机（黑掉）"><a href="#屏幕待机（黑掉）" class="headerlink" title="屏幕待机（黑掉）"></a>屏幕待机（黑掉）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onPause</div></pre></td></tr></table></figure>
+<h4 id="Home键退出"><a href="#Home键退出" class="headerlink" title="Home键退出"></a>Home键退出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onPause –&gt; onSaveInstanceState –&gt; onStop</div></pre></td></tr></table></figure>
+<h4 id="旋转屏幕"><a href="#旋转屏幕" class="headerlink" title="旋转屏幕"></a>旋转屏幕</h4><p>默认屏幕旋转会重新创建，配置 <code>configChanges</code> 可改变这一现象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">android:configChanges=&quot;keyboardHidden|orientation|screenSize&quot;（sdk&gt;13时需加上screenSize）</div><div class="line">onPause –&gt; onStop –&gt; onDestory –&gt; onCreate –&gt; onStart –&gt; onPostCreate –&gt; onResume –&gt; onPostResume</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[adb 录屏]]></title>
+      <url>/notes/2017/10/11/Adb-%E5%BD%95%E5%B1%8F/</url>
+      <content type="html"><![CDATA[<p>记录2个捕获屏幕的 adb 命令。</p>
+<a id="more"></a>
+<h3 id="截屏「Screencap」"><a href="#截屏「Screencap」" class="headerlink" title="截屏「Screencap」"></a>截屏「Screencap」</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb shell screencap -p /sdcard/screen.png</div></pre></td></tr></table></figure>
+<h3 id="录制屏幕「Screenrecord」"><a href="#录制屏幕「Screenrecord」" class="headerlink" title="录制屏幕「Screenrecord」"></a>录制屏幕「Screenrecord」</h3><p>录制默认分辨率，默认 4Mbps，时间为 180s 的 MP4 视频，并且保存到 Sdcard 上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ adb shell screenrecord /sdcard/yourFileName.mp4</div><div class="line">$ adb pull /sdcard/yourFileName.mp4 ~/mp4File/</div></pre></td></tr></table></figure>
+<h3 id="第三方工具"><a href="#第三方工具" class="headerlink" title="第三方工具"></a>第三方工具</h3><p><a href="http://mac.softpedia.com/get/Utilities/AndroidTool.shtml" target="_blank" rel="external">AndroidTool</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> Adb </tag>
+            
+            <tag> 命令 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android Studio 插件配置: FindBugs]]></title>
+      <url>/notes/2017/10/11/Android-Studio-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-FindBugs/</url>
+      <content type="html"><![CDATA[<p>FindBugs 是一个静态分析工具，它检查类或者 JAR 文件，将字节码与一组缺陷模式进行对比来发现可能的问题，可以以独立的 JAR 包形式运行，也可以作为集成开发工具的插件形式存在。</p>
+<a id="more"></a>
+<h3 id="安装FindBugs插件"><a href="#安装FindBugs插件" class="headerlink" title="安装FindBugs插件"></a>安装FindBugs插件</h3><p>首先需要在 Android Studio 中安装 FindBugs 的插件。在 Android Studio 中找到<strong>「Preferences/Plugins」</strong>选项，在该复选框中通过上方搜索，或将 FindBugs 插件下载到本地，使用<strong>「Install plugin from disk」</strong>进行安装。安装示意图如下所示，安装完成后需要重启 Android Studio。<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060543025331.jpg" alt="15060543025331.jpg" title=""></p>
+<h3 id="扩展优化"><a href="#扩展优化" class="headerlink" title="扩展优化"></a>扩展优化</h3><h4 id="安装「Android-Code-Arbiter」插件"><a href="#安装「Android-Code-Arbiter」插件" class="headerlink" title="安装「Android Code Arbiter」插件"></a>安装「Android Code Arbiter」插件</h4><p>FindBugs 插件具有着极强的可扩展性，只需要将扩展的 JAR 包导入 FindBugs 插件，<strong>重启</strong>，即可完成相关功能的扩展。</p>
+<p>FindBugs 插件安装后，将会在 <strong>「Preferences/Other Settings」</strong> 中找到安装插件的选项 FindBugs-IDEA，点击中测靠左的「+」号，在弹出的选框中选择 <strong>「4.Install plugin from disk」</strong>，在弹出的选框中选择下载的 Android Code Arbiter 的 jar 包，点击 OK，此时会发现插件已经安装了，点击 OK，并重启 Android Studio 完成插件安装。</p>
+<p>安装部分示意图，如下所示。<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060539937693.jpg" alt="15060539937693.jpg" title=""></p>
+<h4 id="添加过滤"><a href="#添加过滤" class="headerlink" title="添加过滤"></a>添加过滤</h4><p>在没有进行任何过滤的情况下找到的结果可能会令人失望，它会把自动生成的代码也考虑在内。因此我们在进行 Bug 查找的时候首先需要添加过滤</p>
+<p>下面是过滤掉 Android 自动生成的代码的配置文件「findbugs-exclude.xml」</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">FindBugsFilter</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- ignore all issues in resource generation --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.R\$.*"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.Manifest\$.*"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!--</span></div><div class="line"><span class="comment">    &lt;Match&gt;</span></div><div class="line"><span class="comment">        &lt;Or&gt;</span></div><div class="line"><span class="comment">            &lt;Class name="~.*\.R\$.*"/&gt;</span></div><div class="line"><span class="comment">            &lt;Class name="~.*\.Manifest\$.*"/&gt;</span></div><div class="line"><span class="comment">        &lt;/Or&gt;</span></div><div class="line"><span class="comment">    &lt;/Match&gt;</span></div><div class="line"><span class="comment">    --&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 测试用例警告 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.*Test"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Not</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">Bug</span> <span class="attr">code</span>=<span class="string">"IJU"</span>/&gt;</span> <span class="comment">&lt;!-- 'IJU' is the code for bugs related to JUnit test code --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">Not</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">FindBugsFilter</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>添加过滤文件，如下示意图<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060540989255.jpg" alt="15060540989255.jpg" title=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Android Studio </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+            <tag> FindBugs </tag>
+            
+            <tag> Android Studio </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Git 命令清单]]></title>
+      <url>/notes/2017/10/10/Git-%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>参考<br><a href="http://iissnan.com/progit/" target="_blank" rel="external">Pro Git</a><br><a href="http://www.bootcss.com/p/git-guide/" target="_blank" rel="external">git - 简易指南</a><br><a href="www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">阮一峰的网络日志</a></p>
+</blockquote>
+<p>我们每天都在使用 Git ，但是除了 <code>git push</code> 和 <code>git pull</code> 还有多少命令是记得住的。<br>下面是一些常用的 Git 命令，以供参考。</p>
+<a id="more"></a>
+<h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 显示Git配置</span></div><div class="line">$ git config --list</div><div class="line"></div><div class="line"><span class="comment"># 显示Git配置 global</span></div><div class="line">$ git config --list --global</div><div class="line"></div><div class="line"><span class="comment"># 显示Git配置 local</span></div><div class="line">$ git config --list --<span class="built_in">local</span></div><div class="line"></div><div class="line"><span class="comment"># 设置提交代码的用户信息</span></div><div class="line">$ git config [--global] user.name <span class="string">"name"</span></div><div class="line">$ git config [--global] user.email <span class="string">"email"</span></div><div class="line"></div><div class="line"><span class="comment"># 设置当前仓库提交代码的用户信息 local</span></div><div class="line">$ git config --<span class="built_in">local</span> user.name <span class="string">"name]"</span></div><div class="line">$ git config --<span class="built_in">local</span> user.email <span class="string">"email"</span></div></pre></td></tr></table></figure>
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 初始化本地git仓库（创建新仓库）</span></div><div class="line">$ git init</div><div class="line"></div><div class="line"><span class="comment"># clone远程仓库，包括这个项目的整个代码历史</span></div><div class="line">$ git <span class="built_in">clone</span> [url]</div></pre></td></tr></table></figure>
+<h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看当前版本状态（是否修改）</span></div><div class="line">$ git status</div><div class="line"></div><div class="line"><span class="comment"># 显示提交日志</span></div><div class="line">$ git <span class="built_in">log</span></div><div class="line">$ git <span class="built_in">log</span> -5</div><div class="line"></div><div class="line"><span class="comment"># 显示commit历史，以及每次commit发生变更的文件</span></div><div class="line">$ git <span class="built_in">log</span> --<span class="built_in">stat</span></div><div class="line"></div><div class="line"><span class="comment"># 搜索commit历史</span></div><div class="line">$ git <span class="built_in">log</span> -S [keyword]</div><div class="line"></div><div class="line"><span class="comment"># 显示某个文件的版本历史，包括文件改名</span></div><div class="line">$ git <span class="built_in">log</span> --follow [file]</div><div class="line">$ git whatchanged [file]</div><div class="line"></div><div class="line"><span class="comment"># 显示指定文件相关的每一次diff</span></div><div class="line">$ git <span class="built_in">log</span> -p [file]</div><div class="line"></div><div class="line"><span class="comment"># 显示过去n次提交</span></div><div class="line">$ git <span class="built_in">log</span> -5 --pretty --oneline</div><div class="line"></div><div class="line"><span class="comment"># 显示v2.0的日志</span></div><div class="line">$ git <span class="built_in">log</span> v2.0</div><div class="line"></div><div class="line"><span class="comment"># 显示所有提交过的用户，按提交次数排序</span></div><div class="line">$ git shortlog -sn</div><div class="line"></div><div class="line"><span class="comment"># 显示暂存区和工作区的差异</span></div><div class="line">$ git diff</div><div class="line"></div><div class="line"><span class="comment"># 显示暂存区和上一个commit的差异</span></div><div class="line">$ git diff --cached</div><div class="line">$ git diff --cached [file]</div><div class="line"></div><div class="line"><span class="comment"># 比较与上一个版本的差异</span></div><div class="line">$ git diff HEAD^</div><div class="line"></div><div class="line"><span class="comment"># 比较与HEAD版本lib目录的差异</span></div><div class="line">$ git diff HEAD -- ./lib</div><div class="line"></div><div class="line"><span class="comment"># 比较远程分支master上有本地分支master上没有的</span></div><div class="line">$ git diff origin/master..master</div><div class="line"></div><div class="line"><span class="comment"># 只显示差异的文件，不显示具体内容</span></div><div class="line">$ git diff origin/master..master --<span class="built_in">stat</span></div><div class="line"></div><div class="line"><span class="comment"># 显示今天你写了多少行代码</span></div><div class="line">$ git diff --shortstat <span class="string">"@&#123;0 day ago&#125;"</span></div><div class="line"></div><div class="line"><span class="comment"># 显示某个提交的详细内容(可只用commitid的前几位)</span></div><div class="line">$ git show [commit]</div><div class="line">$ git show dfb02e6e4f2f7b573337763e5c0013802e392818</div><div class="line">$ git show dfb02</div><div class="line"></div><div class="line"><span class="comment"># 显示某次提交发生变化的文件</span></div><div class="line">$ git show --name-only [commit]</div><div class="line"></div><div class="line"><span class="comment"># 显示某次提交时，某个文件的内容</span></div><div class="line">$ git show [commit]:[filename]</div><div class="line"></div><div class="line"><span class="comment"># 显示HEAD提交日志</span></div><div class="line">$ git show HEAD</div><div class="line"></div><div class="line"><span class="comment"># 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本</span></div><div class="line">$ git show HEAD^</div><div class="line"></div><div class="line"><span class="comment"># 显示v2.0的日志及详细内容</span></div><div class="line">$ git show v2.0</div><div class="line"></div><div class="line"><span class="comment"># 显示已存在的tag</span></div><div class="line">$ git tag</div><div class="line"></div><div class="line"><span class="comment"># 显示当前分支的最近几次提交</span></div><div class="line">$ git reflog</div></pre></td></tr></table></figure>
+<h3 id="增加-删除"><a href="#增加-删除" class="headerlink" title="增加/删除"></a>增加/删除</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 添加指定文件到暂存区</span></div><div class="line">$ git add [file1] [file2] ...</div><div class="line"></div><div class="line"><span class="comment"># 添加指定目录到暂存区，包括子目录</span></div><div class="line">$ git add [dir]</div><div class="line"></div><div class="line"><span class="comment"># 添加当前目录的所有更改过的文件到暂存区</span></div><div class="line">$ git add .</div><div class="line"></div><div class="line"><span class="comment"># 添加每个变化前，都会要求确认</span></div><div class="line"><span class="comment"># 对于同一个文件的多处变化，可以实现分次提交</span></div><div class="line">$ git add -p</div><div class="line"></div><div class="line"><span class="comment"># 删除工作区文件，并且将这次删除放入暂存区</span></div><div class="line">$ git rm [file1] [file2] ...</div><div class="line"></div><div class="line"><span class="comment"># 递归删除</span></div><div class="line">$ git rm -r *</div><div class="line"></div><div class="line"><span class="comment"># 停止追踪指定文件，但该文件会保留在工作区</span></div><div class="line">$ git rm --cached [file]</div><div class="line"></div><div class="line"><span class="comment"># 改名文件，并且将这个改名放入暂存区</span></div><div class="line">$ git mv [file-original] [file-renamed]</div></pre></td></tr></table></figure>
+<h3 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 提交暂存区到仓库区</span></div><div class="line">$ git commit [file1] [file2] ... -m <span class="string">'[message]'</span></div><div class="line"></div><div class="line"><span class="comment"># 合并上一次提交（用于反复修改）</span></div><div class="line"><span class="comment"># 如果代码没有任何新变化，则用来改写上一次commit的提交信息</span></div><div class="line">$ git commit --amend -m <span class="string">'message'</span></div><div class="line"></div><div class="line"><span class="comment"># 将add和commit合为一步</span></div><div class="line">$ git commit -am <span class="string">'message'</span> </div><div class="line"></div><div class="line"><span class="comment"># 重做上一次commit，并包括指定文件的新变化</span></div><div class="line">$ git commit --amend [file1] [file2] ...</div><div class="line"></div><div class="line"><span class="comment"># 提交时显示所有diff信息</span></div><div class="line">$ git commit -v</div></pre></td></tr></table></figure>
+<h3 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 恢复暂存区的指定文件到工作区</span></div><div class="line">$ git checkout [file]</div><div class="line">$ git checkout .</div><div class="line"></div><div class="line"><span class="comment"># 恢复某个commit的指定文件到暂存区和工作区</span></div><div class="line">$ git checkout [commit] [file]</div><div class="line"></div><div class="line"><span class="comment"># 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</span></div><div class="line">$ git reset [file]</div><div class="line"></div><div class="line"><span class="comment"># 重置暂存区与工作区，与上一次commit保持一致</span></div><div class="line">$ git reset --hard</div><div class="line"></div><div class="line"><span class="comment"># 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818</span></div><div class="line">$ git revert [commit]</div><div class="line">$ git revert dfb02e6e4f2f7b573337763e5c0013802e392818</div><div class="line"></div><div class="line"><span class="comment"># 暂时将未提交的变化移除，稍后再移入</span></div><div class="line">$ git stash</div><div class="line">$ git stash pop</div></pre></td></tr></table></figure>
+<h3 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取所有远程分支（不更新本地分支，另需merge）</span></div><div class="line">$ git fetch</div><div class="line"></div><div class="line"><span class="comment"># 获取所有原创分支并清除服务器上已删掉的分支</span></div><div class="line">$ git fetch --prune</div><div class="line"></div><div class="line"><span class="comment"># 显示所有远程仓库</span></div><div class="line">$ git remote -v</div><div class="line"></div><div class="line"><span class="comment"># 显示某个远程仓库的信息</span></div><div class="line">$ git remote show [remote]</div><div class="line"></div><div class="line"><span class="comment"># 增加一个新的远程仓库，并命名</span></div><div class="line">$ git remote add [shortname] [url]</div><div class="line"></div><div class="line"><span class="comment"># 获取远程分支master并merge到当前分支</span></div><div class="line">$ git pull origin master</div><div class="line"></div><div class="line"><span class="comment"># 取回远程仓库的变化，并与本地分支合并</span></div><div class="line">$ git pull [remote] [branch]</div><div class="line">$ git pull origin dev</div><div class="line"></div><div class="line"><span class="comment"># 上传本地指定分支到远程仓库</span></div><div class="line">$ git push [remote] [branch]</div><div class="line">$ git push origin master</div><div class="line">$ git push origin devV1.81</div><div class="line">$ git push orgin devV1.81:devV1.81</div><div class="line"></div><div class="line"><span class="comment"># 删除远程仓库的hotfixes/BJVEP933分支</span></div><div class="line">$ git push origin :hotfixes/BJVEP933</div><div class="line"></div><div class="line"><span class="comment"># 强行推送当前分支到远程仓库，即使有冲突</span></div><div class="line">$ git push [remote] --force</div><div class="line"></div><div class="line"><span class="comment"># 推送所有分支到远程仓库</span></div><div class="line">$ git push [remote] --all</div><div class="line"></div><div class="line"><span class="comment"># 把所有tag推送到远程仓库</span></div><div class="line">$ git push --tags</div></pre></td></tr></table></figure>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 显示本地分支</span></div><div class="line"><span class="comment"># 显示远程分支</span></div><div class="line"><span class="comment"># 显示所有本地和远程分支</span></div><div class="line">$ git branch</div><div class="line">$ git branch -r</div><div class="line">$ git branch -a</div><div class="line"></div><div class="line"><span class="comment"># 显示包含提交50089的分支</span></div><div class="line">$ git branch --contains 50089</div><div class="line"></div><div class="line"><span class="comment"># 显示所有已合并到当前分支的分支</span></div><div class="line">$ git branch --merged</div><div class="line"></div><div class="line"><span class="comment"># 显示所有未合并到当前分支的分支</span></div><div class="line">$ git branch --no-merged</div><div class="line"></div><div class="line"><span class="comment"># 新建分支，但依然停留在当前分支</span></div><div class="line">$ git branch [branch-name]</div><div class="line"></div><div class="line"><span class="comment"># 新建分支，并切换到该分支</span></div><div class="line">$ git checkout -b [branch]</div><div class="line"></div><div class="line"><span class="comment"># 切换到指定分支</span></div><div class="line">$ git checkout [branch-name]</div><div class="line"></div><div class="line"><span class="comment"># 切换到上一个分支</span></div><div class="line">$ git checkout -</div><div class="line"></div><div class="line"><span class="comment"># 合并指定分支到当前分支</span></div><div class="line">$ git merge [branch]</div><div class="line"></div><div class="line"><span class="comment"># 合并远程master分支至当前分支</span></div><div class="line">$ git merge origin/master</div><div class="line"></div><div class="line"><span class="comment"># 删除分支</span></div><div class="line">$ git branch -d [branch-name]</div><div class="line"></div><div class="line"><span class="comment"># 删除远程分支</span></div><div class="line">$ git push origin --delete [branch-name]</div><div class="line">$ git branch -dr [remote/branch]</div><div class="line"></div><div class="line"><span class="comment"># 合并分支到master</span></div><div class="line">$ git checkout master</div><div class="line">$ git merge --no-ff branch-name</div><div class="line">$ git push orgin master</div></pre></td></tr></table></figure>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 列出所有tag</span></div><div class="line">$ git tag</div><div class="line"></div><div class="line"><span class="comment"># 新建一个tag在当前commit</span></div><div class="line">$ git tag [tag]</div><div class="line"></div><div class="line"><span class="comment"># 新建一个tag在指定commit</span></div><div class="line">$ git tag [tag] [commit]</div><div class="line"></div><div class="line"><span class="comment"># 删除本地tag</span></div><div class="line">$ git tag -d [tag]</div><div class="line"></div><div class="line"><span class="comment"># 删除远程tag</span></div><div class="line">$ git push origin :refs/tags/[tagName]</div><div class="line"></div><div class="line"><span class="comment"># 查看tag信息</span></div><div class="line">$ git show [tag]</div><div class="line"></div><div class="line"><span class="comment"># 提交指定tag</span></div><div class="line">$ git push [remote] [tag]</div><div class="line"></div><div class="line"><span class="comment"># 提交所有tag</span></div><div class="line">$ git push [remote] --tags</div><div class="line"></div><div class="line"><span class="comment"># 新建一个分支，指向某个tag</span></div><div class="line">$ git checkout -b [branch] [tag]</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Git </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 命令 </tag>
+            
+            <tag> Git </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[常用正则表达式汇总]]></title>
+      <url>/notes/2017/10/10/Regular-Expression/</url>
+      <content type="html"><![CDATA[<h2 id="数字校验"><a href="#数字校验" class="headerlink" title="数字校验"></a>数字校验</h2><ul>
+<li>数字：<code>^[0-9]*$</code></li>
+<li>n位的数字：<code>^\d{n}$</code></li>
+<li>m-n位的数字：<code>^\d{m,n}$</code></li>
+<li>至少n位的数字：<code>^\d{n,}$</code></li>
+<li>零和非零开头的数字：<code>^(0|[1-9][0-9]*)$</code> <a id="more"></a></li>
+<li>非零开头的最多带两位小数的数字：<code>^([1-9][0-9]*)+(.[0-9]{1,2})?$</code></li>
+<li>带1-2位小数的正数或负数：<code>^(\-)?\d+(\.\d{1,2})?$</code></li>
+<li>正数、负数、和小数：<code>^(\-|\+)?\d+(\.\d+)?$</code></li>
+<li>有两位小数的正实数：<code>^[0-9]+(.[0-9]{2})?$</code></li>
+<li>有1~3位小数的正实数：<code>^[0-9]+(.[0-9]{1,3})?$</code></li>
+<li>非零的正整数：<code>^[1-9]\d*$</code> <strong>或</strong> <code>^([1-9][0-9]*){1,3}$</code> <strong>或</strong> <code>^\+?[1-9][0-9]*$</code></li>
+<li>非零负整数：<code>^\-[1-9][]0-9″*$</code> <strong>或</strong> <code>^-[1-9]\d*$</code></li>
+<li>非负整数：<code>^\d+$</code> <strong>或</strong> <code>^[1-9]\d*|0$</code></li>
+<li>非正整数：<code>^-[1-9]\d*|0$</code> <strong>或</strong> <code>^((-\d+)|(0+))$</code></li>
+<li>非负浮点数：<code>^\d+(\.\d+)?$</code> <strong>或</strong> <code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$</code></li>
+<li>非正浮点数：<code>^((-\d+(\.\d+)?)|(0+(\.0+)?))$</code> <strong>或</strong> <code>^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$</code></li>
+<li>正浮点数：<code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$</code> <strong>或</strong> <code>^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$</code></li>
+<li>负浮点数：<code>^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$</code> <strong>或</strong> <code>^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$</code></li>
+<li>浮点数：<code>^(-?\d+)(\.\d+)?$</code> <strong>或</strong> <code>^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</code></li>
+</ul>
+<h2 id="字符校验"><a href="#字符校验" class="headerlink" title="字符校验"></a>字符校验</h2><ul>
+<li>汉字：<code>^[\u4e00-\u9fa5]{0,}$</code></li>
+<li>英文和数字：<code>^[A-Za-z0-9]+$</code> <strong>或</strong> <code>^[A-Za-z0-9]{4,40}$</code></li>
+<li>长度为3-20的所有字符：<code>^.{3,20}$</code></li>
+<li>由26个英文字母组成的字符串：<code>^[A-Za-z]+$</code></li>
+<li>由26个大写英文字母组成的字符串：<code>^[A-Z]+$</code></li>
+<li>由26个小写英文字母组成的字符串：<code>^[a-z]+$</code></li>
+<li>由数字和26个英文字母组成的字符串：<code>^[A-Za-z0-9]+$</code></li>
+<li>由数字、26个英文字母或者下划线组成的字符串：<code>^\w+$</code> <strong>或</strong> <code>^\w{3,20}$</code></li>
+<li>中文、英文、数字包括下划线：<code>^[\u4E00-\u9FA5A-Za-z0-9_]+$</code></li>
+<li>中文、英文、数字但不包括下划线等符号：<code>^[\u4E00-\u9FA5A-Za-z0-9]+$</code> <strong>或</strong> <code>^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</code></li>
+<li>可以输入含有<code>^%&amp;’,;=?$\”</code>等字符：<code>[^%&amp;&#39;,;=?$\x22]+</code></li>
+<li>禁止输入含有~的字符：<code>[^~\x22]+</code></li>
+</ul>
+<h2 id="特殊需求表达式"><a href="#特殊需求表达式" class="headerlink" title="特殊需求表达式"></a>特殊需求表达式</h2><ul>
+<li>Email地址：<code>^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</code></li>
+<li>域名：<code>[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</code></li>
+<li>InternetURL：<code>[a-zA-z]+://[^\s]*</code> 或 <code>^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</code> 或 <code>^http://(\w+(-\w+)*)(\.(\w+(-\w+)*))*(\?\S*)?$</code> 或 <code>^(http|www|ftp|)?(://)?(\w+(-\w+)*)(\.(\w+(-\w+)*))*((:\d+)?)(/(\w+(-\w+)*))*(\.?(\w)*)(\?)?(((\w*%)*(\w*\?)*(\w*:)*(\w*\+)*(\w*\.)*(\w*&amp;)*(\w*-)*(\w*=)*(\w*%)*(\w*\?)*(\w*:)*(\w*\+)*(\w*\.)*(\w*&amp;)*(\w*-)*(\w*=)*)*(\w*)*)$</code></li>
+<li>手机号码：<code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</code></li>
+<li>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：<code>^($$\d{3,4}-)|\d{3.4}-)?\d{7,8}$</code></li>
+<li>国内电话号码(0511-4405222、021-87888822)：<code>\d{3}-\d{8}|\d{4}-\d{7}</code></li>
+<li>身份证号(15位、18位数字)：<code>^\d{15}|\d{18}$</code></li>
+<li>短身份证号码(数字、字母x结尾)：<code>^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$</code></li>
+<li>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<code>^[a-zA-Z][a-zA-Z0-9_]{4,15}$</code></li>
+<li>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<code>^[a-zA-Z]\w{5,17}$</code></li>
+<li>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：<code>^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</code></li>
+<li>日期格式：<code>^\d{4}-\d{1,2}-\d{1,2}</code></li>
+<li>一年的12个月(01～09和1～12)：<code>^(0?[1-9]|1[0-2])$</code></li>
+<li>一个月的31天(01～09和1～31)：<code>^((0?[1-9])|((1|2)[0-9])|30|31)$</code></li>
+<li>钱的输入格式：<ul>
+<li>有四种钱的表示形式我们可以接受:”10000.00″ 和 “10,000.00″, 和没有 “分” 的 “10000″ 和 “10,000″：<code>^[1-9][0-9]*$</code></li>
+<li>这表示任意一个不以0开头的数字，但是，这也意味着一个字符”0″不通过，所以我们采用下面的形式：<code>^(0|[1-9][0-9]*)$</code></li>
+<li>一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：<code>^(0|-?[1-9][0-9]*)$</code></li>
+<li>这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉，因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：<code>^[0-9]+(.[0-9]+)?$</code></li>
+<li>必须说明的是，小数点后面至少应该有1位数，所以”10.”是不通过的，但是 “10″ 和 “10.2″ 是通过的：<code>^[0-9]+(.[0-9]{2})?$</code></li>
+<li>这样我们规定小数点后面必须有两位，如果你认为太苛刻了，可以这样：<code>^[0-9]+(.[0-9]{1,2})?$</code></li>
+<li>这样就允许用户只写一位小数。下面我们该考虑数字中的逗号了，我们可以这样：<code>^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</code></li>
+<li>1到3个数字，后面跟着任意个 逗号+3个数字，逗号成为可选，而不是必须：<code>^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</code></li>
+<li><strong>备注：</strong>这就是最终结果了，别忘了”+”可以用”*”替代。如果你觉得空字符串也可以接受的话(奇怪，为什么?)最后，别忘了在用函数时去掉去掉那个反斜杠，一般的错误都在这里</li>
+</ul>
+</li>
+<li>xml文件：<code>^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$</code></li>
+<li>中文字符的正则表达式：<code>[\u4e00-\u9fa5]</code></li>
+<li>双字节字符：<code>[^\x00-\xff]</code> (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</li>
+<li>空白行的正则表达式：<code>\n\s*\r</code> (可以用来删除空白行)</li>
+<li>HTML标记的正则表达式：<code>&lt;(\S*?)[^&gt;]*&gt;.*?&lt;/\1&gt;|&lt;.*? /&gt;</code> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</li>
+<li>首尾空白字符的正则表达式：<code>^\s*|\s*$或(^\s*)|(\s*$)</code> (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</li>
+<li>腾讯QQ号：<code>[1-9][0-9]{4,}</code> (腾讯QQ号从10000开始)</li>
+<li>中国邮政编码：<code>[1-9]\d{5}(?!\d)</code> (中国邮政编码为6位数字)</li>
+<li>IP地址：<code>\d+\.\d+\.\d+\.\d+</code> (提取IP地址时有用)</li>
+<li>IP地址：<code>((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</code></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 正则表达式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 正则表达式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/notes/2017/10/03/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Testing </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Testing </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
 </search>
