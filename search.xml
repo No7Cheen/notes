@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[autojump]]></title>
+    <url>%2Fnotes%2F2017%2F10%2F23%2Fmark-mac-autojump%2F</url>
+    <content type="text"><![CDATA[切换目录，在命令行的操作中没有比这个更频繁的动作了，又有什么比一遍又一遍 “cd ls cd ls ……” 更令人沮丧的事情呢，即便是使用了 zsh Alias。如果你不是百分百确定你想要进入的目录名字，那么你就避免不了频繁的使用这该死的 “cd ls”，但也可能离你的目标目录越走越远，越走越远。 所幸的是，现在大量的终端和 shell 都提供了强大的自动补全功能。但是，你仍需一直疯狂的敲击 TAB 来干这事。如果你是一个懒惰的人，和我一样，那么，当你发现 autojump 的时候，一定会对它感到惊喜不已。 autojump 是一个命令行工具，它允许你可以直接跳转到你喜爱的目录，而不用管你现在身在何处。 autojump 的基本用法autojump 的工作方式非常简单，它会在你每次启动命令的时候记录你的当前位置，并将它添加进数据库中。这样一来，某些目录添加的次数多于其它目录时，就代表着它比其他目录更重要，日常使用更频繁，那么它的“权重”就更大。 现在，无论你在哪个目录，你都可以使用下面的语法来直接跳转到目标目录： 1$ autojump [目录名 Or 目录名的一部分] 注意，你不需要输入完整的名称，因为 autojump 会检索它的数据库，并返回最可能的结果。 例如，我们有下面的目录结构： 那么，现在我想进入到 doc 目录，不管你当前在哪里，只需要在命令行输入下面的命令即可： 1$ j do # j 是autojump的默认别名 另一个比较好的功能是，autojump 支持 zsh 自动补全。如果你不确定那里是不是你要跳转的地方，TAB 键就会列出完整路径，再次 TAB 可进行选择： 1234567891011# 这是我电脑运行的结果$ j d__d__1__/Users/username/prj/Androidd__2__/Users/username/.emacs.dd__3__/Users/username/prj/Android/trunk/hAndroidd__4__/Users/username/prj_workspace/aDroidd__5__/Users/username/prj_outsourcing/trunk/MonitoingReportTablesDroidd__6__/Users/username/.vim/bundled__7__/Users/username/Downloadsd__8__/Users/username/prj/Android/trunk/ispatchAppd__9__/Users/username/prj/PAndroid 修改权重，如果你突然想要把当前目录变成你使用最频繁的文件夹，你可以在该目录通过命令的参数 i 来手工增加它的权重： 1$ autojump -i [权重] 这将使得该目录更可能被选择跳转。相反的例子是在该目录使用参数 d 来减少权重： 1$ autojump -d [权重] 要跟踪所有的改变，输入： 1$ autojump -s 这样，会显示数据库中所有的统计数据。 清除不再存在的目录： 1$ autojump --purge 对于高级用户，你可以访问目录数据库，并修改它的内容。可以使用下面的命令来手动添加一个目录： 1$ autojump -a [目录] 简言之，autojump 的简单实用将会受到所有命令行用户的欢迎。]]></content>
+      <categories>
+        <category>备忘录</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Mark</tag>
+        <tag>备忘录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GitHub 从源分支更新 Fork 分支]]></title>
+    <url>%2Fnotes%2F2017%2F10%2F23%2Fgithub-fork-update-from-upstreamo-riginal%2F</url>
+    <content type="text"><![CDATA[在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。 GitHub 操作Step1在 Fork 分支创建一个合并请求(New pull request)： Step2「New pull request」之后，需要对调 Base： Step3创建合并请求 Step4填写合并说明，（Update upstream：更新上游代码的意思） Step5这一步需要解决冲突，然后「Merge pull request」，最后不要忘记「Confirm merge」 通过命令行进行更新源代码123456789101112# clone你fork的项目$ git clone git@github.com:UserName/your-forked-repo.git$ cd fork-repo# 添加一个叫upstream的remote$ git remote add upstream git://github.com/original-dev-username/repo-you-forked-from.git# 然后fetch$ git fetch upstream# pull最新的代码到你的主分支中$ git pull upstream master]]></content>
+      <categories>
+        <category>备忘录</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Mac 终端环境 iTerm2 + Zsh + Oh My Zsh]]></title>
     <url>%2Fnotes%2F2017%2F10%2F19%2Fmark-memoa-iterm2-zsh%2F</url>
     <content type="text"><![CDATA[iTerm2 is a terminal emulator. It works on Macs with macOS 10.8 or newer. iTerm2iTerm2 官方网站：http://www.iterm2.com/ Solarized 配色Solarized 主页：http://ethanschoonover.com/solarized Get Solarized 配色包，这里使用 Git 方式克隆： 1$ git clone git://github.com/altercation/solarized.git 找到solarized/iterm2-colors-solarized/，双击添加配色 Zsh 配置安装Zsh 是 Mac 系统自带的，一般来说不是最新版本，可通过 Homebrew 安装最新版本： 1$ brew install zsh 修改默认 Shell在 /etc/shells 文件中加入 /usr/local/bin/zsh，并运行如下命令： 1$ chsh -s /usr/local/bin/zsh Oh My ZshOh My Zsh 是用来管理 Zsh 配置的，自带了很多很好用的基本配置。安装也非常简单，可参考主页：https://github.com/robbyrussell/oh-my-zsh。 Oh My Zsh 目录文件在 ~/.oh-my-zsh，包含了各种 Theme 和 Plugs，配置文件在 ~/.zshrc。 如需「修改/添加」配置，可编辑 ~/.zshrc。例如启用插件 Git、Autojumps，只需修改 ~/.zshrc 中对应的 pluins (大概在55行左右)，配置如下形式： 1$ plugins=(git autojumps osx) 快捷键 - 备忘录 选中即复制，鼠标中键粘贴 ⌃ + u：清空当前行 ⌃ + a：移动到行首 ⌃ + e：移动到行尾 ⌃ + f：向前移动 ⌃ + b：向后移动 ⌃ + p：上一条命令 ⌃ + n：下一条命令 ⌃ + r：搜索历史命令 ⌃ + y：召回最近用命令删除的文字 ⌃ + h：删除光标之前的字符 ⌃ + d：删除光标所指的字符 ⌃ + w：删除光标之前的单词 ⌃ + k：删除从光标到行尾的内容 ⌃ + t：交换光标和之前的字符 ⌘ + Click：打开文件、文件夹和链接 ⌘ + n：新建窗口 ⌘ + t：新建标签页 ⌘ + w：关闭当前页 ⌘ + 数字 &amp; ⌘ + 方向键：切换标签页 ⌥⌘ + 数字：切换窗口 ⌘ + enter：切换全屏 ⌘ + d：左右分屏 ⇧⌘ + d：上下分屏 ⌘ + ;：自动补全历史记录 ⇧⌘ + h：自动补全剪贴板历史 ⌥⌘ + e：查找所有来定位某个标签页 ⌘ + r &amp; ⌃ + l：清屏 ⌘ + /：显示光标位置 ⌥⌘ + b：历史回放 ⌘ + f：查找，配合使用 Tab、「⇧ + Tab」进行向右、向左补全，「⌥ + Enter」将查找结果输入终端]]></content>

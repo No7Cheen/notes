@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT, Blog, Android, HTML, javascript, Android Studio, Application, App, iOS, Web, Spring API, Spring, CSS, css3" />
+  <meta name="keywords" content="Mac,Mark,备忘录," />
 
 
 
@@ -119,16 +119,20 @@
 
 
 
-<meta name="description" content="关注技术，记录生活，分享感悟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="iSSExplorer&#39;s Notes">
-<meta property="og:url" content="https://rogerscj.github.io/notes/archives/2017/page/2/index.html">
+<meta name="description" content="切换目录，在命令行的操作中没有比这个更频繁的动作了，又有什么比一遍又一遍 “cd ls cd ls ……” 更令人沮丧的事情呢，即便是使用了 zsh Alias。如果你不是百分百确定你想要进入的目录名字，那么你就避免不了频繁的使用这该死的 “cd ls”，但也可能离你的目标目录越走越远，越走越远。 所幸的是，现在大量的终端和 shell 都提供了强大的自动补全功能。但是，你仍需一直疯狂的敲击 TA">
+<meta name="keywords" content="Mac,Mark,备忘录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="autojump">
+<meta property="og:url" content="https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/index.html">
 <meta property="og:site_name" content="iSSExplorer&#39;s Notes">
-<meta property="og:description" content="关注技术，记录生活，分享感悟">
+<meta property="og:description" content="切换目录，在命令行的操作中没有比这个更频繁的动作了，又有什么比一遍又一遍 “cd ls cd ls ……” 更令人沮丧的事情呢，即便是使用了 zsh Alias。如果你不是百分百确定你想要进入的目录名字，那么你就避免不了频繁的使用这该死的 “cd ls”，但也可能离你的目标目录越走越远，越走越远。 所幸的是，现在大量的终端和 shell 都提供了强大的自动补全功能。但是，你仍需一直疯狂的敲击 TA">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/QQ20171023-155134@2x.png">
+<meta property="og:updated_time" content="2017-10-23T08:46:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iSSExplorer&#39;s Notes">
-<meta name="twitter:description" content="关注技术，记录生活，分享感悟">
+<meta name="twitter:title" content="autojump">
+<meta name="twitter:description" content="切换目录，在命令行的操作中没有比这个更频繁的动作了，又有什么比一遍又一遍 “cd ls cd ls ……” 更令人沮丧的事情呢，即便是使用了 zsh Alias。如果你不是百分百确定你想要进入的目录名字，那么你就避免不了频繁的使用这该死的 “cd ls”，但也可能离你的目标目录越走越远，越走越远。 所幸的是，现在大量的终端和 shell 都提供了强大的自动补全功能。但是，你仍需一直疯狂的敲击 TA">
+<meta name="twitter:image" content="https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/QQ20171023-155134@2x.png">
 
 
 
@@ -158,13 +162,13 @@
 
 
 
-  <link rel="canonical" href="https://rogerscj.github.io/notes/archives/2017/page/2/"/>
+  <link rel="canonical" href="https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/"/>
 
 
 
 
 
-  <title>归档 | iSSExplorer's Notes</title>
+  <title>autojump | iSSExplorer's Notes</title>
   
 
 
@@ -193,7 +197,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -331,263 +335,271 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/23/mark-mac-autojump/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.搞不定">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/notes/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="iSSExplorer's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">autojump</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T15:00:00+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 16 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/notes/categories/备忘录/" itemprop="url" rel="index">
+                    <span itemprop="name">备忘录</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/notes/2017/10/11/Activity-生命周期/" itemprop="url">
-              
-                <span itemprop="name">Activity 生命周期</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-11T18:20:26+08:00"
-              content="2017-10-11" >
-          10-11
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/notes/2017/10/11/Adb-录屏/" itemprop="url">
-              
-                <span itemprop="name">adb 录屏</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-11T17:10:53+08:00"
-              content="2017-10-11" >
-          10-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/" itemprop="url">
-              
-                <span itemprop="name">Android Studio 插件配置: FindBugs</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-11T16:15:53+08:00"
-              content="2017-10-11" >
-          10-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>切换目录，在命令行的操作中没有比这个更频繁的动作了，又有什么比一遍又一遍 “cd ls cd ls ……” 更令人沮丧的事情呢，即便是使用了 zsh Alias。如果你不是百分百确定你想要进入的目录名字，那么你就避免不了频繁的使用这该死的 “cd ls”，但也可能离你的目标目录越走越远，越走越远。</p>
+<p>所幸的是，现在大量的终端和 shell 都提供了强大的自动补全功能。但是，你仍需一直疯狂的敲击 TAB 来干这事。如果你是一个懒惰的人，和我一样，那么，当你发现 <strong>autojump</strong> 的时候，一定会对它感到惊喜不已。</p>
+<p><a href="https://github.com/wting/autojump" target="_blank" rel="external"><strong>autojump</strong></a> 是一个命令行工具，它允许你可以直接跳转到你喜爱的目录，而不用管你现在身在何处。</p>
+<h3 id="autojump-的基本用法"><a href="#autojump-的基本用法" class="headerlink" title="autojump 的基本用法"></a>autojump 的基本用法</h3><p>autojump 的工作方式非常简单，它会在你每次启动命令的时候记录你的当前位置，并将它添加进数据库中。这样一来，某些目录添加的次数多于其它目录时，就代表着它比其他目录更重要，日常使用更频繁，那么它的“权重”就更大。</p>
+<p>现在，无论你在哪个目录，你都可以使用下面的语法来直接跳转到目标目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump [目录名 Or 目录名的一部分]</div></pre></td></tr></table></figure>
+<div class="note success"><p>注意，你不需要输入完整的名称，因为 autojump 会检索它的数据库，并返回最可能的结果。</p></div>
+<a id="more"></a>
+<p>例如，我们有下面的目录结构：</p>
+<img src="/notes/2017/10/23/mark-mac-autojump/QQ20171023-155134@2x.png" alt="QQ20171023-155134@2x.png" title="">
+<p>那么，现在我想进入到 <strong>doc</strong> 目录，不管你当前在哪里，只需要在命令行输入下面的命令即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ j <span class="keyword">do</span>      <span class="comment"># j 是autojump的默认别名</span></div></pre></td></tr></table></figure>
+<p>另一个比较好的功能是，autojump 支持 zsh 自动补全。如果你不确定那里是不是你要跳转的地方，<strong>TAB</strong> 键就会列出完整路径，再次 TAB 可进行选择：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 这是我电脑运行的结果</span></div><div class="line">$ j d__</div><div class="line">d__1__/Users/username/prj/Android</div><div class="line">d__2__/Users/username/.emacs.d</div><div class="line">d__3__/Users/username/prj/Android/trunk/hAndroid</div><div class="line">d__4__/Users/username/prj_workspace/aDroid</div><div class="line">d__5__/Users/username/prj_outsourcing/trunk/MonitoingReportTablesDroid</div><div class="line">d__6__/Users/username/.vim/bundle</div><div class="line">d__7__/Users/username/Downloads</div><div class="line">d__8__/Users/username/prj/Android/trunk/ispatchApp</div><div class="line">d__9__/Users/username/prj/PAndroid</div></pre></td></tr></table></figure>
+<p>修改权重，如果你突然想要把当前目录变成你使用最频繁的文件夹，你可以在该目录通过命令的参数 <strong>i</strong> 来手工增加它的权重：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump -i [权重]</div></pre></td></tr></table></figure>
+<p>这将使得该目录更可能被选择跳转。相反的例子是在该目录使用参数 <strong>d</strong> 来减少权重：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump -d [权重]</div></pre></td></tr></table></figure>
+<p>要跟踪所有的改变，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump -s</div></pre></td></tr></table></figure>
+<p>这样，会显示数据库中所有的统计数据。</p>
+<p>清除不再存在的目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump --purge</div></pre></td></tr></table></figure>
+<p>对于高级用户，你可以访问目录数据库，并修改它的内容。可以使用下面的命令来手动添加一个目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump -a [目录]</div></pre></td></tr></table></figure>
+<p>简言之，autojump 的简单实用将会受到所有命令行用户的欢迎。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/notes/2017/10/10/Git-命令清单/" itemprop="url">
-              
-                <span itemprop="name">Git 命令清单</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-10T22:40:43+08:00"
-              content="2017-10-10" >
-          10-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/notes/2017/10/10/Regular-Expression/" itemprop="url">
-              
-                <span itemprop="name">常用正则表达式汇总</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-10T21:07:27+08:00"
-              content="2017-10-10" >
-          10-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/notes/2017/10/03/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-03T16:15:30+08:00"
-              content="2017-10-03" >
-          10-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>爱打赏的人，运气都不会太差~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/notes/images/wechatpay.jpeg" alt="Mr.搞不定 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/notes/images/alipay.jpeg" alt="Mr.搞不定 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mr.搞不定
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/" title="autojump">https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/notes/tags/Mac/" rel="tag"># Mac</a>
+          
+            <a href="/notes/tags/Mark/" rel="tag"># Mark</a>
+          
+            <a href="/notes/tags/备忘录/" rel="tag"># 备忘录</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/" rel="next" title="GitHub 从源分支更新 Fork 分支">
+                <i class="fa fa-chevron-left"></i> GitHub 从源分支更新 Fork 分支
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/notes/archives/2017/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/notes/archives/2017/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2146317" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -595,6 +607,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -615,8 +641,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -827,6 +862,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#autojump-的基本用法"><span class="nav-number">1.</span> <span class="nav-text">autojump 的基本用法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -954,6 +1005,10 @@
 
 
   
+  <script type="text/javascript" src="/notes/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/notes/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -969,6 +1024,18 @@
 
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/';
+          this.page.identifier = '2017/10/23/mark-mac-autojump/';
+          this.page.title = 'autojump';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://rogerscj.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
@@ -1328,26 +1395,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
