@@ -127,7 +127,7 @@
 <meta property="og:site_name" content="iSSExplorer&#39;s Notes">
 <meta property="og:description" content="Kotlin 是 JetBrains 开发的基于 JVM 的语言。可以同 Java 无缝对接，也就是说用 Kotlin 可以直接调用已有的 Java 库。这段时间在用 Kotlin 开发 Android APP 的功能模块，边学边用，边用边学。本博记录下 Kotlin 相关的一些知识点，参考内容主要来自于 Kotlin的官网。 定义包包的声明应处于源文件顶部，源文件所有内容（无论是类还是函数）都包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-22T05:50:03.129Z">
+<meta property="og:updated_time" content="2017-11-22T07:32:16.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kotlin 学习（一）基本语法">
 <meta name="twitter:description" content="Kotlin 是 JetBrains 开发的基于 JVM 的语言。可以同 Java 无缝对接，也就是说用 Kotlin 可以直接调用已有的 Java 库。这段时间在用 Kotlin 开发 Android APP 的功能模块，边学边用，边用边学。本博记录下 Kotlin 相关的一些知识点，参考内容主要来自于 Kotlin的官网。 定义包包的声明应处于源文件顶部，源文件所有内容（无论是类还是函数）都包">
@@ -442,7 +442,7 @@
 <p>如果没有指明包，该文件的内容属于无名字的默认包。</p>
 <p>引入包，使用 <code>import</code> 关键字，与 Java 相同：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> foo.bar</div><div class="line"><span class="keyword">import</span> java.util.*</div><div class="line"><span class="keyword">import</span> foo.bar <span class="keyword">as</span> barAlias</div></pre></td></tr></table></figure>
-<p>注意上面的 <strong><code>as</code></strong> 关键字，即，引入包命名一个别名，这时，在使用的时候可用别名 <code>barAlias</code> 替代 <code>bar</code></p>
+<div class="note success"><p>注意：<br>上面的 <strong><code>as</code></strong> 关键字，即引入包名的一个别名，这时，在使用的时候可用别名 <code>barAlias</code> 替代 <code>bar</code></p></div>
 <a id="more"></a>
 <h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>Kotlin 中的函数使用 <strong><code>fun</code></strong> 关键字声明，具体参考 <a href="https://rogerscj.gitbooks.io/kotlin/content/txt/functions.html" target="_blank" rel="external">函数</a>。</p>
 <p>这里给出几种常见的函数表示方式，FYI:</p>
@@ -550,8 +550,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/" rel="next" title="GitHub 从源分支更新 Fork 分支">
-                <i class="fa fa-chevron-left"></i> GitHub 从源分支更新 Fork 分支
+              <a href="/notes/2017/10/23/mark-mac-autojump/" rel="next" title="autojump">
+                <i class="fa fa-chevron-left"></i> autojump
               </a>
             
           </div>
