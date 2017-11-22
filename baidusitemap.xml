@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://rogerscj.github.io/notes/notes/2017/10/23/mark-mac-autojump/</loc>
+    <lastmod>2017-11-22T07:34:37.036Z</lastmod>
+    <data>
+        <display>
+        <title>autojump</title>
+        <pubTime>2017-10-23T07:00:00.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+        <tag>Mark</tag>
+         
+        <tag>备忘录</tag>
+         
+         
+           
+             
+              <breadCrumb title="备忘录" url="https://rogerscj.github.io/notes/notes/categories/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://rogerscj.github.io/notes/notes/2017/11/22/kotlin-1/</loc>
     <lastmod>2017-11-22T07:32:16.297Z</lastmod>
     <data>
@@ -57,30 +81,6 @@
            
              
               <breadCrumb title="正则表达式" url="https://rogerscj.github.io/notes/notes/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://rogerscj.github.io/notes/notes/2017/10/23/mark-mac-autojump/</loc>
-    <lastmod>2017-10-23T08:46:54.000Z</lastmod>
-    <data>
-        <display>
-        <title>autojump</title>
-        <pubTime>2017-10-23T07:00:00.000Z</pubTime>
-        
-        <tag>Mac</tag>
-         
-        <tag>Mark</tag>
-         
-        <tag>备忘录</tag>
-         
-         
-           
-             
-              <breadCrumb title="备忘录" url="https://rogerscj.github.io/notes/notes/categories/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
           
         </display>
     </data>
