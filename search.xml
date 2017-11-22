@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Kotlin 学习（二）常用操作符]]></title>
     <url>%2Fnotes%2F2017%2F11%2F22%2Fkotlin-2%2F</url>
-    <content type="text"><![CDATA[类型检测及自动类型转换「is」「is」 检查某个实例是否是某个类型。 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换： 1234567891011// Startfun getStringLength(obj: Any): Int? &#123; if (obj is String) &#123; // `obj` 在该条件分支内自动转换成 `String` return obj.length &#125; // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型 return null&#125;// End 或者 12345678// Startfun getStringLength(obj: Any): Int? &#123; if (obj !is String) return null // `obj` 在这一分支自动转换为 `String` return obj.length&#125;// End 甚至 12345678910// Startfun getStringLength(obj: Any): Int? &#123; // `obj` 在 `&amp;&amp;` 右边自动转换成 `String` 类型 if (obj is String &amp;&amp; obj.length &gt; 0) &#123; return obj.length &#125; return null&#125;// End 类型转换「as」和安全转换「as?」除了上面介绍的自动类型转化「is」，我们还可以使用关键字「as」对一个变量进行类型转化。 1val x: String = y as String 注意：上面的表达式中 y 为 null 时会抛出异常，所以上面的的类型转换可以改进下： 1val x: String? = y as String? 当使用「as」转型的时候，如果类型转换失败就会抛出异常 ClassCastException。 所以，现在可以使「as?」安全转型，当转型不成功的时候，它会返回 null。 1val x: String? = y as? String 建议：为安全起见尽量避免使用「as」，改用「as?」是最好的选择。 二目运算符（Elvis Operator）「?:」Java 和 C 里面三目运算是很常见的，其实就是 if-else 的简写形式。看一个简单的 Java 三目运算表达式： 1String y = (x != null) ? x : "" 在 Kotlin 有专门的运算符，即「?:」，「?:」将表达式分为前后（左右）两部分，前部分进行判断并返回其结果，否则返回后部分的结果。上面 Java 对应的 Kotlin 写法： 1val y = x != null ?: "" 强制解包运算符「!!」「!!」，暂且叫它强制解包吧。 12var x: String? = "x"val y: Int = x!!.length 值得注意的是，「!!」用于可以为空的的引用（如上面的的x），当值不为空时，为正常运行；当值为空时，抛出异常NullPointerException。 冒号「:」「:」冒号之于 Kotlin 太常见了，类型声明、继承、函数返回等。 类型和超类型之间的冒号前要有一个空格，而实例和类型之间的冒号前不要有空格： 12345678910// 定义全局变量时var str: String? = nullinterface Foo&lt;out T : Any&gt; : Bar &#123; fun foo(a: Int): T&#125;// 类的继承与变量定义class KotlinTestActivity&lt;T : Serializable&gt;(name: String) : Activity() &#123;&#125; 范围操作符「..」以及「in」范围操作符可以用来做迭代操作，是用in来实现的。 以下是使用区间的一些示例： 123if (i in 1..4) print(i) // 等同于 1 &lt;= i &amp;&amp; i &lt;= 4, 输出“1234”for (i in 4..1) print(i) // 什么都不输出 倒序操作 downTo 1for (i in 4 downTo 1) print(i) // 输出“4321” 控制迭代的步长，使用step() 123for (i in 1..4 step 2) print(i) // 输出“13”for (i in 4 downTo 1 step 2) print(i) // 输出“42” in 是一个闭区间范围，如果要创建一个不包括其结束元素的区间，可以使用 until 函数 123for (i in 1 until 10) &#123; // i in [1, 10) 排除了 10 println(i)&#125; 多行输入符 三个双引号多行文本符，也就是说在三引号之间输入的内容将被原样保留，之中的单号和双引号不用转义，其中的不可见字符比如/n和/t都会被保留。 1234567valstr = """ one two """//等价于val str = "one\ntwo"val str = "one"+"\n"+"two"]]></content>
+    <content type="text"><![CDATA[类型检测及自动类型转换「is」「is」 检查某个实例是否是某个类型。 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换： 1234567891011// Startfun getStringLength(obj: Any): Int? &#123; if (obj is String) &#123; // `obj` 在该条件分支内自动转换成 `String` return obj.length &#125; // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型 return null&#125;// End 或者 12345678// Startfun getStringLength(obj: Any): Int? &#123; if (obj !is String) return null // `obj` 在这一分支自动转换为 `String` return obj.length&#125;// End 甚至 12345678910// Startfun getStringLength(obj: Any): Int? &#123; // `obj` 在 `&amp;&amp;` 右边自动转换成 `String` 类型 if (obj is String &amp;&amp; obj.length &gt; 0) &#123; return obj.length &#125; return null&#125;// End 类型转换「as」和安全转换「as?」除了上面介绍的自动类型转化「is」，我们还可以使用关键字「as」对一个变量进行类型转化。 1val x: String = y as String 注意，上面的表达式中 y 为 null 时会抛出异常。 上面的的类型转换可以改进下： undefined 当使用**「as」**转型的时候，如果类型转换失败就会抛出异常 **ClassCastException**。 所以，现在可以使**「as?」**安全转型，当转型不成功的时候，它会返回 null。 undefined 建议，为安全起见尽量避免使用「as」，改用「as?」是最好的选择。 二目运算符（Elvis Operator）「?:」Java 和 C 里面三目运算是很常见的，其实就是 if-else 的简写形式。看一个简单的 Java 三目运算表达式： 1String y = (x != null) ? x : "" 在 Kotlin 有专门的运算符，即「?:」，「?:」将表达式分为前后（左右）两部分，前部分进行判断并返回其结果，否则返回后部分的结果。上面 Java 对应的 Kotlin 写法： 1val y = x != null ?: "" 强制解包运算符「!!」「!!」，暂且叫它强制解包吧。 12var x: String? = "x"val y: Int = x!!.length 值得注意的是，「!!」用于可以为空的的引用（如上面的的x），当值不为空时，为正常运行；当值为空时，抛出异常 NullPointerException。 冒号「:」「:」冒号之于 Kotlin 太常见了，类型声明、继承、函数返回等。 类型和超类型之间的冒号前要有一个空格，而实例和类型之间的冒号前不要有空格： 12345678910// 定义全局变量时var str: String? = nullinterface Foo&lt;out T : Any&gt; : Bar &#123; fun foo(a: Int): T&#125;// 类的继承与变量定义class KotlinTestActivity&lt;T : Serializable&gt;(name: String) : Activity() &#123;&#125; 范围操作符「..」以及「in」范围操作符可以用来做迭代操作，是用in来实现的。 以下是使用区间的一些示例： 123if (i in 1..4) print(i) // 等同于 1 &lt;= i &amp;&amp; i &lt;= 4, 输出“1234”for (i in 4..1) print(i) // 什么都不输出 倒序操作 downTo 1for (i in 4 downTo 1) print(i) // 输出“4321” 控制迭代的步长，使用step() 123for (i in 1..4 step 2) print(i) // 输出“13”for (i in 4 downTo 1 step 2) print(i) // 输出“42” in 是一个闭区间范围，如果要创建一个不包括其结束元素的区间，可以使用 until 函数 123for (i in 1 until 10) &#123; // i in [1, 10) 排除了 10 println(i)&#125; 多行输入符 三个双引号多行文本符，也就是说在三引号之间输入的内容将被原样保留，之中的单号和双引号不用转义，其中的不可见字符比如 /n 和 /t 都会被保留。 1234567valstr = """ one two """//等价于val str = "one\ntwo"val str = "one"+"\n"+"two"]]></content>
       <categories>
         <category>Kotlin</category>
       </categories>
@@ -167,9 +167,9 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>命令</tag>
         <tag>Android</tag>
         <tag>Adb</tag>
+        <tag>命令</tag>
       </tags>
   </entry>
   <entry>
@@ -193,8 +193,8 @@
         <category>Git</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>命令</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>

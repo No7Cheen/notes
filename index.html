@@ -446,11 +446,17 @@
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Start</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;</div><div class="line">    <span class="comment">// `obj` 在 `&amp;&amp;` 右边自动转换成 `String` 类型</span></div><div class="line">    <span class="keyword">if</span> (obj <span class="keyword">is</span> String &amp;&amp; obj.length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> obj.length</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// End</span></div></pre></td></tr></table></figure>
 <h3 id="类型转换「as」和安全转换「as-」"><a href="#类型转换「as」和安全转换「as-」" class="headerlink" title="类型转换「as」和安全转换「as?」"></a>类型转换「as」和安全转换「as?」</h3><p>除了上面介绍的自动类型转化「is」，我们还可以使用关键字「as」对一个变量进行类型转化。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String = y <span class="keyword">as</span> String</div></pre></td></tr></table></figure>
-<p>注意：上面的表达式中 <strong>y</strong> 为 null 时会抛出异常，所以上面的的类型转换可以改进下：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String? = y <span class="keyword">as</span> String?</div></pre></td></tr></table></figure>
-<p>当使用<strong>「as」</strong>转型的时候，如果类型转换失败就会抛出异常 <strong>ClassCastException</strong>。 所以，现在可以使<strong>「as?」</strong>安全转型，当转型不成功的时候，它会返回 null。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String? = y <span class="keyword">as</span>? String</div></pre></td></tr></table></figure>
-<p>建议：为安全起见尽量避免使用<strong>「as」</strong>，改用<strong>「as?」</strong>是最好的选择。</p>
+<div class="note success"><p>注意，上面的表达式中 <strong>y</strong> 为 null 时会抛出异常。</p></div>
+
+上面的的类型转换可以改进下：
+
+undefined
+
+当使用**「as」**转型的时候，如果类型转换失败就会抛出异常 **ClassCastException**。 所以，现在可以使**「as?」**安全转型，当转型不成功的时候，它会返回 null。
+
+undefined
+
+<div class="note success"><p>建议，为安全起见尽量避免使用<strong>「as」</strong>，改用<strong>「as?」</strong>是最好的选择。</p></div>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/notes/2017/11/22/kotlin-2/#more" rel="contents">
