@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Kotlin," />
 
 
 
@@ -119,20 +119,18 @@
 
 
 
-<meta name="description" content="标记，Tag 一下记录下签名生成的过程，方便下次使用。">
-<meta name="keywords" content="Android">
+<meta name="description" content="Kotlin 是 JetBrains 开发的基于 JVM 的语言。可以同 Java 无缝对接，也就是说用 Kotlin 可以直接调用已有的 Java 库。这段时间在用 Kotlin 开发 Android APP 的功能模块，边学边用，边用边学。本博记录下 Kotlin 相关的一些知识点，参考内容主要来自于 Kotlin的官网。 定义包包的声明应处于源文件顶部，源文件所有内容（无论是类还是函数）都包">
+<meta name="keywords" content="Kotlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="APK 签名文件">
-<meta property="og:url" content="https://rogerscj.github.io/notes/2017/10/12/apk-signature/index.html">
+<meta property="og:title" content="Kotlin 学习（一）基本语法">
+<meta property="og:url" content="https://rogerscj.github.io/notes/2017/11/22/kotlin-1/index.html">
 <meta property="og:site_name" content="iSSExplorer&#39;s Notes">
-<meta property="og:description" content="标记，Tag 一下记录下签名生成的过程，方便下次使用。">
+<meta property="og:description" content="Kotlin 是 JetBrains 开发的基于 JVM 的语言。可以同 Java 无缝对接，也就是说用 Kotlin 可以直接调用已有的 Java 库。这段时间在用 Kotlin 开发 Android APP 的功能模块，边学边用，边用边学。本博记录下 Kotlin 相关的一些知识点，参考内容主要来自于 Kotlin的官网。 定义包包的声明应处于源文件顶部，源文件所有内容（无论是类还是函数）都包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/12/apk-signature/QQ20171012-170824@2x.png">
-<meta property="og:updated_time" content="2017-10-17T09:09:56.000Z">
+<meta property="og:updated_time" content="2017-11-22T05:50:03.129Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="APK 签名文件">
-<meta name="twitter:description" content="标记，Tag 一下记录下签名生成的过程，方便下次使用。">
-<meta name="twitter:image" content="https://rogerscj.github.io/notes/2017/10/12/apk-signature/QQ20171012-170824@2x.png">
+<meta name="twitter:title" content="Kotlin 学习（一）基本语法">
+<meta name="twitter:description" content="Kotlin 是 JetBrains 开发的基于 JVM 的语言。可以同 Java 无缝对接，也就是说用 Kotlin 可以直接调用已有的 Java 库。这段时间在用 Kotlin 开发 Android APP 的功能模块，边学边用，边用边学。本博记录下 Kotlin 相关的一些知识点，参考内容主要来自于 Kotlin的官网。 定义包包的声明应处于源文件顶部，源文件所有内容（无论是类还是函数）都包">
 
 
 
@@ -162,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="https://rogerscj.github.io/notes/2017/10/12/apk-signature/"/>
+  <link rel="canonical" href="https://rogerscj.github.io/notes/2017/11/22/kotlin-1/"/>
 
 
 
 
 
-  <title>APK 签名文件 | iSSExplorer's Notes</title>
+  <title>Kotlin 学习（一）基本语法 | iSSExplorer's Notes</title>
   
 
 
@@ -349,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/12/apk-signature/">
+    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/11/22/kotlin-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.搞不定">
@@ -366,7 +364,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">APK 签名文件</h1>
+          <h1 class="post-title" itemprop="name headline">Kotlin 学习（一）基本语法</h1>
         
 
         <div class="post-meta">
@@ -378,8 +376,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T17:10:49+08:00">
-                2017-10-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T10:15:14+08:00">
+                2017-11-22
               </time>
             
 
@@ -401,8 +399,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/notes/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/notes/categories/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
                   </a>
                 </span>
 
@@ -438,27 +436,43 @@
       
 
       
-        <blockquote>
-<p>标记，<strong>Tag 一下</strong><br>记录下签名生成的过程，方便下次使用。</p>
-</blockquote>
+        <p><a href="https://github.com/JetBrains/kotlin" target="_blank" rel="external">Kotlin</a> 是 <a href="https://www.jetbrains.com/" target="_blank" rel="external">JetBrains</a> 开发的基于 JVM 的语言。可以同 Java 无缝对接，也就是说用 Kotlin 可以直接调用已有的 Java 库。这段时间在用 Kotlin 开发 Android APP 的功能模块，边学边用，边用边学。本博记录下 Kotlin 相关的一些知识点，参考内容主要来自于 <a href="http://kotlinlang.org/docs/reference/basic-syntax.html" target="_blank" rel="external">Kotlin的官网</a>。</p>
+<h3 id="定义包"><a href="#定义包" class="headerlink" title="定义包"></a>定义包</h3><p>包的声明应处于源文件顶部，源文件所有内容（无论是类还是函数）都包含在声明的包内。如下所示，方法 <code>baz()</code> 的全名就是 <code>foo.bar.baz()</code>，<code>Goo</code> 的全名就是 <code>foo.bar.Goo</code>。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> foo.bar</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">baz</span><span class="params">()</span></span> &#123;&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goo</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>如果没有指明包，该文件的内容属于无名字的默认包。</p>
+<p>引入包，使用 <code>import</code> 关键字，与 Java 相同：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> foo.bar</div><div class="line"><span class="keyword">import</span> java.util.*</div><div class="line"><span class="keyword">import</span> foo.bar <span class="keyword">as</span> barAlias</div></pre></td></tr></table></figure>
+<p>注意上面的 <strong><code>as</code></strong> 关键字，即，引入包命名一个别名，这时，在使用的时候可用别名 <code>barAlias</code> 替代 <code>bar</code></p>
 <a id="more"></a>
-<p>简单来说，签名就是个标识，它可以保证 APP 正常升级，并且不被别人覆盖。</p>
-<h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><ul>
-<li>java jdk</li>
-<li>keytool 密钥和证书管理工具,可以用来生成证书</li>
-</ul>
-<p>使用 <code>keytool</code> 生成证书：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 文件名和别名相同，为: test.keystore</span></div><div class="line">$ keytool -genkey -<span class="built_in">alias</span> test.keystore -keyalg RSA -validity 20000 -keystore test.keystore</div></pre></td></tr></table></figure>
-<p>参数解释:</p>
-<ul>
-<li>-genkey 产生证书文件</li>
-<li>-keystore 指定密钥库的.keystore文件中</li>
-<li>-keyalg 指定密钥的算法,这里指定为RSA(非对称密钥算法)</li>
-<li>-validity 为证书有效天数，这里我们写的是10000天</li>
-<li>-alias 产生别名</li>
-</ul>
-<img src="/notes/2017/10/12/apk-signature/QQ20171012-170824@2x.png" alt="QQ20171012-170824@2x.png" title="">
-<h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -list -keystore test.keystore</div></pre></td></tr></table></figure>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>Kotlin 中的函数使用 <strong><code>fun</code></strong> 关键字声明，具体参考 <a href="https://rogerscj.gitbooks.io/kotlin/content/txt/functions.html" target="_blank" rel="external">函数</a>。</p>
+<p>这里给出几种常见的函数表示方式，FYI:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个返回值为 Int, 并需要 2 个 Int 参数的函数</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数 sum 的简写方式</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> = a + b</div><div class="line"></div><div class="line"><span class="comment">// 无返回值的函数，使用 Unit, 或者省略 Unit</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Unit</span> &#123;</div><div class="line">    print(a + b)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 带有默认参数的函数</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span> = <span class="number">0</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="定义常量和变量"><a href="#定义常量和变量" class="headerlink" title="定义常量和变量"></a>定义常量和变量</h3><p>Kotlin 可变属性的声明可以用关键字 <strong><code>var</code></strong>，否则使用只读关键字 <strong><code>val</code></strong>。</p>
+<p>对于变量和常量我们需要指定其类型，如果在定义的时候给定了初始值，则 Kotlin 可以直接根据赋值推断出变量的类型，这时，类型的指定可以省略。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> a: <span class="built_in">Int</span> = <span class="number">0</span></div><div class="line"><span class="keyword">val</span> b = <span class="number">1</span>f      <span class="comment">// 可推断出类型为 Float</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> name: String? = ....</div></pre></td></tr></table></figure>
+<p>声明属性的完整语法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &lt;propertyName&gt;[: &lt;PropertyType&gt;] [= &lt;property_initializer&gt;]</div><div class="line">    [&lt;getter&gt;]</div><div class="line">    [&lt;setter&gt;]</div></pre></td></tr></table></figure>
+<p>上面只是最最简单的一个介绍，具体参考：<a href="https://rogerscj.gitbooks.io/kotlin/content/txt/properties.html" target="_blank" rel="external">属性和字段</a></p>
+<h3 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h3><p>字符串可以包含模板表达式 ，即一些小段代码，会求值并把结果合并到字符串中。 模板表达式以美元符<strong>（$）</strong>开头，由一个简单的名字构成:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> i = <span class="number">10</span></div><div class="line"><span class="keyword">val</span> s = <span class="string">"i = <span class="variable">$i</span>"</span> <span class="comment">// 求值结果为 "i = 10"</span></div></pre></td></tr></table></figure>
+<p>或者用花括号括起来的任意表达式:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> s = <span class="string">"abc"</span></div><div class="line"><span class="keyword">val</span> str = <span class="string">"<span class="variable">$s</span>.length is <span class="subst">$&#123;s.length&#125;</span>"</span> <span class="comment">// 求值结果为 "abc.length is 3"</span></div></pre></td></tr></table></figure>
+<p>原生字符串和转义字符串内部都支持模板。 如果你需要在原生字符串中表示字面值 <strong>$</strong> 字符（它不支持反斜杠转义），你可以用下列语法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> price = <span class="string">"""</span></div><div class="line"><span class="string"><span class="subst">$&#123;<span class="string">'$'</span>&#125;</span>9.99</span></div><div class="line"><span class="string">"""</span></div></pre></td></tr></table></figure>
+<h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><p>与 Java 相同，对条件的判断也是使用 <code>if else</code>。不同之处是 <code>if else</code> 可以直接作为一个表达式赋值给一个变量或者定义为一个方法。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个方法</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">max</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span> = <span class="keyword">if</span> (a &gt; b) a <span class="keyword">else</span> b</div><div class="line"></div><div class="line"><span class="comment">// 定义一个变量</span></div><div class="line"><span class="keyword">val</span> max = <span class="keyword">if</span> (a &gt; b) a <span class="keyword">else</span> b</div></pre></td></tr></table></figure>
+<p>在 Kotlin 中，<code>if</code> 是一个表达式，即它会返回一个值。 因此就不需要三元运算符（<code>条件 ? 然后 : 否则</code>），因为普通的 <code>if</code> 就能胜任这个角色。</p>
+<p>各种控制流（如：for、when），参考：<a href="https://rogerscj.gitbooks.io/kotlin/content/txt/control-flow.html#if-表达式" target="_blank" rel="external">控制流</a></p>
+<h3 id="Null-检测"><a href="#Null-检测" class="headerlink" title="Null 检测"></a>Null 检测</h3><p>看到 <strong>Null</strong>，我们就能联想到让我们深恶痛绝的 <strong>NullPointerException</strong>，这应该是所有搞 Java 开发的同学的共识吧，这玩意带来的毁灭性的系统崩溃实在是太多太多，也太常见了。然后，我们不得不添加一大堆 <code>if(xxx != null)</code> 之类的判定语句。这个也是 Kotlin 一开始吸引我的地方吧。</p>
+<p>Kotlin 在 <code>Null</code> 检测方面可以说做的更佳体贴程序员。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a: String = <span class="string">"abc"</span></div><div class="line">a = <span class="literal">null</span>                <span class="comment">// 编译错误</span></div></pre></td></tr></table></figure>
+<p>对于允许为 <code>null</code> 的变量，我们需要加上关键字 <strong><code>?</code></strong> 来告诉编译器，使用过程中使用语法 <strong><code>?.</code></strong> 即可。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b: String? = <span class="string">"abc"</span></div><div class="line">b = <span class="literal">null</span>                <span class="comment">// OK</span></div><div class="line"></div><div class="line"><span class="keyword">val</span> len = b?.length     <span class="comment">// OK，注意这里使用了 ?.， 如果直接访问 b.lenght，在 b 为 null 时仍会异常</span></div></pre></td></tr></table></figure>
+<p><code>b?.length</code>，当 <code>b</code> 为 null 时不会抛出 NullPointerException，而是返回 <code>null</code>；非 null 情况下，返回 <code>b.length</code>，这样就不需要在访问 <code>b.length</code> 之前使用 <code>if(b != null)</code> 了。</p>
+<p>现，我们假设一个 Class A 有一个成员变量 b，b 为 Class B 类型，B 有成员变量 c，现在我们要用一个 A 类型的对象 a 访问 c。传统的 Java 写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String tmp;</div><div class="line"><span class="keyword">if</span>(a != <span class="keyword">null</span> &amp;&amp; a.b != <span class="keyword">null</span>) &#123;</div><div class="line">    tmp = a.b.c;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看看上面的代码，显得有点麻烦，再对比下 Kotlin 的写法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> tmp = a?.b?.c</div><div class="line"><span class="keyword">val</span> len = a?.b?.c?.length       <span class="comment">// c 的长度，或者 null</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -508,7 +522,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://rogerscj.github.io/notes/2017/10/12/apk-signature/" title="APK 签名文件">https://rogerscj.github.io/notes/2017/10/12/apk-signature/</a>
+    <a href="https://rogerscj.github.io/notes/2017/11/22/kotlin-1/" title="Kotlin 学习（一）基本语法">https://rogerscj.github.io/notes/2017/11/22/kotlin-1/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -523,7 +537,7 @@
       
         <div class="post-tags">
           
-            <a href="/notes/tags/Android/" rel="tag"># Android</a>
+            <a href="/notes/tags/Kotlin/" rel="tag"># Kotlin</a>
           
         </div>
       
@@ -536,8 +550,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/notes/2017/10/11/Activity-生命周期/" rel="next" title="Activity 生命周期">
-                <i class="fa fa-chevron-left"></i> Activity 生命周期
+              <a href="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/" rel="next" title="GitHub 从源分支更新 Fork 分支">
+                <i class="fa fa-chevron-left"></i> GitHub 从源分支更新 Fork 分支
               </a>
             
           </div>
@@ -546,8 +560,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/" rel="prev" title="Hexo 搭建 GitHub 博客（I）- 环境搭建">
-                Hexo 搭建 GitHub 博客（I）- 环境搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/notes/2017/11/22/kotlin-2/" rel="prev" title="Kotlin 学习（二）常用操作符">
+                Kotlin 学习（二）常用操作符 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -866,7 +880,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tools"><span class="nav-number">1.</span> <span class="nav-text">Tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看信息"><span class="nav-number">2.</span> <span class="nav-text">查看信息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义包"><span class="nav-number">1.</span> <span class="nav-text">定义包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义函数"><span class="nav-number">2.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义常量和变量"><span class="nav-number">3.</span> <span class="nav-text">定义常量和变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串模板"><span class="nav-number">4.</span> <span class="nav-text">字符串模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件表达式"><span class="nav-number">5.</span> <span class="nav-text">条件表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Null-检测"><span class="nav-number">6.</span> <span class="nav-text">Null 检测</span></a></li></ol></div>
             
 
           </div>
@@ -1022,9 +1036,9 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://rogerscj.github.io/notes/2017/10/12/apk-signature/';
-          this.page.identifier = '2017/10/12/apk-signature/';
-          this.page.title = 'APK 签名文件';
+          this.page.url = 'https://rogerscj.github.io/notes/2017/11/22/kotlin-1/';
+          this.page.identifier = '2017/11/22/kotlin-1/';
+          this.page.title = 'Kotlin 学习（一）基本语法';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://rogerscj.disqus.com/embed.js';

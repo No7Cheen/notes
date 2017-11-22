@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>https://rogerscj.github.io/notes/notes/2017/11/22/kotlin-2/</loc>
+    <lastmod>2017-11-22T07:01:29.856Z</lastmod>
+    <data>
+        <display>
+        <title>Kotlin 学习（二）常用操作符</title>
+        <pubTime>2017-11-22T02:15:18.000Z</pubTime>
+        
+        <tag>Kotlin</tag>
+         
+         
+           
+             
+              <breadCrumb title="Kotlin" url="https://rogerscj.github.io/notes/notes/categories/Kotlin/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://rogerscj.github.io/notes/notes/2017/11/22/kotlin-1/</loc>
+    <lastmod>2017-11-22T05:50:03.129Z</lastmod>
+    <data>
+        <display>
+        <title>Kotlin 学习（一）基本语法</title>
+        <pubTime>2017-11-22T02:15:14.000Z</pubTime>
+        
+        <tag>Kotlin</tag>
+         
+         
+           
+             
+              <breadCrumb title="Kotlin" url="https://rogerscj.github.io/notes/notes/categories/Kotlin/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://rogerscj.github.io/notes/notes/2017/10/10/Regular-Expression/</loc>
     <lastmod>2017-10-23T09:32:57.000Z</lastmod>
     <data>
@@ -196,11 +236,11 @@
         <title>adb 录屏</title>
         <pubTime>2017-10-11T09:10:53.000Z</pubTime>
         
+        <tag>命令</tag>
+         
         <tag>Android</tag>
          
         <tag>Adb</tag>
-         
-        <tag>命令</tag>
          
          
            
@@ -332,9 +372,9 @@
         <title>Git 命令清单</title>
         <pubTime>2017-10-10T14:40:43.000Z</pubTime>
         
-        <tag>命令</tag>
-         
         <tag>Git</tag>
+         
+        <tag>命令</tag>
          
          
            

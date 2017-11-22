@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Kotlin," />
 
 
 
@@ -119,20 +119,18 @@
 
 
 
-<meta name="description" content="标记，Tag 一下记录下签名生成的过程，方便下次使用。">
-<meta name="keywords" content="Android">
+<meta name="description" content="类型检测及自动类型转换「is」「is」 检查某个实例是否是某个类型。 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换： 1234567891011// Startfun getStringLength(obj: Any): Int? &amp;#123;    if (obj is String) &amp;#123;        // `obj` 在该">
+<meta name="keywords" content="Kotlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="APK 签名文件">
-<meta property="og:url" content="https://rogerscj.github.io/notes/2017/10/12/apk-signature/index.html">
+<meta property="og:title" content="Kotlin 学习（二）常用操作符">
+<meta property="og:url" content="https://rogerscj.github.io/notes/2017/11/22/kotlin-2/index.html">
 <meta property="og:site_name" content="iSSExplorer&#39;s Notes">
-<meta property="og:description" content="标记，Tag 一下记录下签名生成的过程，方便下次使用。">
+<meta property="og:description" content="类型检测及自动类型转换「is」「is」 检查某个实例是否是某个类型。 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换： 1234567891011// Startfun getStringLength(obj: Any): Int? &amp;#123;    if (obj is String) &amp;#123;        // `obj` 在该">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/12/apk-signature/QQ20171012-170824@2x.png">
-<meta property="og:updated_time" content="2017-10-17T09:09:56.000Z">
+<meta property="og:updated_time" content="2017-11-22T07:01:29.856Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="APK 签名文件">
-<meta name="twitter:description" content="标记，Tag 一下记录下签名生成的过程，方便下次使用。">
-<meta name="twitter:image" content="https://rogerscj.github.io/notes/2017/10/12/apk-signature/QQ20171012-170824@2x.png">
+<meta name="twitter:title" content="Kotlin 学习（二）常用操作符">
+<meta name="twitter:description" content="类型检测及自动类型转换「is」「is」 检查某个实例是否是某个类型。 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换： 1234567891011// Startfun getStringLength(obj: Any): Int? &amp;#123;    if (obj is String) &amp;#123;        // `obj` 在该">
 
 
 
@@ -162,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="https://rogerscj.github.io/notes/2017/10/12/apk-signature/"/>
+  <link rel="canonical" href="https://rogerscj.github.io/notes/2017/11/22/kotlin-2/"/>
 
 
 
 
 
-  <title>APK 签名文件 | iSSExplorer's Notes</title>
+  <title>Kotlin 学习（二）常用操作符 | iSSExplorer's Notes</title>
   
 
 
@@ -349,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/12/apk-signature/">
+    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/11/22/kotlin-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.搞不定">
@@ -366,7 +364,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">APK 签名文件</h1>
+          <h1 class="post-title" itemprop="name headline">Kotlin 学习（二）常用操作符</h1>
         
 
         <div class="post-meta">
@@ -378,8 +376,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T17:10:49+08:00">
-                2017-10-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T10:15:18+08:00">
+                2017-11-22
               </time>
             
 
@@ -401,8 +399,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/notes/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/notes/categories/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
                   </a>
                 </span>
 
@@ -438,27 +436,41 @@
       
 
       
-        <blockquote>
-<p>标记，<strong>Tag 一下</strong><br>记录下签名生成的过程，方便下次使用。</p>
-</blockquote>
+        <h3 id="类型检测及自动类型转换「is」"><a href="#类型检测及自动类型转换「is」" class="headerlink" title="类型检测及自动类型转换「is」"></a>类型检测及自动类型转换「is」</h3><p><strong>「is」</strong> 检查某个实例是否是某个类型。 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Start</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;</div><div class="line">    <span class="keyword">if</span> (obj <span class="keyword">is</span> String) &#123;</div><div class="line">        <span class="comment">// `obj` 在该条件分支内自动转换成 `String`</span></div><div class="line">        <span class="keyword">return</span> obj.length</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 在离开类型检测分支后，`obj` 仍然是 `Any` 类型</span></div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// End</span></div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Start</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;</div><div class="line">    <span class="keyword">if</span> (obj !<span class="keyword">is</span> String) <span class="keyword">return</span> <span class="literal">null</span></div><div class="line"></div><div class="line">    <span class="comment">// `obj` 在这一分支自动转换为 `String`</span></div><div class="line">    <span class="keyword">return</span> obj.length</div><div class="line">&#125;</div><div class="line"><span class="comment">// End</span></div></pre></td></tr></table></figure>
+<p>甚至</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Start</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;</div><div class="line">    <span class="comment">// `obj` 在 `&amp;&amp;` 右边自动转换成 `String` 类型</span></div><div class="line">    <span class="keyword">if</span> (obj <span class="keyword">is</span> String &amp;&amp; obj.length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> obj.length</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// End</span></div></pre></td></tr></table></figure>
+<h3 id="类型转换「as」和安全转换「as-」"><a href="#类型转换「as」和安全转换「as-」" class="headerlink" title="类型转换「as」和安全转换「as?」"></a>类型转换「as」和安全转换「as?」</h3><p>除了上面介绍的自动类型转化「is」，我们还可以使用关键字「as」对一个变量进行类型转化。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String = y <span class="keyword">as</span> String</div></pre></td></tr></table></figure>
+<p>注意：上面的表达式中 <strong>y</strong> 为 null 时会抛出异常，所以上面的的类型转换可以改进下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String? = y <span class="keyword">as</span> String?</div></pre></td></tr></table></figure>
+<p>当使用<strong>「as」</strong>转型的时候，如果类型转换失败就会抛出异常 <strong>ClassCastException</strong>。 所以，现在可以使<strong>「as?」</strong>安全转型，当转型不成功的时候，它会返回 null。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String? = y <span class="keyword">as</span>? String</div></pre></td></tr></table></figure>
+<p>建议：为安全起见尽量避免使用<strong>「as」</strong>，改用<strong>「as?」</strong>是最好的选择。</p>
 <a id="more"></a>
-<p>简单来说，签名就是个标识，它可以保证 APP 正常升级，并且不被别人覆盖。</p>
-<h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><ul>
-<li>java jdk</li>
-<li>keytool 密钥和证书管理工具,可以用来生成证书</li>
-</ul>
-<p>使用 <code>keytool</code> 生成证书：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 文件名和别名相同，为: test.keystore</span></div><div class="line">$ keytool -genkey -<span class="built_in">alias</span> test.keystore -keyalg RSA -validity 20000 -keystore test.keystore</div></pre></td></tr></table></figure>
-<p>参数解释:</p>
-<ul>
-<li>-genkey 产生证书文件</li>
-<li>-keystore 指定密钥库的.keystore文件中</li>
-<li>-keyalg 指定密钥的算法,这里指定为RSA(非对称密钥算法)</li>
-<li>-validity 为证书有效天数，这里我们写的是10000天</li>
-<li>-alias 产生别名</li>
-</ul>
-<img src="/notes/2017/10/12/apk-signature/QQ20171012-170824@2x.png" alt="QQ20171012-170824@2x.png" title="">
-<h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -list -keystore test.keystore</div></pre></td></tr></table></figure>
+<h3 id="二目运算符（Elvis-Operator）「-」"><a href="#二目运算符（Elvis-Operator）「-」" class="headerlink" title="二目运算符（Elvis Operator）「?:」"></a>二目运算符（Elvis Operator）「?:」</h3><p>Java 和 C 里面三目运算是很常见的，其实就是 <code>if-else</code> 的简写形式。看一个简单的 Java 三目运算表达式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String y = (x != <span class="keyword">null</span>) ? x : <span class="string">""</span></div></pre></td></tr></table></figure>
+<p>在 Kotlin 有专门的运算符，即「?:」，「?:」将表达式分为前后（左右）两部分，前部分进行判断并返回其结果，否则返回后部分的结果。上面 Java 对应的 Kotlin 写法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> y = x != <span class="literal">null</span> ?: <span class="string">""</span></div></pre></td></tr></table></figure>
+<h3 id="强制解包运算符「-」"><a href="#强制解包运算符「-」" class="headerlink" title="强制解包运算符「!!」"></a>强制解包运算符「!!」</h3><p>「!!」，暂且叫它强制解包吧。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x: String? = <span class="string">"x"</span></div><div class="line"><span class="keyword">val</span> y: <span class="built_in">Int</span> = x!!.length</div></pre></td></tr></table></figure>
+<p>值得注意的是，「!!」用于可以为空的的引用（如上面的的x），当值不为空时，为正常运行；当值为空时，抛出异常<strong>NullPointerException</strong>。</p>
+<h3 id="冒号「-」"><a href="#冒号「-」" class="headerlink" title="冒号「:」"></a>冒号「:」</h3><p>「:」冒号之于 Kotlin 太常见了，类型声明、继承、函数返回等。</p>
+<p>类型和超类型之间的冒号前要有一个空格，而实例和类型之间的冒号前不要有空格：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义全局变量时</span></div><div class="line"><span class="keyword">var</span> str: String? = <span class="literal">null</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Foo</span>&lt;<span class="type">out T : Any</span>&gt; : <span class="type">Bar &#123;</span></span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(a: <span class="type">Int</span>)</span></span>: T</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 类的继承与变量定义</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">KotlinTestActivity</span>&lt;<span class="type">T : Serializable</span>&gt;</span>(name: String) : Activity() &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="范围操作符「-」以及「in」"><a href="#范围操作符「-」以及「in」" class="headerlink" title="范围操作符「..」以及「in」"></a>范围操作符「..」以及「in」</h3><p>范围操作符可以用来做迭代操作，是用in来实现的。</p>
+<p>以下是使用区间的一些示例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.4</span>) print(i) <span class="comment">// 等同于 1 &lt;= i &amp;&amp; i &lt;= 4, 输出“1234”</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">4.</span><span class="number">.1</span>) print(i) <span class="comment">// 什么都不输出</span></div></pre></td></tr></table></figure>
+<p>倒序操作 <code>downTo</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">4</span> downTo <span class="number">1</span>) print(i) <span class="comment">// 输出“4321”</span></div></pre></td></tr></table></figure>
+<p>控制迭代的步长，使用<code>step()</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.4</span> step <span class="number">2</span>) print(i) <span class="comment">// 输出“13”</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">4</span> downTo <span class="number">1</span> step <span class="number">2</span>) print(i) <span class="comment">// 输出“42”</span></div></pre></td></tr></table></figure>
+<p><code>in</code> 是一个闭区间范围，如果要创建一个不包括其结束元素的区间，可以使用 <strong>until</strong> 函数</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span> until <span class="number">10</span>) &#123;   <span class="comment">// i in [1, 10) 排除了 10</span></div><div class="line">     println(i)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="多行输入符-三个双引号"><a href="#多行输入符-三个双引号" class="headerlink" title="多行输入符 三个双引号"></a>多行输入符 三个双引号</h3><p>多行文本符，也就是说在三引号之间输入的内容将被原样保留，之中的单号和双引号不用转义，其中的不可见字符比如<strong>/n</strong>和<strong>/t</strong>都会被保留。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">valstr = <span class="string">"""</span></div><div class="line"><span class="string">          one</span></div><div class="line"><span class="string">          two</span></div><div class="line"><span class="string">         """</span></div><div class="line"><span class="comment">//等价于</span></div><div class="line"><span class="keyword">val</span> str = <span class="string">"one\ntwo"</span></div><div class="line"><span class="keyword">val</span> str = <span class="string">"one"</span>+<span class="string">"\n"</span>+<span class="string">"two"</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -508,7 +520,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://rogerscj.github.io/notes/2017/10/12/apk-signature/" title="APK 签名文件">https://rogerscj.github.io/notes/2017/10/12/apk-signature/</a>
+    <a href="https://rogerscj.github.io/notes/2017/11/22/kotlin-2/" title="Kotlin 学习（二）常用操作符">https://rogerscj.github.io/notes/2017/11/22/kotlin-2/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -523,7 +535,7 @@
       
         <div class="post-tags">
           
-            <a href="/notes/tags/Android/" rel="tag"># Android</a>
+            <a href="/notes/tags/Kotlin/" rel="tag"># Kotlin</a>
           
         </div>
       
@@ -536,8 +548,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/notes/2017/10/11/Activity-生命周期/" rel="next" title="Activity 生命周期">
-                <i class="fa fa-chevron-left"></i> Activity 生命周期
+              <a href="/notes/2017/11/22/kotlin-1/" rel="next" title="Kotlin 学习（一）基本语法">
+                <i class="fa fa-chevron-left"></i> Kotlin 学习（一）基本语法
               </a>
             
           </div>
@@ -545,10 +557,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/" rel="prev" title="Hexo 搭建 GitHub 博客（I）- 环境搭建">
-                Hexo 搭建 GitHub 博客（I）- 环境搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -866,7 +874,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tools"><span class="nav-number">1.</span> <span class="nav-text">Tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看信息"><span class="nav-number">2.</span> <span class="nav-text">查看信息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型检测及自动类型转换「is」"><span class="nav-number">1.</span> <span class="nav-text">类型检测及自动类型转换「is」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换「as」和安全转换「as-」"><span class="nav-number">2.</span> <span class="nav-text">类型转换「as」和安全转换「as?」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二目运算符（Elvis-Operator）「-」"><span class="nav-number">3.</span> <span class="nav-text">二目运算符（Elvis Operator）「?:」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制解包运算符「-」"><span class="nav-number">4.</span> <span class="nav-text">强制解包运算符「!!」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒号「-」"><span class="nav-number">5.</span> <span class="nav-text">冒号「:」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范围操作符「-」以及「in」"><span class="nav-number">6.</span> <span class="nav-text">范围操作符「..」以及「in」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行输入符-三个双引号"><span class="nav-number">7.</span> <span class="nav-text">多行输入符 三个双引号</span></a></li></ol></div>
             
 
           </div>
@@ -1022,9 +1030,9 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://rogerscj.github.io/notes/2017/10/12/apk-signature/';
-          this.page.identifier = '2017/10/12/apk-signature/';
-          this.page.title = 'APK 签名文件';
+          this.page.url = 'https://rogerscj.github.io/notes/2017/11/22/kotlin-2/';
+          this.page.identifier = '2017/11/22/kotlin-2/';
+          this.page.title = 'Kotlin 学习（二）常用操作符';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://rogerscj.disqus.com/embed.js';
