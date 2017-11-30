@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://rogerscj.github.io/notes/notes/2017/11/30/intellij-idea-license-activation/</loc>
+    <lastmod>2017-11-30T10:25:06.299Z</lastmod>
+    <data>
+        <display>
+        <title>IntelliJ IDEA 15.0(16.+) 激活</title>
+        <pubTime>2017-11-30T09:20:41.000Z</pubTime>
+        
+        <tag>IDEA</tag>
+         
+        <tag>Mark</tag>
+         
+        <tag>备忘录</tag>
+         
+         
+           
+             
+              <breadCrumb title="备忘录" url="https://rogerscj.github.io/notes/notes/categories/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://rogerscj.github.io/notes/notes/2017/10/23/mark-mac-autojump/</loc>
     <lastmod>2017-11-22T07:34:37.036Z</lastmod>
     <data>
@@ -11,11 +35,11 @@
         <title>autojump</title>
         <pubTime>2017-10-23T07:00:00.000Z</pubTime>
         
-        <tag>Mac</tag>
-         
         <tag>Mark</tag>
          
         <tag>备忘录</tag>
+         
+        <tag>Mac</tag>
          
          
            
@@ -168,11 +192,11 @@
         <title>Mac 终端环境 iTerm2 + Zsh + Oh My Zsh</title>
         <pubTime>2017-10-19T02:43:28.000Z</pubTime>
         
-        <tag>Mac</tag>
-         
         <tag>Mark</tag>
          
         <tag>备忘录</tag>
+         
+        <tag>Mac</tag>
          
          
            

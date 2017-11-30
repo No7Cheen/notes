@@ -8,8 +8,28 @@
     <atom:link href="/notes/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>关注技术，记录生活，分享感悟</description>
-    <pubDate>Wed, 22 Nov 2017 07:29:24 GMT</pubDate>
+    <pubDate>Thu, 30 Nov 2017 10:25:06 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>IntelliJ IDEA 15.0(16.+) 激活</title>
+      <link>https://rogerscj.github.io/notes/2017/11/30/intellij-idea-license-activation/</link>
+      <guid>https://rogerscj.github.io/notes/2017/11/30/intellij-idea-license-activation/</guid>
+      <pubDate>Thu, 30 Nov 2017 09:20:41 GMT</pubDate>
+      <description>
+      
+        &lt;center&gt; &lt;font size=&quot;6&quot;&gt; 激活 &lt;a href=&quot;https://www.jetbrains.com/idea/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IntelliJ IDEA&lt;/a&gt; 选择激活服务器 &lt;/font&gt;&lt;br&gt;&lt;/center&gt;&lt;center&gt;&lt;font size=&quot;5&quot;&gt;填入以下地址便可成功激活&lt;/font&gt;&lt;br&gt;&lt;/center&gt;
+
+&lt;center&gt;&lt;font size=&quot;6&quot;&gt;&lt;strong&gt;&lt;a href=&quot;http://idea.iteblog.com/key.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://idea.iteblog.com/key.php&lt;/a&gt;&lt;/strong&gt;&lt;/font&gt;&lt;/center&gt;
+
+&lt;center&gt;&lt;br&gt;点击 help → Register → License sever, 输入 &lt;strong&gt;&lt;a href=&quot;http://idea.iteblog.com/key.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://idea.iteblog.com/key.php&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;&lt;/center&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<center> <font size="6"> 激活 <a href="https://www.jetbrains.com/idea/" target="_blank" rel="external">IntelliJ IDEA</a> 选择激活服务器 </font><br></center><center><font size="5">填入以下地址便可成功激活</font><br></center><center><font size="6"><strong><a href="http://idea.iteblog.com/key.php" target="_blank" rel="external">http://idea.iteblog.com/key.php</a></strong></font></center><center><br>点击 help → Register → License sever, 输入 <strong><a href="http://idea.iteblog.com/key.php" target="_blank" rel="external">http://idea.iteblog.com/key.php</a></strong><br></center><a id="more"></a><center><br><img src="/notes/notes/2017/11/30/intellij-idea-license-activation/11/30/intellij-idea-license-activation/15120229025407.jpg" width="50%" height="50%" align="center/"><br></center>]]></content:encoded>
+      
+      <comments>https://rogerscj.github.io/notes/2017/11/30/intellij-idea-license-activation/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Kotlin 学习（二）常用操作符</title>
@@ -63,22 +83,6 @@
     </item>
     
     <item>
-      <title>GitHub 从源分支更新 Fork 分支</title>
-      <link>https://rogerscj.github.io/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/</link>
-      <guid>https://rogerscj.github.io/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/</guid>
-      <pubDate>Mon, 23 Oct 2017 07:00:00 GMT</pubDate>
-      <description>
-      
-        &lt;p&gt;在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。&lt;/p&gt;
-      
-      </description>
-      
-      <content:encoded><![CDATA[<p>在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。</p><a id="more"></a><h3 id="GitHub-操作"><a href="#GitHub-操作" class="headerlink" title="GitHub 操作"></a>GitHub 操作</h3><h4 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h4><p>在 Fork 分支创建一个合并请求(New pull request)：</p><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000001.png" alt="fork-000001.png" title=""><h4 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h4><p>「New pull request」之后，需要对调 Base：</p><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000002.png" alt="fork-000002.png" title=""><h4 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h4><p>创建合并请求</p><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000003.png" alt="fork-000003.png" title=""><h4 id="Step4"><a href="#Step4" class="headerlink" title="Step4"></a>Step4</h4><p>填写合并说明，（Update upstream：更新上游代码的意思）<br><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000004.png" alt="fork-000004.png" title=""></p><h4 id="Step5"><a href="#Step5" class="headerlink" title="Step5"></a>Step5</h4><p>这一步需要解决冲突，然后「Merge pull request」，最后不要忘记<font color="red"><strong>「Confirm merge」</strong></font></p><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000005.png" alt="fork-000005.png" title=""><h3 id="通过命令行进行更新源代码"><a href="#通过命令行进行更新源代码" class="headerlink" title="通过命令行进行更新源代码"></a>通过命令行进行更新源代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># clone你fork的项目</span></div><div class="line">$ git <span class="built_in">clone</span> git@github.com:UserName/your-forked-repo.git</div><div class="line">$ <span class="built_in">cd</span> fork-repo</div><div class="line"></div><div class="line"><span class="comment"># 添加一个叫upstream的remote</span></div><div class="line">$ git remote add upstream git://github.com/original-dev-username/repo-you-forked-from.git</div><div class="line"></div><div class="line"><span class="comment"># 然后fetch</span></div><div class="line">$ git fetch upstream</div><div class="line"></div><div class="line"><span class="comment"># pull最新的代码到你的主分支中</span></div><div class="line">$ git pull upstream master</div></pre></td></tr></table></figure>]]></content:encoded>
-      
-      <comments>https://rogerscj.github.io/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/#disqus_thread</comments>
-    </item>
-    
-    <item>
       <title>autojump</title>
       <link>https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/</link>
       <guid>https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/</guid>
@@ -98,6 +102,22 @@
       <content:encoded><![CDATA[<p>切换目录，在命令行的操作中没有比这个更频繁的动作了，又有什么比一遍又一遍 “cd ls cd ls ……” 更令人沮丧的事情呢，即便是使用了 zsh Alias。如果你不是百分百确定你想要进入的目录名字，那么你就避免不了频繁的使用这该死的 “cd ls”，但也可能离你的目标目录越走越远，越走越远。</p><p>所幸的是，现在大量的终端和 shell 都提供了强大的自动补全功能。但是，你仍需一直疯狂的敲击 TAB 来干这事。如果你是一个懒惰的人，和我一样，那么，当你发现 <strong>autojump</strong> 的时候，一定会对它感到惊喜不已。</p><p><a href="https://github.com/wting/autojump" target="_blank" rel="external"><strong>autojump</strong></a> 是一个命令行工具，它允许你可以直接跳转到你喜爱的目录，而不用管你现在身在何处。</p><h3 id="autojump-的基本用法"><a href="#autojump-的基本用法" class="headerlink" title="autojump 的基本用法"></a>autojump 的基本用法</h3><p>autojump 的工作方式非常简单，它会在你每次启动命令的时候记录你的当前位置，并将它添加进数据库中。这样一来，某些目录添加的次数多于其它目录时，就代表着它比其他目录更重要，日常使用更频繁，那么它的“权重”就更大。</p><p>现在，无论你在哪个目录，你都可以使用下面的语法来直接跳转到目标目录：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump [目录名 Or 目录名的一部分]</div></pre></td></tr></table></figure><div class="note success"><p>注意，你不需要输入完整的名称，因为 autojump 会检索它的数据库，并返回最可能的结果。</p></div><a id="more"></a><p>例如，我们有下面的目录结构：</p><img src="/notes/2017/10/23/mark-mac-autojump/QQ20171023-155134@2x.png" alt="QQ20171023-155134@2x.png" title=""><p>那么，现在我想进入到 <strong>doc</strong> 目录，不管你当前在哪里，只需要在命令行输入下面的命令即可：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ j <span class="keyword">do</span>      <span class="comment"># j 是autojump的默认别名</span></div></pre></td></tr></table></figure><p>另一个比较好的功能是，autojump 支持 zsh 自动补全。如果你不确定那里是不是你要跳转的地方，<strong>TAB</strong> 键就会列出完整路径，再次 TAB 可进行选择：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 这是我电脑运行的结果</span></div><div class="line">$ j d__</div><div class="line">d__1__/Users/username/prj/Android</div><div class="line">d__2__/Users/username/.emacs.d</div><div class="line">d__3__/Users/username/prj/Android/trunk/hAndroid</div><div class="line">d__4__/Users/username/prj_workspace/aDroid</div><div class="line">d__5__/Users/username/prj_outsourcing/trunk/MonitoingReportTablesDroid</div><div class="line">d__6__/Users/username/.vim/bundle</div><div class="line">d__7__/Users/username/Downloads</div><div class="line">d__8__/Users/username/prj/Android/trunk/ispatchApp</div><div class="line">d__9__/Users/username/prj/PAndroid</div></pre></td></tr></table></figure><p>修改权重，如果你突然想要把当前目录变成你使用最频繁的文件夹，你可以在该目录通过命令的参数 <strong>i</strong> 来手工增加它的权重：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump -i [权重]</div></pre></td></tr></table></figure><p>这将使得该目录更可能被选择跳转。相反的例子是在该目录使用参数 <strong>d</strong> 来减少权重：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump -d [权重]</div></pre></td></tr></table></figure><p>要跟踪所有的改变，输入：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump -s</div></pre></td></tr></table></figure><p>这样，会显示数据库中所有的统计数据。</p><p>清除不再存在的目录：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump --purge</div></pre></td></tr></table></figure><p>对于高级用户，你可以访问目录数据库，并修改它的内容。可以使用下面的命令来手动添加一个目录：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ autojump -a [目录]</div></pre></td></tr></table></figure><p>简言之，autojump 的简单实用将会受到所有命令行用户的欢迎。</p>]]></content:encoded>
       
       <comments>https://rogerscj.github.io/notes/2017/10/23/mark-mac-autojump/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>GitHub 从源分支更新 Fork 分支</title>
+      <link>https://rogerscj.github.io/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/</link>
+      <guid>https://rogerscj.github.io/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/</guid>
+      <pubDate>Mon, 23 Oct 2017 07:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。&lt;/p&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。</p><a id="more"></a><h3 id="GitHub-操作"><a href="#GitHub-操作" class="headerlink" title="GitHub 操作"></a>GitHub 操作</h3><h4 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h4><p>在 Fork 分支创建一个合并请求(New pull request)：</p><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000001.png" alt="fork-000001.png" title=""><h4 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h4><p>「New pull request」之后，需要对调 Base：</p><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000002.png" alt="fork-000002.png" title=""><h4 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h4><p>创建合并请求</p><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000003.png" alt="fork-000003.png" title=""><h4 id="Step4"><a href="#Step4" class="headerlink" title="Step4"></a>Step4</h4><p>填写合并说明，（Update upstream：更新上游代码的意思）<br><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000004.png" alt="fork-000004.png" title=""></p><h4 id="Step5"><a href="#Step5" class="headerlink" title="Step5"></a>Step5</h4><p>这一步需要解决冲突，然后「Merge pull request」，最后不要忘记<font color="red"><strong>「Confirm merge」</strong></font></p><img src="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/fork-000005.png" alt="fork-000005.png" title=""><h3 id="通过命令行进行更新源代码"><a href="#通过命令行进行更新源代码" class="headerlink" title="通过命令行进行更新源代码"></a>通过命令行进行更新源代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># clone你fork的项目</span></div><div class="line">$ git <span class="built_in">clone</span> git@github.com:UserName/your-forked-repo.git</div><div class="line">$ <span class="built_in">cd</span> fork-repo</div><div class="line"></div><div class="line"><span class="comment"># 添加一个叫upstream的remote</span></div><div class="line">$ git remote add upstream git://github.com/original-dev-username/repo-you-forked-from.git</div><div class="line"></div><div class="line"><span class="comment"># 然后fetch</span></div><div class="line">$ git fetch upstream</div><div class="line"></div><div class="line"><span class="comment"># pull最新的代码到你的主分支中</span></div><div class="line">$ git pull upstream master</div></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>https://rogerscj.github.io/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/#disqus_thread</comments>
     </item>
     
     <item>
