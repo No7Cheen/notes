@@ -52,7 +52,7 @@
 
   
   
-  <link href="/notes/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -86,21 +86,21 @@
 
 
 
-<link href="/notes/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/notes/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/notes/images/apple-touch-icon-next.png?v=5.1.3">
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/notes/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/notes/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
 
 
-  <link rel="mask-icon" href="/notes/images/logo.svg?v=5.1.3" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
 
 
 
@@ -112,7 +112,7 @@
 
 
 
-  <link rel="alternate" href="/notes/rss.xml" title="iSSExplorer's Notes" type="application/atom+xml" />
+  <link rel="alternate" href="/rss.xml" title="iSSExplorer's Notes" type="application/atom+xml" />
 
 
 
@@ -127,21 +127,21 @@
 <meta property="og:site_name" content="iSSExplorer&#39;s Notes">
 <meta property="og:description" content="FindBugs 是一个静态分析工具，它检查类或者 JAR 文件，将字节码与一组缺陷模式进行对比来发现可能的问题，可以以独立的 JAR 包形式运行，也可以作为集成开发工具的插件形式存在。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060543025331.jpg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060539937693.jpg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060540989255.jpg">
+<meta property="og:image" content="https://rogerscj.github.io/2017/10/11/Android-Studio-插件配置-FindBugs/15060543025331.jpg">
+<meta property="og:image" content="https://rogerscj.github.io/2017/10/11/Android-Studio-插件配置-FindBugs/15060539937693.jpg">
+<meta property="og:image" content="https://rogerscj.github.io/2017/10/11/Android-Studio-插件配置-FindBugs/15060540989255.jpg">
 <meta property="og:updated_time" content="2017-10-13T12:07:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio 插件配置: FindBugs">
 <meta name="twitter:description" content="FindBugs 是一个静态分析工具，它检查类或者 JAR 文件，将字节码与一组缺陷模式进行对比来发现可能的问题，可以以独立的 JAR 包形式运行，也可以作为集成开发工具的插件形式存在。">
-<meta name="twitter:image" content="https://rogerscj.github.io/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060543025331.jpg">
+<meta name="twitter:image" content="https://rogerscj.github.io/2017/10/11/Android-Studio-插件配置-FindBugs/15060543025331.jpg">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/notes/',
+    root: '/',
     scheme: 'Pisces',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -208,7 +208,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/notes/"  class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">iSSExplorer's Notes</span>
         <span class="logo-line-after"><i></i></span>
@@ -236,7 +236,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/notes/" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -246,7 +246,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/notes/archives/" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -256,7 +256,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/notes/tags" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -266,7 +266,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/notes/about" rel="section">
+          <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -276,7 +276,7 @@
       
         
         <li class="menu-item menu-item-commonweal">
-          <a href="/notes/404.html" rel="section">
+          <a href="/404.html" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
             
@@ -351,12 +351,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/11/Android-Studio-插件配置-FindBugs/">
+    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/2017/10/11/Android-Studio-插件配置-FindBugs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.搞不定">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/notes/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -403,7 +403,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/notes/categories/Android-Studio/" itemprop="url" rel="index">
+                  <a href="/categories/Android-Studio/" itemprop="url" rel="index">
                     <span itemprop="name">Android Studio</span>
                   </a>
                 </span>
@@ -442,14 +442,14 @@
       
         <p>FindBugs 是一个静态分析工具，它检查类或者 JAR 文件，将字节码与一组缺陷模式进行对比来发现可能的问题，可以以独立的 JAR 包形式运行，也可以作为集成开发工具的插件形式存在。</p>
 <a id="more"></a>
-<h3 id="安装FindBugs插件"><a href="#安装FindBugs插件" class="headerlink" title="安装FindBugs插件"></a>安装FindBugs插件</h3><p>首先需要在 Android Studio 中安装 FindBugs 的插件。在 Android Studio 中找到<strong>「Preferences/Plugins」</strong>选项，在该复选框中通过上方搜索，或将 FindBugs 插件下载到本地，使用<strong>「Install plugin from disk」</strong>进行安装。安装示意图如下所示，安装完成后需要重启 Android Studio。<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060543025331.jpg" alt="15060543025331.jpg" title=""></p>
+<h3 id="安装FindBugs插件"><a href="#安装FindBugs插件" class="headerlink" title="安装FindBugs插件"></a>安装FindBugs插件</h3><p>首先需要在 Android Studio 中安装 FindBugs 的插件。在 Android Studio 中找到<strong>「Preferences/Plugins」</strong>选项，在该复选框中通过上方搜索，或将 FindBugs 插件下载到本地，使用<strong>「Install plugin from disk」</strong>进行安装。安装示意图如下所示，安装完成后需要重启 Android Studio。<br><img src="/2017/10/11/Android-Studio-插件配置-FindBugs/15060543025331.jpg" alt="15060543025331.jpg" title=""></p>
 <h3 id="扩展优化"><a href="#扩展优化" class="headerlink" title="扩展优化"></a>扩展优化</h3><h4 id="安装「Android-Code-Arbiter」插件"><a href="#安装「Android-Code-Arbiter」插件" class="headerlink" title="安装「Android Code Arbiter」插件"></a>安装「Android Code Arbiter」插件</h4><p>FindBugs 插件具有着极强的可扩展性，只需要将扩展的 JAR 包导入 FindBugs 插件，<strong>重启</strong>，即可完成相关功能的扩展。</p>
 <p>FindBugs 插件安装后，将会在 <strong>「Preferences/Other Settings」</strong> 中找到安装插件的选项 FindBugs-IDEA，点击中测靠左的「+」号，在弹出的选框中选择 <strong>「4.Install plugin from disk」</strong>，在弹出的选框中选择下载的 Android Code Arbiter 的 jar 包，点击 OK，此时会发现插件已经安装了，点击 OK，并重启 Android Studio 完成插件安装。</p>
-<p>安装部分示意图，如下所示。<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060539937693.jpg" alt="15060539937693.jpg" title=""></p>
+<p>安装部分示意图，如下所示。<br><img src="/2017/10/11/Android-Studio-插件配置-FindBugs/15060539937693.jpg" alt="15060539937693.jpg" title=""></p>
 <h4 id="添加过滤"><a href="#添加过滤" class="headerlink" title="添加过滤"></a>添加过滤</h4><p>在没有进行任何过滤的情况下找到的结果可能会令人失望，它会把自动生成的代码也考虑在内。因此我们在进行 Bug 查找的时候首先需要添加过滤</p>
 <p>下面是过滤掉 Android 自动生成的代码的配置文件「findbugs-exclude.xml」</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">FindBugsFilter</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- ignore all issues in resource generation --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.R\$.*"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.Manifest\$.*"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!--</span></div><div class="line"><span class="comment">    &lt;Match&gt;</span></div><div class="line"><span class="comment">        &lt;Or&gt;</span></div><div class="line"><span class="comment">            &lt;Class name="~.*\.R\$.*"/&gt;</span></div><div class="line"><span class="comment">            &lt;Class name="~.*\.Manifest\$.*"/&gt;</span></div><div class="line"><span class="comment">        &lt;/Or&gt;</span></div><div class="line"><span class="comment">    &lt;/Match&gt;</span></div><div class="line"><span class="comment">    --&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 测试用例警告 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.*Test"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Not</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">Bug</span> <span class="attr">code</span>=<span class="string">"IJU"</span>/&gt;</span> <span class="comment">&lt;!-- 'IJU' is the code for bugs related to JUnit test code --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">Not</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">FindBugsFilter</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>添加过滤文件，如下示意图<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060540989255.jpg" alt="15060540989255.jpg" title=""></p>
+<p>添加过滤文件，如下示意图<br><img src="/2017/10/11/Android-Studio-插件配置-FindBugs/15060540989255.jpg" alt="15060540989255.jpg" title=""></p>
 
       
     </div>
@@ -514,11 +514,11 @@
       
         <div class="post-tags">
           
-            <a href="/notes/tags/工具/" rel="tag"># 工具</a>
+            <a href="/tags/工具/" rel="tag"># 工具</a>
           
-            <a href="/notes/tags/FindBugs/" rel="tag"># FindBugs</a>
+            <a href="/tags/FindBugs/" rel="tag"># FindBugs</a>
           
-            <a href="/notes/tags/Android-Studio/" rel="tag"># Android Studio</a>
+            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
           
         </div>
       
@@ -531,7 +531,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/notes/2017/10/10/Git-命令清单/" rel="next" title="Git 命令清单">
+              <a href="/2017/10/10/Git-命令清单/" rel="next" title="Git 命令清单">
                 <i class="fa fa-chevron-left"></i> Git 命令清单
               </a>
             
@@ -541,7 +541,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/notes/2017/10/11/Adb-录屏/" rel="prev" title="adb 录屏">
+              <a href="/2017/10/11/Adb-录屏/" rel="prev" title="adb 录屏">
                 adb 录屏 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -646,7 +646,7 @@ var jiathis_config={
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/notes/images/avatar.png"
+                src="/images/avatar.png"
                 alt="Mr.搞不定" />
             
               <p class="site-author-name" itemprop="name">Mr.搞不定</p>
@@ -658,9 +658,9 @@ var jiathis_config={
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/notes/archives/">
+                <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -670,8 +670,8 @@ var jiathis_config={
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/notes/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -681,8 +681,8 @@ var jiathis_config={
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/notes/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -692,7 +692,7 @@ var jiathis_config={
 
           
             <div class="feed-link motion-element">
-              <a href="/notes/rss.xml" rel="alternate">
+              <a href="/rss.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
@@ -965,53 +965,53 @@ var jiathis_config={
 
 
   
-  <script type="text/javascript" src="/notes/lib/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script type="text/javascript" src="/notes/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  <script type="text/javascript" src="/notes/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  <script type="text/javascript" src="/notes/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/notes/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/notes/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/notes/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/notes/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/notes/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/notes/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
-
-  
-  <script type="text/javascript" src="/notes/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/notes/js/src/post-details.js?v=5.1.3"></script>
-
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/notes/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
@@ -1075,7 +1075,7 @@ var jiathis_config={
     } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
-    var path = "/notes/" + search_path;
+    var path = "/" + search_path;
     // monitor main search box;
 
     var onPopupClose = function (e) {
