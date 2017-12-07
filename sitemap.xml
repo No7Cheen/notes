@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rogerscj.github.io/notes/2017/12/06/spring-boot-chapter-2/</loc>
+    
+    <lastmod>2017-12-07T09:49:43.212Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rogerscj.github.io/notes/2017/12/04/spring-boot-chapter-1/</loc>
     
     <lastmod>2017-12-05T08:36:10.163Z</lastmod>
