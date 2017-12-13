@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Mac 常用快捷键]]></title>
+    <url>%2Fnotes%2F2017%2F12%2F13%2Fmac-macos-shortcuts%2F</url>
+    <content type="text"><![CDATA[记录几个经常用到的快捷键，便于翻阅 快捷键 描述 Command + Q 退出应用（强制完全退出） Command + W 关闭窗口 Command + M 最小化 Command + N 新建窗口 Command + , 偏好设置 Finder 快捷键 描述 Command + Shift + H Home目录 Command + Shift + . 显示隐藏文件 Command + Option + C 复制文件路径 Command + Option + V 剪切文件 屏幕截图 快捷键 描述 Command + Shift + 3 截屏屏幕并保存到桌面 Command + Shift + 4 选定区域截图或按空格选定窗口后点击鼠标左键截图，截图文件保存在桌面 Command + Control + Shift + 3 截屏屏幕并保存到剪切板 Command + Control + Shift + 4 选定区域截图或按空格选定窗口后点击鼠标左键截图，截图文件保存在剪切板]]></content>
+      <categories>
+        <category>备忘录</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>macOs</tag>
+        <tag>快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Mac 显示隐藏文件的快捷键]]></title>
     <url>%2Fnotes%2F2017%2F12%2F13%2Fmac-shortcuts-to-show-hiden-files-in-macos-sierra%2F</url>
     <content type="text"><![CDATA[在 MacOS Sierra 之前，在 Finder 中查看隐藏文件，都要输入一坨命令： 1defaults write com.apple.finder AppleShowAllFiles -bool true 上面只是显示了隐藏的文件，可是你用完了呢，还得输入一坨类似的命令再隐藏起来。为了方便使用这死玩意，想尽了各种办法，收藏命令、存脚本、iTerm Alias 等等各种折腾，但都不足以达到一个便捷的操作效果，我们真正需要的是“用完即走”。 macOS Sierra 开始，上面那些繁琐的方式我们可以统统丢掉了，因为~ 快捷键来了： 1Command + Shift + .]]></content>
@@ -10,7 +23,7 @@
       <tags>
         <tag>Mac</tag>
         <tag>macOs</tag>
-        <tag>OS X</tag>
+        <tag>快捷键</tag>
       </tags>
   </entry>
   <entry>
