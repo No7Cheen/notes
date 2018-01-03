@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git 创建本地和远程分支]]></title>
+    <url>%2Fnotes%2F2018%2F01%2F03%2FGit-branch-create%2F</url>
+    <content type="text"><![CDATA[Git 默认只有一个主干分支，即 master。通常，我们的工作不会直接在 master 上进行，而是使用一个单独的分支，如：dev，最后进行分支的合并。 关于分支的理解，请参考：Git 分支 - 分支的新建与合并，Git 分支 - 远程分支，Git 分支 - 何谓分支，创建与合并分支 分支命令下面给出创建本地和远程分支的完整命令： 1234567$ git checkout -b dev/devSwitched to branch &apos;dev/dev&apos;$ git push origin dev/devTotal 0 (delta 0), reused 0 (delta 0)To git.dev.sh.ctripcorp.com:hotel_m/PioneerAndroid.git * [new branch] dev/dev -&gt; dev/dev git checkout -b dev/dev 是下面两条命令的简写：$ git branch dev/dev$ git checkout dev/dev 体验]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Mac 常用快捷键]]></title>
     <url>%2Fnotes%2F2017%2F12%2F13%2Fmac-macos-shortcuts%2F</url>
     <content type="text"><![CDATA[记录几个经常用到的快捷键，便于翻阅 快捷键 描述 Command + Q 退出应用（强制完全退出） Command + W 关闭窗口 Command + M 最小化 Command + N 新建窗口 Command + , 偏好设置 Finder 快捷键 描述 Command + Shift + H Home目录 Command + Shift + . 显示隐藏文件 Command + Option + C 复制文件路径 Command + Option + V 剪切文件 屏幕截图 快捷键 描述 Command + Shift + 3 截屏屏幕并保存到桌面 Command + Shift + 4 选定区域截图或按空格选定窗口后点击鼠标左键截图，截图文件保存在桌面 Command + Control + Shift + 3 截屏屏幕并保存到剪切板 Command + Control + Shift + 4 选定区域截图或按空格选定窗口后点击鼠标左键截图，截图文件保存在剪切板]]></content>

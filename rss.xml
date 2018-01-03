@@ -8,8 +8,28 @@
     <atom:link href="/notes/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>关注技术，记录生活，分享感悟</description>
-    <pubDate>Wed, 13 Dec 2017 02:57:11 GMT</pubDate>
+    <pubDate>Wed, 03 Jan 2018 03:15:35 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Git 创建本地和远程分支</title>
+      <link>https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/</link>
+      <guid>https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/</guid>
+      <pubDate>Wed, 03 Jan 2018 01:45:08 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;Git 默认只有一个主干分支，即 &lt;font color=&quot;red&quot;&gt;master&lt;/font&gt;。通常，我们的工作不会直接在 master 上进行，而是使用一个单独的分支，如：&lt;font color=&quot;red&quot;&gt;dev&lt;/font&gt;，最后进行分支的合并。&lt;/p&gt;
+&lt;p&gt;关于
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Git 默认只有一个主干分支，即 <font color="red">master</font>。通常，我们的工作不会直接在 master 上进行，而是使用一个单独的分支，如：<font color="red">dev</font>，最后进行分支的合并。</p><p>关于分支的理解，请参考：<a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6" target="_blank" rel="external">Git 分支 - 分支的新建与合并</a>，<a href="https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF" target="_blank" rel="external">Git 分支 - 远程分支</a>，<a href="https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E4%BD%95%E8%B0%93%E5%88%86%E6%94%AF" target="_blank" rel="external">Git 分支 - 何谓分支</a>，<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">创建与合并分支</a></p><h3 id="分支命令"><a href="#分支命令" class="headerlink" title="分支命令"></a>分支命令</h3><p>下面给出创建本地和远程分支的完整命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ git checkout -b dev/dev</div><div class="line">Switched to branch &apos;dev/dev&apos;</div><div class="line"></div><div class="line">$ git push origin dev/dev</div><div class="line">Total 0 (delta 0), reused 0 (delta 0)</div><div class="line">To git.dev.sh.ctripcorp.com:hotel_m/PioneerAndroid.git</div><div class="line"> * [new branch]      dev/dev -&gt; dev/dev</div></pre></td></tr></table></figure><div class="note info"><p><strong>git checkout -b dev/dev</strong> 是下面两条命令的简写：<br><strong><code>$ git branch dev/dev</code></strong><br><strong><code>$ git checkout dev/dev</code></strong></p></div><h3 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h3><img src="/notes/2018/01/03/Git-branch-create/QQ20180103-094211@2x.png" alt="QQ20180103-094211@2x.png" title="">]]></content:encoded>
+      
+      <comments>https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Mac 常用快捷键</title>
@@ -436,22 +456,6 @@
       <content:encoded><![CDATA[<p>记录2个捕获屏幕的 adb 命令。</p><a id="more"></a><h3 id="截屏「Screencap」"><a href="#截屏「Screencap」" class="headerlink" title="截屏「Screencap」"></a>截屏「Screencap」</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb shell screencap -p /sdcard/screen.png</div></pre></td></tr></table></figure><h3 id="录制屏幕「Screenrecord」"><a href="#录制屏幕「Screenrecord」" class="headerlink" title="录制屏幕「Screenrecord」"></a>录制屏幕「Screenrecord」</h3><p>录制默认分辨率，默认 4Mbps，时间为 180s 的 MP4 视频，并且保存到 Sdcard 上</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ adb shell screenrecord /sdcard/yourFileName.mp4</div><div class="line">$ adb pull /sdcard/yourFileName.mp4 ~/mp4File/</div></pre></td></tr></table></figure><h3 id="第三方工具"><a href="#第三方工具" class="headerlink" title="第三方工具"></a>第三方工具</h3><p><a href="http://mac.softpedia.com/get/Utilities/AndroidTool.shtml" target="_blank" rel="external">AndroidTool</a></p>]]></content:encoded>
       
       <comments>https://rogerscj.github.io/notes/2017/10/11/Adb-%E5%BD%95%E5%B1%8F/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Android Studio 插件配置: FindBugs</title>
-      <link>https://rogerscj.github.io/notes/2017/10/11/Android-Studio-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-FindBugs/</link>
-      <guid>https://rogerscj.github.io/notes/2017/10/11/Android-Studio-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-FindBugs/</guid>
-      <pubDate>Wed, 11 Oct 2017 08:15:53 GMT</pubDate>
-      <description>
-      
-        &lt;p&gt;FindBugs 是一个静态分析工具，它检查类或者 JAR 文件，将字节码与一组缺陷模式进行对比来发现可能的问题，可以以独立的 JAR 包形式运行，也可以作为集成开发工具的插件形式存在。&lt;/p&gt;
-      
-      </description>
-      
-      <content:encoded><![CDATA[<p>FindBugs 是一个静态分析工具，它检查类或者 JAR 文件，将字节码与一组缺陷模式进行对比来发现可能的问题，可以以独立的 JAR 包形式运行，也可以作为集成开发工具的插件形式存在。</p><a id="more"></a><h3 id="安装FindBugs插件"><a href="#安装FindBugs插件" class="headerlink" title="安装FindBugs插件"></a>安装FindBugs插件</h3><p>首先需要在 Android Studio 中安装 FindBugs 的插件。在 Android Studio 中找到<strong>「Preferences/Plugins」</strong>选项，在该复选框中通过上方搜索，或将 FindBugs 插件下载到本地，使用<strong>「Install plugin from disk」</strong>进行安装。安装示意图如下所示，安装完成后需要重启 Android Studio。<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060543025331.jpg" alt="15060543025331.jpg" title=""></p><h3 id="扩展优化"><a href="#扩展优化" class="headerlink" title="扩展优化"></a>扩展优化</h3><h4 id="安装「Android-Code-Arbiter」插件"><a href="#安装「Android-Code-Arbiter」插件" class="headerlink" title="安装「Android Code Arbiter」插件"></a>安装「Android Code Arbiter」插件</h4><p>FindBugs 插件具有着极强的可扩展性，只需要将扩展的 JAR 包导入 FindBugs 插件，<strong>重启</strong>，即可完成相关功能的扩展。</p><p>FindBugs 插件安装后，将会在 <strong>「Preferences/Other Settings」</strong> 中找到安装插件的选项 FindBugs-IDEA，点击中测靠左的「+」号，在弹出的选框中选择 <strong>「4.Install plugin from disk」</strong>，在弹出的选框中选择下载的 Android Code Arbiter 的 jar 包，点击 OK，此时会发现插件已经安装了，点击 OK，并重启 Android Studio 完成插件安装。</p><p>安装部分示意图，如下所示。<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060539937693.jpg" alt="15060539937693.jpg" title=""></p><h4 id="添加过滤"><a href="#添加过滤" class="headerlink" title="添加过滤"></a>添加过滤</h4><p>在没有进行任何过滤的情况下找到的结果可能会令人失望，它会把自动生成的代码也考虑在内。因此我们在进行 Bug 查找的时候首先需要添加过滤</p><p>下面是过滤掉 Android 自动生成的代码的配置文件「findbugs-exclude.xml」</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">FindBugsFilter</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- ignore all issues in resource generation --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.R\$.*"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.Manifest\$.*"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!--</span></div><div class="line"><span class="comment">    &lt;Match&gt;</span></div><div class="line"><span class="comment">        &lt;Or&gt;</span></div><div class="line"><span class="comment">            &lt;Class name="~.*\.R\$.*"/&gt;</span></div><div class="line"><span class="comment">            &lt;Class name="~.*\.Manifest\$.*"/&gt;</span></div><div class="line"><span class="comment">        &lt;/Or&gt;</span></div><div class="line"><span class="comment">    &lt;/Match&gt;</span></div><div class="line"><span class="comment">    --&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 测试用例警告 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Match</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Class</span> <span class="attr">name</span>=<span class="string">"~.*\.*Test"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Not</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">Bug</span> <span class="attr">code</span>=<span class="string">"IJU"</span>/&gt;</span> <span class="comment">&lt;!-- 'IJU' is the code for bugs related to JUnit test code --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">Not</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Match</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">FindBugsFilter</span>&gt;</span></div></pre></td></tr></table></figure><p>添加过滤文件，如下示意图<br><img src="/notes/2017/10/11/Android-Studio-插件配置-FindBugs/15060540989255.jpg" alt="15060540989255.jpg" title=""></p>]]></content:encoded>
-      
-      <comments>https://rogerscj.github.io/notes/2017/10/11/Android-Studio-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-FindBugs/#disqus_thread</comments>
     </item>
     
   </channel>

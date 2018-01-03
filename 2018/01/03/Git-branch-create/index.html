@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content="无聊,蛋疼," />
+  <meta name="keywords" content="Git,命令" />
 
 
 
@@ -119,28 +119,20 @@
 
 
 
-<meta name="description" content="闲无聊无聊的汉字多胞胎入 cuan 汆，人 tun 氽  就喜欢这么简单粗暴、直截了当，上图。">
-<meta name="keywords" content="无聊,蛋疼">
+<meta name="description" content="Git 默认只有一个主干分支，即 master。通常，我们的工作不会直接在 master 上进行，而是使用一个单独的分支，如：dev，最后进行分支的合并。 关于分支的理解，请参考：Git 分支 - 分支的新建与合并，Git 分支 - 远程分支，Git 分支 - 何谓分支，创建与合并分支 分支命令下面给出创建本地和远程分支的完整命令： 1234567$ git checkout -b dev/dev">
+<meta name="keywords" content="Git,命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无聊的汉字多胞胎：汆氽">
-<meta property="og:url" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/index.html">
+<meta property="og:title" content="Git 创建本地和远程分支">
+<meta property="og:url" content="https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/index.html">
 <meta property="og:site_name" content="iSSExplorer&#39;s Notes">
-<meta property="og:description" content="闲无聊无聊的汉字多胞胎入 cuan 汆，人 tun 氽  就喜欢这么简单粗暴、直截了当，上图。">
+<meta property="og:description" content="Git 默认只有一个主干分支，即 master。通常，我们的工作不会直接在 master 上进行，而是使用一个单独的分支，如：dev，最后进行分支的合并。 关于分支的理解，请参考：Git 分支 - 分支的新建与合并，Git 分支 - 远程分支，Git 分支 - 何谓分支，创建与合并分支 分支命令下面给出创建本地和远程分支的完整命令： 1234567$ git checkout -b dev/dev">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-1.jpeg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-2.jpeg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-3.jpeg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-4.jpeg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-5.jpeg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-6.jpeg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-7.jpeg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-8.jpeg">
-<meta property="og:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-9.jpeg">
-<meta property="og:updated_time" content="2017-10-16T09:28:55.000Z">
+<meta property="og:image" content="https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/QQ20180103-094211@2x.png">
+<meta property="og:updated_time" content="2018-01-03T03:15:35.801Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无聊的汉字多胞胎：汆氽">
-<meta name="twitter:description" content="闲无聊无聊的汉字多胞胎入 cuan 汆，人 tun 氽  就喜欢这么简单粗暴、直截了当，上图。">
-<meta name="twitter:image" content="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/hzct-1.jpeg">
+<meta name="twitter:title" content="Git 创建本地和远程分支">
+<meta name="twitter:description" content="Git 默认只有一个主干分支，即 master。通常，我们的工作不会直接在 master 上进行，而是使用一个单独的分支，如：dev，最后进行分支的合并。 关于分支的理解，请参考：Git 分支 - 分支的新建与合并，Git 分支 - 远程分支，Git 分支 - 何谓分支，创建与合并分支 分支命令下面给出创建本地和远程分支的完整命令： 1234567$ git checkout -b dev/dev">
+<meta name="twitter:image" content="https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/QQ20180103-094211@2x.png">
 
 
 
@@ -170,13 +162,13 @@
 
 
 
-  <link rel="canonical" href="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/"/>
+  <link rel="canonical" href="https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/"/>
 
 
 
 
 
-  <title>无聊的汉字多胞胎：汆氽 | iSSExplorer's Notes</title>
+  <title>Git 创建本地和远程分支 | iSSExplorer's Notes</title>
   
 
 
@@ -357,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/16/hanzi-cuan-tun/">
+    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2018/01/03/Git-branch-create/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.搞不定">
@@ -374,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">无聊的汉字多胞胎：汆氽</h1>
+          <h1 class="post-title" itemprop="name headline">Git 创建本地和远程分支</h1>
         
 
         <div class="post-meta">
@@ -386,8 +378,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T16:28:48+08:00">
-                2017-10-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T09:45:08+08:00">
+                2018-01-03
               </time>
             
 
@@ -409,8 +401,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/notes/categories/无聊/" itemprop="url" rel="index">
-                    <span itemprop="name">无聊</span>
+                  <a href="/notes/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -446,20 +438,12 @@
       
 
       
-        <blockquote>
-<p>闲<br>无聊<br>无聊的汉字多胞胎<br><strong>入 cuan 汆，人 tun 氽</strong></p>
-</blockquote>
-<p>就喜欢这么简单粗暴、直截了当，上图。</p>
-<a id="more"></a>
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-1.jpeg" alt="hzct-1.jpeg" title="">
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-2.jpeg" alt="hzct-2.jpeg" title="">
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-3.jpeg" alt="hzct-3.jpeg" title="">
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-4.jpeg" alt="hzct-4.jpeg" title="">
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-5.jpeg" alt="hzct-5.jpeg" title="">
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-6.jpeg" alt="hzct-6.jpeg" title="">
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-7.jpeg" alt="hzct-7.jpeg" title="">
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-8.jpeg" alt="hzct-8.jpeg" title="">
-<img src="/notes/2017/10/16/hanzi-cuan-tun/hzct-9.jpeg" alt="hzct-9.jpeg" title="">
+        <p>Git 默认只有一个主干分支，即 <font color="red">master</font>。通常，我们的工作不会直接在 master 上进行，而是使用一个单独的分支，如：<font color="red">dev</font>，最后进行分支的合并。</p>
+<p>关于分支的理解，请参考：<a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6" target="_blank" rel="external">Git 分支 - 分支的新建与合并</a>，<a href="https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF" target="_blank" rel="external">Git 分支 - 远程分支</a>，<a href="https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E4%BD%95%E8%B0%93%E5%88%86%E6%94%AF" target="_blank" rel="external">Git 分支 - 何谓分支</a>，<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">创建与合并分支</a></p>
+<h3 id="分支命令"><a href="#分支命令" class="headerlink" title="分支命令"></a>分支命令</h3><p>下面给出创建本地和远程分支的完整命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ git checkout -b dev/dev</div><div class="line">Switched to branch &apos;dev/dev&apos;</div><div class="line"></div><div class="line">$ git push origin dev/dev</div><div class="line">Total 0 (delta 0), reused 0 (delta 0)</div><div class="line">To git.dev.sh.ctripcorp.com:hotel_m/PioneerAndroid.git</div><div class="line"> * [new branch]      dev/dev -&gt; dev/dev</div></pre></td></tr></table></figure>
+<div class="note info"><p><strong>git checkout -b dev/dev</strong> 是下面两条命令的简写：<br><strong><code>$ git branch dev/dev</code></strong><br><strong><code>$ git checkout dev/dev</code></strong></p></div>
+<h3 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h3><img src="/notes/2018/01/03/Git-branch-create/QQ20180103-094211@2x.png" alt="QQ20180103-094211@2x.png" title="">
 
       
     </div>
@@ -509,7 +493,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/" title="无聊的汉字多胞胎：汆氽">https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/</a>
+    <a href="https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/" title="Git 创建本地和远程分支">https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -524,9 +508,9 @@
       
         <div class="post-tags">
           
-            <a href="/notes/tags/无聊/" rel="tag"># 无聊</a>
+            <a href="/notes/tags/命令/" rel="tag"># 命令</a>
           
-            <a href="/notes/tags/蛋疼/" rel="tag"># 蛋疼</a>
+            <a href="/notes/tags/Git/" rel="tag"># Git</a>
           
         </div>
       
@@ -539,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/notes/2017/10/16/hanzi-huo-yan-yan-yi/" rel="next" title="无聊的汉字多胞胎：火炎焱燚">
-                <i class="fa fa-chevron-left"></i> 无聊的汉字多胞胎：火炎焱燚
+              <a href="/notes/2017/12/13/mac-macos-shortcuts/" rel="next" title="Mac 常用快捷键">
+                <i class="fa fa-chevron-left"></i> Mac 常用快捷键
               </a>
             
           </div>
@@ -548,10 +532,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/notes/2017/10/17/android-proguard-project/" rel="prev" title="APK 混淆打包">
-                APK 混淆打包 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -639,8 +619,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -851,6 +840,22 @@ var jiathis_config={
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分支命令"><span class="nav-number">1.</span> <span class="nav-text">分支命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#体验"><span class="nav-number">2.</span> <span class="nav-text">体验</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -1008,9 +1013,9 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://rogerscj.github.io/notes/2017/10/16/hanzi-cuan-tun/';
-          this.page.identifier = '2017/10/16/hanzi-cuan-tun/';
-          this.page.title = '无聊的汉字多胞胎：汆氽';
+          this.page.url = 'https://rogerscj.github.io/notes/2018/01/03/Git-branch-create/';
+          this.page.identifier = '2018/01/03/Git-branch-create/';
+          this.page.title = 'Git 创建本地和远程分支';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://rogerscj.disqus.com/embed.js';
