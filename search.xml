@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android HTTPS SSL 双向验证（自签名证书）]]></title>
+    <url>%2Fnotes%2F2018%2F01%2F17%2FAndroid-https-ssl-two-way%2F</url>
+    <content type="text"><![CDATA[前段时间做一个基于「发布/订阅(publish/subscribe)」模式的“轻量级”通讯协议。连接 MQTT 时，为了保证服务器数据安全，保证接口不暴露给第三方，要求客户端接口全部采用 HTTPS 的 SSL 验证请求。本博介绍的是自签名证书。 HTTPS 与 HTTP http 是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议 http 与 https 使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443 http 连接很简单，无状态；https 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，比 http 协议安全 https 协议需要到 ca 申请证书。一般免费证书很少，需要交费 SSLSSL协议位于「TCP/IP」协议与各种应用层协议之间，为数据通讯提供安全支持。SSL协议可分为两层，即：「SSL记录协议」和「SSL握手协议」。 SSL协议层级概念「SSL记录协议」（SSL Record Protocol），它建立在可靠的传输协议（如TCP）之上，为高层协议提供数据封装、压缩、加密等基本功能的支持。 「SSL握手协议」（SSL Handshake Protocol），它建立在「SSL记录协议」之上，用于在实际的数据传输开始前，通讯双方进行身份认证、协商加密算法、交换加密密钥等。 功能 客户对服务器的身份认证 SSL服务器允许终端（如：浏览器）使用标准的公钥加密技术和一些可靠的认证中心（CA）的证书来确认服务器的合法性。 服务器对客户的身份认证 可通过公钥技术和证书进行认证，也可通过用户名、password 来认证。 建立服务器与客户之间安全的数据通道 SSL要求客户与服务器之间的所有发送的数据都被发送端加密、接收端解密，同时还检查数据的完整性。 密钥库和证书（仅供参考，未验证）1234567891011121314151617181920# 生成服务器证书库 server.keystorekeytool -validity 365 -genkey -v -alias server -keyalg RSA -keystore server.keystore -dname &quot;CN=127.0.0.1,OU=rongyiwang,O=rongyiwang,L=Shanghai,ST=Shanghai,c=cn&quot; -storepass 123456 -keypass 123456# 生成客户端证书库 client.p12keytool -validity 365 -genkeypair -v -alias client -keyalg RSA -storetype PKCS12 -keystore client.p12 -dname &quot;CN=client,OU=rongyiwang,O=rongyiwang,L=Shanghai,ST=Shanghai,c=cn&quot; -storepass 123456 -keypass 123456# 从客户端证书库中导出客户端证书 client.p12、client.cerkeytool -export -v -alias client -keystore client.p12 -storetype PKCS12 -storepass 123456 -rfc -file client.cer# 从服务器证书库中导出服务器证书 server.keystorekeytool -export -v -alias server -keystore server.keystore -storepass 123456 -rfc -file server.cer# 生成客户端信任证书库(由服务端证书生成的证书库) server.cer client.truststorekeytool -import -v -alias server -file server.cer -keystore client.truststore -storepass 123456 -storetype BKS -provider org.bouncycastle.jce.provider.BouncyCastleProvider# 将客户端证书导入到服务器证书库(使得服务器信任客户端证书) client.cerkeytool -import -v -alias client -file client.cer -keystore server.keystore -storepass 123456# 查看证书库中的全部证书keytool -list -keystore server.keystore -storepass 123456 Android SSL 认证需要注意的是，安卓端的证书必须是BKS类型。下面的验证方式使用了「client.bks」和「keycert.p12」 SslSocketFactory 方式进行 SSL 认证1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556/** * 双向验证 */private fun getSSLSocketFactory(): SSLSocketFactory? &#123; try &#123; // 取得SSL的SSLContext实例，使用协议SSL val sslContext = SSLContext.getInstance("SSL") // 取得KeyManagerFactory和TrustManagerFactory的X509密钥管理器实例 val keyManager = KeyManagerFactory.getInstance("X509") val trustManager = TrustManagerFactory.getInstance("X509") // 取得BKS密库实例 val kks = KeyStore.getInstance("BKS") val tks = KeyStore.getInstance("PKCS12") // 加客户端载证书和私钥, 通过读取资源文件的方式读取密钥和信任证书 client.bks val keyStore = FoundationContext.context.assets.open("client.bks") kks.load(keyStore, BKS_PASSWORD.toCharArray()) val trustStore = FoundationContext.context.assets.open("keycert.p12") tks.load(trustStore, BKS_PASSWORD.toCharArray()) // 初始化密钥管理器 keyManager.init(kks, BKS_PASSWORD.toCharArray()) trustManager.init(tks) // 初始化SSLContext sslContext.init(keyManager.keyManagers, trustManager.trustManagers, null) // 生成SSLSocket // Client_sslSocket = // sslContext.socketFactory.createSocket(SERVER_IP, SERVER_PORT) as SSLSocket return sslContext.socketFactory &#125; catch (e: KeyStoreException) &#123; Logger.e(e) &#125; catch (e: CertificateException) &#123; Logger.e(e) &#125; catch (e: IOException) &#123; Logger.e(e) &#125; catch (e: NoSuchAlgorithmException) &#123; Logger.e(e) &#125; catch (e: KeyManagementException) &#123; Logger.e(e) &#125; catch (e: UnrecoverableKeyException) &#123; Logger.e(e) &#125; catch (e: MqttException) &#123; Logger.e(e) &#125; return null&#125; SSLContext 方式进行 SSL 认证方法同上，将 sslContext.socketFactory 去掉，直接返回 sslContext 即可。]]></content>
+      <categories>
+        <category>Android</category>
+        <category>Https</category>
+      </categories>
+      <tags>
+        <tag>https</tag>
+        <tag>ssl</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git 创建本地和远程分支]]></title>
     <url>%2Fnotes%2F2018%2F01%2F03%2FGit-branch-create%2F</url>
     <content type="text"><![CDATA[Git 默认只有一个主干分支，即 master。通常，我们的工作不会直接在 master 上进行，而是使用一个单独的分支，如：dev，最后进行分支的合并。 关于分支的理解，请参考：Git 分支 - 分支的新建与合并，Git 分支 - 远程分支，Git 分支 - 何谓分支，创建与合并分支 分支命令下面给出创建本地和远程分支的完整命令： 1234567$ git checkout -b dev/devSwitched to branch &apos;dev/dev&apos;$ git push origin dev/devTotal 0 (delta 0), reused 0 (delta 0)To git.dev.sh.ctripcorp.com:hotel_m/PioneerAndroid.git * [new branch] dev/dev -&gt; dev/dev git checkout -b dev/dev 是下面两条命令的简写：$ git branch dev/dev$ git checkout dev/dev 体验]]></content>
@@ -68,9 +81,9 @@
         <category>备忘录</category>
       </categories>
       <tags>
+        <tag>IDEA</tag>
         <tag>Mark</tag>
         <tag>备忘录</tag>
-        <tag>IDEA</tag>
       </tags>
   </entry>
   <entry>
@@ -96,17 +109,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[GitHub 从源分支更新 Fork 分支]]></title>
-    <url>%2Fnotes%2F2017%2F10%2F23%2Fgithub-fork-update-from-upstreamo-riginal%2F</url>
-    <content type="text"><![CDATA[在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。 GitHub 操作Step1在 Fork 分支创建一个合并请求(New pull request)： Step2「New pull request」之后，需要对调 Base： Step3创建合并请求 Step4填写合并说明，（Update upstream：更新上游代码的意思） Step5这一步需要解决冲突，然后「Merge pull request」，最后不要忘记「Confirm merge」 通过命令行进行更新源代码123456789101112# clone你fork的项目$ git clone git@github.com:UserName/your-forked-repo.git$ cd fork-repo# 添加一个叫upstream的remote$ git remote add upstream git://github.com/original-dev-username/repo-you-forked-from.git# 然后fetch$ git fetch upstream# pull最新的代码到你的主分支中$ git pull upstream master]]></content>
-      <categories>
-        <category>备忘录</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[autojump]]></title>
     <url>%2Fnotes%2F2017%2F10%2F23%2Fmark-mac-autojump%2F</url>
     <content type="text"><![CDATA[切换目录，在命令行的操作中没有比这个更频繁的动作了，又有什么比一遍又一遍 “cd ls cd ls ……” 更令人沮丧的事情呢，即便是使用了 zsh Alias。如果你不是百分百确定你想要进入的目录名字，那么你就避免不了频繁的使用这该死的 “cd ls”，但也可能离你的目标目录越走越远，越走越远。 所幸的是，现在大量的终端和 shell 都提供了强大的自动补全功能。但是，你仍需一直疯狂的敲击 TAB 来干这事。如果你是一个懒惰的人，和我一样，那么，当你发现 autojump 的时候，一定会对它感到惊喜不已。 autojump 是一个命令行工具，它允许你可以直接跳转到你喜爱的目录，而不用管你现在身在何处。 autojump 的基本用法autojump 的工作方式非常简单，它会在你每次启动命令的时候记录你的当前位置，并将它添加进数据库中。这样一来，某些目录添加的次数多于其它目录时，就代表着它比其他目录更重要，日常使用更频繁，那么它的“权重”就更大。 现在，无论你在哪个目录，你都可以使用下面的语法来直接跳转到目标目录： 1$ autojump [目录名 Or 目录名的一部分] 注意，你不需要输入完整的名称，因为 autojump 会检索它的数据库，并返回最可能的结果。 例如，我们有下面的目录结构： 那么，现在我想进入到 doc 目录，不管你当前在哪里，只需要在命令行输入下面的命令即可： 1$ j do # j 是autojump的默认别名 另一个比较好的功能是，autojump 支持 zsh 自动补全。如果你不确定那里是不是你要跳转的地方，TAB 键就会列出完整路径，再次 TAB 可进行选择： 1234567891011# 这是我电脑运行的结果$ j d__d__1__/Users/username/prj/Androidd__2__/Users/username/.emacs.dd__3__/Users/username/prj/Android/trunk/hAndroidd__4__/Users/username/prj_workspace/aDroidd__5__/Users/username/prj_outsourcing/trunk/MonitoingReportTablesDroidd__6__/Users/username/.vim/bundled__7__/Users/username/Downloadsd__8__/Users/username/prj/Android/trunk/ispatchAppd__9__/Users/username/prj/PAndroid 修改权重，如果你突然想要把当前目录变成你使用最频繁的文件夹，你可以在该目录通过命令的参数 i 来手工增加它的权重： 1$ autojump -i [权重] 这将使得该目录更可能被选择跳转。相反的例子是在该目录使用参数 d 来减少权重： 1$ autojump -d [权重] 要跟踪所有的改变，输入： 1$ autojump -s 这样，会显示数据库中所有的统计数据。 清除不再存在的目录： 1$ autojump --purge 对于高级用户，你可以访问目录数据库，并修改它的内容。可以使用下面的命令来手动添加一个目录： 1$ autojump -a [目录] 简言之，autojump 的简单实用将会受到所有命令行用户的欢迎。]]></content>
@@ -117,6 +119,17 @@
         <tag>Mac</tag>
         <tag>Mark</tag>
         <tag>备忘录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GitHub 从源分支更新 Fork 分支]]></title>
+    <url>%2Fnotes%2F2017%2F10%2F23%2Fgithub-fork-update-from-upstreamo-riginal%2F</url>
+    <content type="text"><![CDATA[在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。 GitHub 操作Step1在 Fork 分支创建一个合并请求(New pull request)： Step2「New pull request」之后，需要对调 Base： Step3创建合并请求 Step4填写合并说明，（Update upstream：更新上游代码的意思） Step5这一步需要解决冲突，然后「Merge pull request」，最后不要忘记「Confirm merge」 通过命令行进行更新源代码123456789101112# clone你fork的项目$ git clone git@github.com:UserName/your-forked-repo.git$ cd fork-repo# 添加一个叫upstream的remote$ git remote add upstream git://github.com/original-dev-username/repo-you-forked-from.git# 然后fetch$ git fetch upstream# pull最新的代码到你的主分支中$ git pull upstream master]]></content>
+      <categories>
+        <category>备忘录</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
