@@ -119,16 +119,17 @@
 
 
 
-<meta name="description" content="关注技术，记录生活，分享感悟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="iSSExplorer&#39;s Notes">
-<meta property="og:url" content="https://rogerscj.github.io/notes/categories/Android/Https/index.html">
+<meta name="description" content="这里只是粗浅的了解原码、反码及补码的形式和基本概念，如需深入理解，可参考阮一峰的两篇博文：理解字节序 和 关于2的补码 基本概念机器数机器数(Computer Number)是指一个数在计算机中的二进制表示形式。机器数是带符号的，在计算机中用一个数的最高位存放符号，0 表示正数，1 表示负数。 比如，十进制数「+3」，计算机字长为8位，转换成二进制就是00000011。如果是「-3」，就是 100">
+<meta property="og:type" content="article">
+<meta property="og:title" content="补码">
+<meta property="og:url" content="https://rogerscj.github.io/notes/2018/01/24/twos-complement/index.html">
 <meta property="og:site_name" content="iSSExplorer&#39;s Notes">
-<meta property="og:description" content="关注技术，记录生活，分享感悟">
+<meta property="og:description" content="这里只是粗浅的了解原码、反码及补码的形式和基本概念，如需深入理解，可参考阮一峰的两篇博文：理解字节序 和 关于2的补码 基本概念机器数机器数(Computer Number)是指一个数在计算机中的二进制表示形式。机器数是带符号的，在计算机中用一个数的最高位存放符号，0 表示正数，1 表示负数。 比如，十进制数「+3」，计算机字长为8位，转换成二进制就是00000011。如果是「-3」，就是 100">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-25T08:17:52.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iSSExplorer&#39;s Notes">
-<meta name="twitter:description" content="关注技术，记录生活，分享感悟">
+<meta name="twitter:title" content="补码">
+<meta name="twitter:description" content="这里只是粗浅的了解原码、反码及补码的形式和基本概念，如需深入理解，可参考阮一峰的两篇博文：理解字节序 和 关于2的补码 基本概念机器数机器数(Computer Number)是指一个数在计算机中的二进制表示形式。机器数是带符号的，在计算机中用一个数的最高位存放符号，0 表示正数，1 表示负数。 比如，十进制数「+3」，计算机字长为8位，转换成二进制就是00000011。如果是「-3」，就是 100">
 
 
 
@@ -158,13 +159,13 @@
 
 
 
-  <link rel="canonical" href="https://rogerscj.github.io/notes/categories/Android/Https/"/>
+  <link rel="canonical" href="https://rogerscj.github.io/notes/2018/01/24/twos-complement/"/>
 
 
 
 
 
-  <title>分类: Https | iSSExplorer's Notes</title>
+  <title>补码 | iSSExplorer's Notes</title>
   
 
 
@@ -193,7 +194,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -331,55 +332,313 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Https<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2018/01/24/twos-complement/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.搞不定">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/notes/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="iSSExplorer's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/notes/2018/01/17/Android-https-ssl-two-way/" itemprop="url">
-              
-                <span itemprop="name">Android HTTPS SSL 双向验证（自签名证书）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">补码</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-17T17:09:22+08:00"
-              content="2018-01-17" >
-          01-17
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T18:04:07+08:00">
+                2018-01-24
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/notes/categories/计算机基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这里只是粗浅的了解原码、反码及补码的形式和基本概念，如需深入理解，可参考阮一峰的两篇博文：<a href="http://www.ruanyifeng.com/blog/2016/11/byte-order.html" target="_blank" rel="external">理解字节序</a> 和 <a href="http://www.ruanyifeng.com/blog/2009/08/twos_complement.html" target="_blank" rel="external">关于2的补码</a></p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="机器数"><a href="#机器数" class="headerlink" title="机器数"></a>机器数</h4><p>机器数(Computer Number)是指一个数在计算机中的二进制表示形式。机器数是带符号的，在计算机中用一个数的最高位存放符号，<font color="red">0</font> 表示正数，<font color="red">1</font> 表示负数。</p>
+<p>比如，十进制数「+3」，计算机字长为8位，转换成二进制就是<code>00000011</code>。如果是「-3」，就是 <code>10000011</code>。</p>
+<p>那么，这里的 <code>00000011</code> 和 <code>10000011</code> 就是机器数。</p>
+<div class="note info"><p>机器数有2个特点：<br>一是符号数字化<br>二是其数的大小受机器字长的限制</p></div> 
+<a id="more"></a>
+<h4 id="真值"><a href="#真值" class="headerlink" title="真值"></a>真值</h4><p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 <code>10000011</code>，其最高位 <font color="red">1</font> 代表负，其真正数值是 <font color="red">-3</font> 而不是形式值<font color="#03B9FF">131（10000011转换成十进制等于131）</font>。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。</p>
+<div class="note "><p>比如：<br><code>0000 0001</code>的真值 = <code>+000 0001</code> =「+1」<br><code>1000 0001</code>的真值 = <code>–000 0001</code> =「–1」</p></div>
+<h3 id="机器码的原码、反码、补码的三种表示形式"><a href="#机器码的原码、反码、补码的三种表示形式" class="headerlink" title="机器码的原码、反码、补码的三种表示形式"></a>机器码的原码、反码、补码的三种表示形式</h3><p>对于一个数，计算机要使用一定的编码方式进行存储。<br>机器存储一个具体数字的编码方式包括：原码、反码、补码。</p>
+<h4 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h4><p>原码就是符号位加上真值的绝对值，即用第一位表示符号，其余位表示值。<br>这也是人脑最直观，最容易和计算的表示方式。</p>
+<div class="note "><p>如(字长为8)<br>[+1]<font size="1" color="red">原</font> = 0000 0001<br>[-1]<font size="1" color="red">原</font> = 1000 0001<br>8位二进制的范围为[1111 1111 , 0111 1111]，即[-127,127]</p></div> 
+<h4 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h4><p>反码的表示方法是：<br>    <font color="#03B9FF"><strong>正数</strong></font>的反码是其本身；<br>    <font color="#03B9FF"><strong>负数</strong></font>的反码是在其原码的基础上，符号位不变，其余各个位取反；</p>
+<div class="note "><p>[+1]=[0000 0001]<font size="1" color="red">原</font> = [0000 0001]<font size="1" color="red">反</font><br>[-1]=[1000 0001]<font size="1" color="red">原</font> = [1111 1110]<font size="1" color="red">反</font></p></div>
+<h4 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h4><p>补码的表示方法是：<br>    <font color="#03B9FF"><strong>正数</strong></font>的补码就是其本身；<br>    <font color="#03B9FF"><strong>负数</strong></font>的补码是在其原码的基础上，符号位不变，其余各位取反(~)，最后「+1」(即在反码的基础上 +1)；</p>
+<div class="note "><p>[+1] = [0000 0001]<font size="1" color="red">原</font> = [0000 0001]<font size="1" color="red">反</font> = [0000 0001]<font size="1" color="red">补</font><br>[-1] = [1000 0001]<font size="1" color="red">原</font> = [1111 1110]<font size="1" color="red">反</font> = [1111 1111]<font size="1" color="red">补</font></p></div>
+<p>需要注意：补码的补码还是原码，就是说补码转原码和原码转补码的方法是一样的，取反+1。</p>
+<h3 id="为何要用补码"><a href="#为何要用补码" class="headerlink" title="为何要用补码"></a>为何要用补码</h3><p>原码表示法比较直观，它的数值部分就是该数的绝对值，而且与真值、十进制数的转换十分方便。<br>既然原码才是被人脑直接识别并用于计算表示方式，为何还会有反码和补码呢?<br>原码的表示是最直观易懂的，但是它的加减法运算较复杂。机器首先要判断两数的符号，还要判断两数绝对值大小，等等，显然，这种计算会让计算机的基础电路变得十分复杂。</p>
+<p>于是人们开始探索 将符号位参与运算, 并且只保留加法的方法。</p>
+<p>计算十进制的表达式： 1 - 1 = 0<br><div class="note "><p>1 - 1 = 1 + (-1) = [0000 0001]<font size="1" color="red">原</font> + [1000 0001]<font size="1" color="red">原</font> = [1000 0010]<font size="1" color="red">原</font> = -2</p></div></p>
+<p>可以看到，如果用原码表示，让符号位也参与计算，显然对于减法来说结果是不正确的。</p>
+<p>为了解决上面原码做减法的问题，于是，出现了反码：</p>
+<div class="note "><p>1 - 1 = 1 + (-1) = [0000 0001]<font size="1" color="red">原</font> + [1000 0001]<font size="1" color="red">原</font>= [0000 0001]<font size="1" color="red">反</font> + [1111 1110]<font size="1" color="red">反</font> = [1111 1111]<font size="1" color="red">反</font> = [1000 0000]<font size="1" color="red">原</font> = -0</p></div>
+<p>发现用反码计算减法，结果的真值部分是正确的。现在，唯一的问题就出现在<font size="1" color="red">“0”</font>这个特殊的数值上。虽然理解上 +0 和 -0 是一样的，但是<strong>0</strong>带符号是没有任何意义的。而且这样<strong>0</strong>的编码就出现了2个：[0000 0000]<font size="1" color="red">原</font> 和 [1000 0000]<font size="1" color="red">原</font>。</p>
+<p>于是补码就出现了：</p>
+<div class="note "><p>1-1 = 1 + (-1) = [0000 0001]<font size="1" color="red">原</font> + [1000 0001]<font size="1" color="red">原</font> = [0000 0001]<font size="1" color="red">补</font> + [1111 1111]<font size="1" color="red">补</font> = [0000 0000]<font size="1" color="red">补</font>=[0000 0000]<font size="1" color="red">原</font></p></div>
+<p>这样 0 用 [0000 0000] 表示，这样<strong>-0</strong>的问题就不存在了。而且可以用 [1000 0000] 表示 <strong>-128</strong> ：<br><div class="note "><p>(-1) + (-127) = [1000 0001]<font size="1" color="red">原</font> + [1111 1111]<font size="1" color="red">原</font> = [1111 1111]<font size="1" color="red">补</font> + [1000 0001]<font size="1" color="red">补</font> = [1000 0000]<font size="1" color="red">补</font></p></div></p>
+<p><strong>-1-127</strong> 的结果应该是 <strong>-128</strong>，在补码的运算过程中 [1000 0000]<font size="1" color="red">补</font> 就被用作 <strong>-128</strong>。<br>这里需要特别注意的是，-128 的的表现形式实际上用的是 <strong>-0</strong> 的补码，所以 <strong>-128</strong> 并没有原码和反码(对 <strong>-128</strong> 的补码表示[1000 0000]<font size="1" color="red">补</font>算出来的原码是[0000 0000]<font size="1" color="red">原</font>，这是不正确的)。</p>
+<p>使用补码，不仅仅修复了0的符号以及存在两个编码的问题，而且还能够多表示一个最低数。这就是为什么8位二进制，使用原码或反码表示的范围为[-127, +127]，而使用补码表示的范围为<font size="1" color="red">[-128, 127]</font>。</p>
+<p>因为机器使用补码，所以对于编程中常用到的 <strong>32</strong> 位 <strong>int</strong> 类型，可以表示范围是：[-2^31, 2^31-1] 因为第一位表示的是符号位。而使用补码表示时又可以多保存一个最小值。</p>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><p>最后简单补充以下 Java 基本数据类型：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">字节数</th>
+<th style="text-align:center">类名称</th>
+<th style="text-align:center">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">1字节(8位)</td>
+<td style="text-align:center">Byte</td>
+<td style="text-align:center">[-2^8, 2^8-1], 即 -128 ～ 127</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">2字节(16位)</td>
+<td style="text-align:center">Short</td>
+<td style="text-align:center">[-2^16, 2^16-1], 即 -32768 ～ 32767</td>
+</tr>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">4字节(32位)</td>
+<td style="text-align:center">Integer</td>
+<td style="text-align:center">[-2^31, 2^31-1]</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">8字节(64位)</td>
+<td style="text-align:center">Long</td>
+<td style="text-align:center">[-2^64, 2^64-1]</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">4字节(32位)</td>
+<td style="text-align:center">Float</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">8字节(64位)</td>
+<td style="text-align:center">Double</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>爱打赏的人，运气都不会太差~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/notes/images/wechatpay.jpeg" alt="Mr.搞不定 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/notes/images/alipay.jpeg" alt="Mr.搞不定 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mr.搞不定
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://rogerscj.github.io/notes/2018/01/24/twos-complement/" title="补码">https://rogerscj.github.io/notes/2018/01/24/twos-complement/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/notes/2018/01/17/Android-https-ssl-two-way/" rel="next" title="Android HTTPS SSL 双向验证（自签名证书）">
+                <i class="fa fa-chevron-left"></i> Android HTTPS SSL 双向验证（自签名证书）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2146317" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -387,6 +646,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -407,8 +680,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -619,6 +901,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机器数"><span class="nav-number">1.1.</span> <span class="nav-text">机器数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#真值"><span class="nav-number">1.2.</span> <span class="nav-text">真值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器码的原码、反码、补码的三种表示形式"><span class="nav-number">2.</span> <span class="nav-text">机器码的原码、反码、补码的三种表示形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原码"><span class="nav-number">2.1.</span> <span class="nav-text">原码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反码"><span class="nav-number">2.2.</span> <span class="nav-text">反码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补码"><span class="nav-number">2.3.</span> <span class="nav-text">补码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为何要用补码"><span class="nav-number">3.</span> <span class="nav-text">为何要用补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附"><span class="nav-number">4.</span> <span class="nav-text">附</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -754,6 +1052,10 @@
 
 
   
+  <script type="text/javascript" src="/notes/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/notes/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -769,6 +1071,18 @@
 
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://rogerscj.github.io/notes/2018/01/24/twos-complement/';
+          this.page.identifier = '2018/01/24/twos-complement/';
+          this.page.title = '补码';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://rogerscj.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
@@ -1128,26 +1442,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

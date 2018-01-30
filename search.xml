@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[补码]]></title>
+    <url>%2Fnotes%2F2018%2F01%2F24%2Ftwos-complement%2F</url>
+    <content type="text"><![CDATA[这里只是粗浅的了解原码、反码及补码的形式和基本概念，如需深入理解，可参考阮一峰的两篇博文：理解字节序 和 关于2的补码 基本概念机器数机器数(Computer Number)是指一个数在计算机中的二进制表示形式。机器数是带符号的，在计算机中用一个数的最高位存放符号，0 表示正数，1 表示负数。 比如，十进制数「+3」，计算机字长为8位，转换成二进制就是00000011。如果是「-3」，就是 10000011。 那么，这里的 00000011 和 10000011 就是机器数。 机器数有2个特点：一是符号数字化二是其数的大小受机器字长的限制 真值因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 10000011，其最高位 1 代表负，其真正数值是 -3 而不是形式值131（10000011转换成十进制等于131）。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。 比如：0000 0001的真值 = +000 0001 =「+1」1000 0001的真值 = –000 0001 =「–1」 机器码的原码、反码、补码的三种表示形式对于一个数，计算机要使用一定的编码方式进行存储。机器存储一个具体数字的编码方式包括：原码、反码、补码。 原码原码就是符号位加上真值的绝对值，即用第一位表示符号，其余位表示值。这也是人脑最直观，最容易和计算的表示方式。 如(字长为8)[+1]原 = 0000 0001[-1]原 = 1000 00018位二进制的范围为[1111 1111 , 0111 1111]，即[-127,127] 反码反码的表示方法是： 正数的反码是其本身； 负数的反码是在其原码的基础上，符号位不变，其余各个位取反； [+1]=[0000 0001]原 = [0000 0001]反[-1]=[1000 0001]原 = [1111 1110]反 补码补码的表示方法是： 正数的补码就是其本身； 负数的补码是在其原码的基础上，符号位不变，其余各位取反(~)，最后「+1」(即在反码的基础上 +1)； [+1] = [0000 0001]原 = [0000 0001]反 = [0000 0001]补[-1] = [1000 0001]原 = [1111 1110]反 = [1111 1111]补 需要注意：补码的补码还是原码，就是说补码转原码和原码转补码的方法是一样的，取反+1。 为何要用补码原码表示法比较直观，它的数值部分就是该数的绝对值，而且与真值、十进制数的转换十分方便。既然原码才是被人脑直接识别并用于计算表示方式，为何还会有反码和补码呢?原码的表示是最直观易懂的，但是它的加减法运算较复杂。机器首先要判断两数的符号，还要判断两数绝对值大小，等等，显然，这种计算会让计算机的基础电路变得十分复杂。 于是人们开始探索 将符号位参与运算, 并且只保留加法的方法。 计算十进制的表达式： 1 - 1 = 01 - 1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原 = [1000 0010]原 = -2 可以看到，如果用原码表示，让符号位也参与计算，显然对于减法来说结果是不正确的。 为了解决上面原码做减法的问题，于是，出现了反码： 1 - 1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原= [0000 0001]反 + [1111 1110]反 = [1111 1111]反 = [1000 0000]原 = -0 发现用反码计算减法，结果的真值部分是正确的。现在，唯一的问题就出现在“0”这个特殊的数值上。虽然理解上 +0 和 -0 是一样的，但是0带符号是没有任何意义的。而且这样0的编码就出现了2个：[0000 0000]原 和 [1000 0000]原。 于是补码就出现了： 1-1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原 = [0000 0001]补 + [1111 1111]补 = [0000 0000]补=[0000 0000]原 这样 0 用 [0000 0000] 表示，这样-0的问题就不存在了。而且可以用 [1000 0000] 表示 -128 ：(-1) + (-127) = [1000 0001]原 + [1111 1111]原 = [1111 1111]补 + [1000 0001]补 = [1000 0000]补 -1-127 的结果应该是 -128，在补码的运算过程中 [1000 0000]补 就被用作 -128。这里需要特别注意的是，-128 的的表现形式实际上用的是 -0 的补码，所以 -128 并没有原码和反码(对 -128 的补码表示[1000 0000]补算出来的原码是[0000 0000]原，这是不正确的)。 使用补码，不仅仅修复了0的符号以及存在两个编码的问题，而且还能够多表示一个最低数。这就是为什么8位二进制，使用原码或反码表示的范围为[-127, +127]，而使用补码表示的范围为[-128, 127]。 因为机器使用补码，所以对于编程中常用到的 32 位 int 类型，可以表示范围是：[-2^31, 2^31-1] 因为第一位表示的是符号位。而使用补码表示时又可以多保存一个最小值。 附最后简单补充以下 Java 基本数据类型： 类型 字节数 类名称 范围 byte 1字节(8位) Byte [-2^8, 2^8-1], 即 -128 ～ 127 short 2字节(16位) Short [-2^16, 2^16-1], 即 -32768 ～ 32767 int 4字节(32位) Integer [-2^31, 2^31-1] long 8字节(64位) Long [-2^64, 2^64-1] float 4字节(32位) Float - double 8字节(64位) Double -]]></content>
+      <categories>
+        <category>计算机基础</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Android HTTPS SSL 双向验证（自签名证书）]]></title>
     <url>%2Fnotes%2F2018%2F01%2F17%2FAndroid-https-ssl-two-way%2F</url>
     <content type="text"><![CDATA[前段时间做一个基于「发布/订阅(publish/subscribe)」模式的“轻量级”通讯协议。连接 MQTT 时，为了保证服务器数据安全，保证接口不暴露给第三方，要求客户端接口全部采用 HTTPS 的 SSL 验证请求。本博介绍的是自签名证书。 HTTPS 与 HTTP http 是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议 http 与 https 使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443 http 连接很简单，无状态；https 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，比 http 协议安全 https 协议需要到 ca 申请证书。一般免费证书很少，需要交费 SSLSSL协议位于「TCP/IP」协议与各种应用层协议之间，为数据通讯提供安全支持。SSL协议可分为两层，即：「SSL记录协议」和「SSL握手协议」。 SSL协议层级概念「SSL记录协议」（SSL Record Protocol），它建立在可靠的传输协议（如TCP）之上，为高层协议提供数据封装、压缩、加密等基本功能的支持。 「SSL握手协议」（SSL Handshake Protocol），它建立在「SSL记录协议」之上，用于在实际的数据传输开始前，通讯双方进行身份认证、协商加密算法、交换加密密钥等。 功能 客户对服务器的身份认证 SSL服务器允许终端（如：浏览器）使用标准的公钥加密技术和一些可靠的认证中心（CA）的证书来确认服务器的合法性。 服务器对客户的身份认证 可通过公钥技术和证书进行认证，也可通过用户名、password 来认证。 建立服务器与客户之间安全的数据通道 SSL要求客户与服务器之间的所有发送的数据都被发送端加密、接收端解密，同时还检查数据的完整性。 密钥库和证书（仅供参考，未验证）1234567891011121314151617181920# 生成服务器证书库 server.keystorekeytool -validity 365 -genkey -v -alias server -keyalg RSA -keystore server.keystore -dname &quot;CN=127.0.0.1,OU=rongyiwang,O=rongyiwang,L=Shanghai,ST=Shanghai,c=cn&quot; -storepass 123456 -keypass 123456# 生成客户端证书库 client.p12keytool -validity 365 -genkeypair -v -alias client -keyalg RSA -storetype PKCS12 -keystore client.p12 -dname &quot;CN=client,OU=rongyiwang,O=rongyiwang,L=Shanghai,ST=Shanghai,c=cn&quot; -storepass 123456 -keypass 123456# 从客户端证书库中导出客户端证书 client.p12、client.cerkeytool -export -v -alias client -keystore client.p12 -storetype PKCS12 -storepass 123456 -rfc -file client.cer# 从服务器证书库中导出服务器证书 server.keystorekeytool -export -v -alias server -keystore server.keystore -storepass 123456 -rfc -file server.cer# 生成客户端信任证书库(由服务端证书生成的证书库) server.cer client.truststorekeytool -import -v -alias server -file server.cer -keystore client.truststore -storepass 123456 -storetype BKS -provider org.bouncycastle.jce.provider.BouncyCastleProvider# 将客户端证书导入到服务器证书库(使得服务器信任客户端证书) client.cerkeytool -import -v -alias client -file client.cer -keystore server.keystore -storepass 123456# 查看证书库中的全部证书keytool -list -keystore server.keystore -storepass 123456 Android SSL 认证需要注意的是，安卓端的证书必须是BKS类型。下面的验证方式使用了「client.bks」和「keycert.p12」 SslSocketFactory 方式进行 SSL 认证1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556/** * 双向验证 */private fun getSSLSocketFactory(): SSLSocketFactory? &#123; try &#123; // 取得SSL的SSLContext实例，使用协议SSL val sslContext = SSLContext.getInstance("SSL") // 取得KeyManagerFactory和TrustManagerFactory的X509密钥管理器实例 val keyManager = KeyManagerFactory.getInstance("X509") val trustManager = TrustManagerFactory.getInstance("X509") // 取得BKS密库实例 val kks = KeyStore.getInstance("BKS") val tks = KeyStore.getInstance("PKCS12") // 加客户端载证书和私钥, 通过读取资源文件的方式读取密钥和信任证书 client.bks val keyStore = FoundationContext.context.assets.open("client.bks") kks.load(keyStore, BKS_PASSWORD.toCharArray()) val trustStore = FoundationContext.context.assets.open("keycert.p12") tks.load(trustStore, BKS_PASSWORD.toCharArray()) // 初始化密钥管理器 keyManager.init(kks, BKS_PASSWORD.toCharArray()) trustManager.init(tks) // 初始化SSLContext sslContext.init(keyManager.keyManagers, trustManager.trustManagers, null) // 生成SSLSocket // Client_sslSocket = // sslContext.socketFactory.createSocket(SERVER_IP, SERVER_PORT) as SSLSocket return sslContext.socketFactory &#125; catch (e: KeyStoreException) &#123; Logger.e(e) &#125; catch (e: CertificateException) &#123; Logger.e(e) &#125; catch (e: IOException) &#123; Logger.e(e) &#125; catch (e: NoSuchAlgorithmException) &#123; Logger.e(e) &#125; catch (e: KeyManagementException) &#123; Logger.e(e) &#125; catch (e: UnrecoverableKeyException) &#123; Logger.e(e) &#125; catch (e: MqttException) &#123; Logger.e(e) &#125; return null&#125; SSLContext 方式进行 SSL 认证方法同上，将 sslContext.socketFactory 去掉，直接返回 sslContext 即可。]]></content>
@@ -116,9 +124,9 @@
         <category>备忘录</category>
       </categories>
       <tags>
-        <tag>Mac</tag>
         <tag>Mark</tag>
         <tag>备忘录</tag>
+        <tag>Mac</tag>
       </tags>
   </entry>
   <entry>
@@ -140,9 +148,9 @@
         <category>备忘录</category>
       </categories>
       <tags>
-        <tag>Mac</tag>
         <tag>Mark</tag>
         <tag>备忘录</tag>
+        <tag>Mac</tag>
       </tags>
   </entry>
   <entry>
