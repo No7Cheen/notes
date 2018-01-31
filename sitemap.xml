@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rogerscj.github.io/notes/2018/01/31/spring-boot-chapter-h1/</loc>
+    
+    <lastmod>2018-01-31T10:13:12.812Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rogerscj.github.io/notes/2017/11/30/intellij-idea-license-activation/</loc>
+    
+    <lastmod>2018-01-31T03:12:58.704Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rogerscj.github.io/notes/2018/01/24/twos-complement/</loc>
     
     <lastmod>2018-01-25T08:17:52.805Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>https://rogerscj.github.io/notes/2017/12/04/spring-boot-chapter-1/</loc>
     
     <lastmod>2017-12-05T08:36:10.163Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rogerscj.github.io/notes/2017/11/30/intellij-idea-license-activation/</loc>
-    
-    <lastmod>2017-11-30T10:40:16.851Z</lastmod>
     
   </url>
   
