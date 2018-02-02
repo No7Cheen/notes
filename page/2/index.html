@@ -346,6 +346,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/11/22/kotlin-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.搞不定">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/notes/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="iSSExplorer's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/notes/2017/11/22/kotlin-2/" itemprop="url">Kotlin 学习（二）常用操作符</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T10:15:18+08:00">
+                2017-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/notes/categories/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="类型检测及自动类型转换「is」"><a href="#类型检测及自动类型转换「is」" class="headerlink" title="类型检测及自动类型转换「is」"></a>类型检测及自动类型转换「is」</h3><p><strong>「is」</strong> 检查某个实例是否是某个类型。 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Start</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;</div><div class="line">    <span class="keyword">if</span> (obj <span class="keyword">is</span> String) &#123;</div><div class="line">        <span class="comment">// `obj` 在该条件分支内自动转换成 `String`</span></div><div class="line">        <span class="keyword">return</span> obj.length</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 在离开类型检测分支后，`obj` 仍然是 `Any` 类型</span></div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// End</span></div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Start</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;</div><div class="line">    <span class="keyword">if</span> (obj !<span class="keyword">is</span> String) <span class="keyword">return</span> <span class="literal">null</span></div><div class="line"></div><div class="line">    <span class="comment">// `obj` 在这一分支自动转换为 `String`</span></div><div class="line">    <span class="keyword">return</span> obj.length</div><div class="line">&#125;</div><div class="line"><span class="comment">// End</span></div></pre></td></tr></table></figure>
+<p>甚至</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Start</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;</div><div class="line">    <span class="comment">// `obj` 在 `&amp;&amp;` 右边自动转换成 `String` 类型</span></div><div class="line">    <span class="keyword">if</span> (obj <span class="keyword">is</span> String &amp;&amp; obj.length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> obj.length</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// End</span></div></pre></td></tr></table></figure>
+<h3 id="类型转换「as」和安全转换「as-」"><a href="#类型转换「as」和安全转换「as-」" class="headerlink" title="类型转换「as」和安全转换「as?」"></a>类型转换「as」和安全转换「as?」</h3><p>除了上面介绍的自动类型转化「is」，我们还可以使用关键字「as」对一个变量进行类型转化。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String = y <span class="keyword">as</span> String</div></pre></td></tr></table></figure>
+<div class="note success"><p>注意，上面的表达式中 <strong>y</strong> 为 null 时会抛出异常。</p></div>
+<p>上面的的类型转换可以改进如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String? = y <span class="keyword">as</span> String?</div></pre></td></tr></table></figure>
+<p>当使用<strong>「as」</strong>转型的时候，如果类型转换失败就会抛出异常 <strong>ClassCastException</strong>。 所以，现在可以使<strong>「as?」</strong>安全转型，当转型不成功的时候，它会返回 null。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x: String? = y <span class="keyword">as</span>? String</div></pre></td></tr></table></figure>
+<div class="note info"><p>建议，为安全起见尽量避免使用<strong>「as」</strong>，改用<strong>「as?」</strong>是最好的选择。</p></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/notes/2017/11/22/kotlin-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/11/22/kotlin-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -498,152 +657,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mr.搞不定">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/notes/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="iSSExplorer's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/" itemprop="url">GitHub 从源分支更新 Fork 分支</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T15:00:00+08:00">
-                2017-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/notes/categories/备忘录/" itemprop="url" rel="index">
-                    <span itemprop="name">备忘录</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/23/mark-mac-autojump/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -746,6 +759,152 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/notes/2017/10/23/mark-mac-autojump/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.搞不定">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/notes/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="iSSExplorer's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/" itemprop="url">GitHub 从源分支更新 Fork 分支</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T15:00:00+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/notes/categories/备忘录/" itemprop="url" rel="index">
+                    <span itemprop="name">备忘录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在 GitHub 上操作进行更新源代码，和一般「Pull requests」的原理是一样的，只是主次关系需要对调一下，「Pull requests」是将 Fork 分支的改动合并到源 Master 上，而这里是将源分支 Master 的改动，更新到 Fork 分支上。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/notes/2017/10/23/github-fork-update-from-upstreamo-riginal/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1676,155 +1835,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rogerscj.github.io/notes/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mr.搞不定">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/notes/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="iSSExplorer's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/" itemprop="url">Hexo 搭建 GitHub 博客（I）- 环境搭建</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T16:33:21+08:00">
-                2017-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/notes/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>PS：本博是在 <strong>MAC</strong> 环境下进行搭建的<br>本博主要介绍<strong>「GitHub Pages」</strong>的相关环境搭建</p>
-</blockquote>
-<p>在平常的工作和生活中，记录一些笔记是必不可少的。设备更新换代又日趋频繁，免不了丢三落四，搭建一个便捷、稳定的个人站点还是挺有必要的，如果能将一些有用的笔记分享给有相同需求的同伴，那再好不过了。<strong>「GitHub Pages」</strong>就是一个不错的选择。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/notes/2017/10/13/Hexo-GitHub-NexT-Config-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1879,7 +1889,7 @@
               
                 <a href="/notes/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
